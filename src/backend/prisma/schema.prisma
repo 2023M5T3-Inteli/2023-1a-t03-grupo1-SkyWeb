@@ -9,16 +9,16 @@ datasource db {
 
 model user {
   id           Int    @id @default(autoincrement())
-  fullName     String
-  email        String @unique
-  phoneNumber  Int
-  mobileNumber Int    @unique
-  location     String
-  job          String
+  fullName     String?
+  email        String? @unique
+  phoneNumber  Int?
+  mobileNumber Int?    @unique
+  location     String?
+  job          String?
 
-  manager Int
+  manager Int?
 
-  Manager manager @relation(fields: [manager], references: [id])
+  Manager manager? @relation(fields: [manager], references: [id])
 
   projects project[]
 
