@@ -7,22 +7,121 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user{
-  idUser Int @id @default(autoincrement())
-  fullName String 
-  email String @unique
-  phoneNumber Int
-  mobileNumber Int @unique
-  location String
-  job String
+model user {
+  id           Int    @id @default(autoincrement())
+  fullName     String
+  email        String @unique
+  phoneNumber  Int
+  mobileNumber Int    @unique
+  location     String
+  job          String
 
-  
+  manager Int
 
-  // FK idManager
+  Manager manager @relation(fields: [manager], references: [id])
 
+  projects project[]
+
+  userApplyProject   userApplyProject[]
+  userWorkingProject userWorkingProject[]
+  saveProject        saveProject[]
 }
 
-model manager{
-  idManager Int @id @default(autoincrement())
+model manager {
+  id    Int    @id @default(autoincrement())
   email String
+
+  users    user[]
+  projects project[]
+}
+
+model project {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  description        String
+  aplicationDeadLine DateTime
+  duration           String
+  status             String
+  dateStart          DateTime
+  isAproved          Boolean
+
+  idUser    Int
+  idManager Int
+
+  User    user    @relation(fields: [idUser], references: [id])
+  Project manager @relation(fields: [idManager], references: [id])
+
+  userApplyProject   userApplyProject[]
+  projectRole        projectRole[]
+  userWorkingProject userWorkingProject[]
+  saveProject        saveProject[]
+  projectTag         projectTag[]
+}
+
+model userApplyProject {
+  idProject Int
+  idUser    Int
+  idRole    Int
+
+  User    user    @relation(fields: [idUser], references: [id])
+  Project project @relation(fields: [idProject], references: [id])
+  Role    role    @relation(fields: [idRole], references: [id])
+
+  @@id([idUser, idProject, idRole])
+}
+
+model userWorkingProject {
+  idProject Int
+  idUser    Int
+  idRole    Int
+
+  User    user    @relation(fields: [idUser], references: [id])
+  Project project @relation(fields: [idProject], references: [id])
+  Role    role    @relation(fields: [idRole], references: [id])
+
+  @@id([idUser, idProject, idRole])
+}
+
+model role {
+  id                 Int                  @id @default(autoincrement())
+  name               String
+  userApplyProject   userApplyProject[]
+  projectRole        projectRole[]
+  userWorkingProject userWorkingProject[]
+}
+
+model projectRole {
+  idRole    Int
+  idProject Int
+
+  Role    role    @relation(fields: [idRole], references: [id])
+  Project project @relation(fields: [idProject], references: [id])
+
+  @@id([idRole, idProject])
+}
+
+model saveProject {
+  idProject Int
+  idUser    Int
+
+  Project project @relation(fields: [idProject], references: [id])
+  User    user    @relation(fields: [idUser], references: [id])
+
+  @@id([idUser, idProject])
+}
+
+model tag {
+  id         Int          @id @default(autoincrement())
+  name       String
+  projectTag projectTag[]
+}
+
+model projectTag {
+  idProject Int
+  idTag     Int
+
+  Project project @relation(fields: [idProject], references: [id])
+  Tag     tag     @relation(fields: [idTag], references: [id])
+
+  @@id([idProject, idTag])
 }
