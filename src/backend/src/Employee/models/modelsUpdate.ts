@@ -6,14 +6,15 @@ export class ModelUpdate {
     }
 
     //Update do status do projeto (criado pelo usuário após aprovação)
-    async updateProjectStatus(progress: string, id: number){
-        await this.prisma.project.update({
+    async updateProjectStatus(progress: string, idProject: number){
+        const result = await this.prisma.project.update({
             data: {
                 status: progress
             },
             where: {
-                id: id
+                id: idProject
             }
         })
+        return result
     }
 }
