@@ -8,11 +8,11 @@ export class ControllerUpdateApprovalProject {
     constructor (private readonly serviceUpdateApprovalProject: ServiceUpdateApprovalProject){
     }
 
-    @Put(':id/approval')
+    @Put('approval')
     async execute(@Body() body: DTOBodyApprovalProject){
-        const {idLeader, idProject, isAproved} = body
+        const {idManager, idProject, isAproved} = body
 
-        const result = await this.serviceUpdateApprovalProject.execute(idLeader, idProject, isAproved)
+        const result = await this.serviceUpdateApprovalProject.execute(idManager, idProject, isAproved)
 
         return result  
     }
