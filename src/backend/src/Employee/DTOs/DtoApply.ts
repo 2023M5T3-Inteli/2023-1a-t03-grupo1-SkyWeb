@@ -1,9 +1,12 @@
-import { IsNotEmpty, Length } from 'class-validator/types/decorator/decorators';
+import { IsNotEmpty, IsNumber } from 'class-validator';
+
 
 export class DTOBodyDeleteProject {
     @IsNotEmpty({ message: 'idProject is required' })
-    idProject: string;
+    idProject: number;
 
     @IsNotEmpty({ message: 'idUser is required' })
-    idUser: string;
+    idUser: number;
+
+    
 }
