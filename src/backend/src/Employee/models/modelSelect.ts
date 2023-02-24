@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prismaServices/prisma.service';
 
 @Injectable()
-export class ModelDelete {
+export class ModelSelect {
     constructor(private prisma: PrismaService) {}
 
-    async deleteProject(projectId: number) {
-        await this.prisma.project.delete({
+    async findProjectById(projectId: number) {
+        return await this.prisma.project.findUnique({
             where: {
                 id: projectId,
             },
