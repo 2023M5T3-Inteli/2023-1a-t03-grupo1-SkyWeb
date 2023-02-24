@@ -8,8 +8,8 @@ export class ModelSelect {
     async findProjectById(projectId: number) {
         return await this.prisma.project.findUnique({
             where: {
-                id: projectId
-            }
+                id: projectId,
+            },
         });
     }
 }
