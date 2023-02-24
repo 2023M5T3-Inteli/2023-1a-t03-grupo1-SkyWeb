@@ -6,12 +6,16 @@ import { ModelDelete } from './Employee/models/modelDelete';
 import { ModelUpdate } from "./Employee/models/modelsUpdate";
 import {ControllerUpdateApprovalProject} from "./Employee/controller/ApprovalProject.controller";
 import { ServiceUpdateApprovalProject } from "./Employee/useCases/serviceUpdateApprovalProject.service"
-
-
+import { ControllerUpdateProjectStatus } from "./Employee/controller/controllerUpdateProjectStatus.controller"
+import { ServiceUpdateProjectStatus } from "./Employee/useCases/serviceUpdateProjectStatus.service"
+import { DeleteProjectController } from './Employee/controller/controllerDeleteProject';
+import {ServicesDeleteProject} from './Employee/useCases/serviceDeleteProject.service';
+import { ModelSelect } from './Employee/models/modelSelect';
 
 @Module({
     imports: [],
-    controllers: [AppController,ControllerUpdateApprovalProject],
-    providers: [PrismaService, ModelDelete, AppService,ModelUpdate,ServiceUpdateApprovalProject],
+    controllers: [AppController,DeleteProjectController,ControllerUpdateProjectStatus,ControllerUpdateApprovalProject],
+    providers: [PrismaService, ModelDelete, AppService, ServicesDeleteProject,ModelSelect,ModelUpdate,ServiceUpdateProjectStatus,ServiceUpdateApprovalProject],
+
 })
 export class AppModule {}
