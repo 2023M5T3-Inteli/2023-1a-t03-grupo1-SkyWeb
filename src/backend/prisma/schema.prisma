@@ -15,10 +15,8 @@ model user {
   mobileNumber Int    @unique
   location     String
   job          String
-
-  manager Int?
-
-  Manager manager? @relation(fields: [manager], references: [id])
+  isManager Boolean?
+  idManager Int?
 
   projects project[]
 
@@ -27,13 +25,7 @@ model user {
   saveProject        saveProject[]
 }
 
-model manager {
-  id    Int    @id @default(autoincrement())
-  email String
 
-  users    user[]
-  projects project[]
-}
 
 model project {
   id                 Int      @id @default(autoincrement())
@@ -43,13 +35,13 @@ model project {
   duration           String
   status             String
   dateStart          DateTime
-  isAproved          Boolean
+  isApproved          Boolean?
 
   idUser    Int?
   idManager Int?
 
   User    user?    @relation(fields: [idUser], references: [id])
-  Manager manager? @relation(fields: [idManager], references: [id])
+
 
   userApplyProject   userApplyProject[]
   projectRole        projectRole[]

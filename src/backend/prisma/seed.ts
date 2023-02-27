@@ -11,6 +11,7 @@ async function main() {
             mobileNumber: 1121,
             location: 'Remote Employee - Brazil, Rio Grande do Sul',
             job: 'Software Enginer',
+            isManager: true,
         },
     });
 
@@ -22,6 +23,7 @@ async function main() {
             mobileNumber: 1122,
             location: 'Remote Employee - Brazil, Rio Grande do Sul',
             job: 'Software Enginer',
+            isManager: true,
         },
     });
 
@@ -33,6 +35,7 @@ async function main() {
             mobileNumber: 1123,
             location: 'Remote Employee - Brazil, Rio Grande do Sul',
             job: 'Software Enginer',
+            isManager: false,
         },
     });
 
@@ -44,6 +47,7 @@ async function main() {
             mobileNumber: 1124,
             location: 'Remote Employee - Brazil, Rio Grande do Sul',
             job: 'Software Enginer',
+            isManager: false,
         },
     });
 
@@ -55,18 +59,7 @@ async function main() {
             mobileNumber: 1125,
             location: 'Remote Employee - Brazil, Rio Grande do Sul',
             job: 'Software Enginer',
-        },
-    });
-
-    await prisma.manager.create({
-        data: {
-            email: 'manager1@gmail.com',
-        },
-    });
-
-    await prisma.manager.create({
-        data: {
-            email: 'manager2@gmail.com',
+            isManager: false,
         },
     });
 
@@ -78,7 +71,6 @@ async function main() {
             duration: '5 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
-            isAproved: false,
         },
     });
 
@@ -90,7 +82,6 @@ async function main() {
             duration: '10 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
-            isAproved: false,
         },
     });
 
@@ -102,7 +93,6 @@ async function main() {
             duration: '10 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
-            isAproved: false,
         },
     });
 
@@ -114,7 +104,6 @@ async function main() {
             duration: '10 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
-            isAproved: false,
         },
     });
 
@@ -126,7 +115,6 @@ async function main() {
             duration: '12 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
-            isAproved: false,
         },
     });
 

@@ -1,26 +1,29 @@
 import { Module } from '@nestjs/common';
+
+import { ModelDelete } from './models/modelDelete';
+import { ModelCreate } from './models/modelCreate';
+import { ModelUpdate } from './models/modelsUpdate';
+import { ModelSelect } from './models/modelSelect';
+
+import { PutController } from './controller/put.controller';
+import { DeleteController } from './controller/delete.controller';
+import { PostController } from './controller/post.controller';
+
 import { PrismaService } from './prismaServices/prisma.service';
-import { ModelDelete } from './Employee/models/modelDelete';
-import { ControllerCreateProject } from './Employee/controller/controllerCreateProject.controller';
-import { ModelCreate } from './Employee/models/modelCreate';
-import { ServiceCreateProject } from './Employee/useCases/serviceCreateProject.service';
-import { ModelUpdate } from './Employee/models/modelsUpdate';
-import { ServiceUpdateApprovalProject } from './Employee/useCases/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from './Employee/useCases/serviceUpdateProjectStatus.service';
-import { ServicesDeleteProject } from './Employee/useCases/serviceDeleteProject.service';
-import { ModelSelect } from './Employee/models/modelSelect';
-import { PutController } from './Employee/controller/put.controller';
-import { DeleteController } from './Employee/controller/delete.controller';
+import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
+import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
+import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
+import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
 
 @Module({
     imports: [],
-    controllers: [PutController, DeleteController, ControllerCreateProject],
+    controllers: [PutController, DeleteController, PostController],
     providers: [
-        PrismaService,
         ModelSelect,
         ModelUpdate,
         ModelDelete,
         ModelCreate,
+        PrismaService,
         ServiceCreateProject,
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
