@@ -12,4 +12,10 @@ export class ModelSelect {
             },
         });
     }
+    async getProjectsByUserId(idUser:number){
+       return await this.prisma.project.findMany({
+            where:{idUser:idUser}
+        })
+    }
 }
+
