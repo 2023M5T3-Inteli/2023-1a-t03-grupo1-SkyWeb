@@ -3,7 +3,7 @@ import { PrismaService } from 'src/prismaServices/prisma.service';
 
 @Injectable()
 export class ModelSelect {
-    constructor(private prisma: PrismaService) { }
+    constructor(private prisma: PrismaService) {}
 
     async findProjectById(projectId: number) {
         return await this.prisma.project.findUnique({
@@ -13,12 +13,21 @@ export class ModelSelect {
         });
     }
 
+    async getProjectsByUserId(idUser: number) {
+        return await this.prisma.project.findMany({
+            where: { idUser: idUser },
+        });
+    }
+
     async getAllUsersAployed(projectId: number) {
         return await this.prisma.userApplyProject.findMany({
             where: {
-                idProject: projectId
+                idProject: projectId,
             },
-            select: { User: { select: { email: true, fullName: true } }, Role:{select:{name:true}}}
-        })
+            select: {
+                User: { select: { email: true, fullName: true } },
+                Role: { select: { name: true } },
+            },
+        });
     }
 }
