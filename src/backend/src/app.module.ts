@@ -15,11 +15,17 @@ import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
 import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
 import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
 import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
+import { ServiceGetApplayedUser } from './useCases/serviceGetApplayedUsers.service';
 import { ServiceGetProjectsByUserId } from './useCases/serviceGetAllProjectsCreatedByMe.service';
 
 @Module({
     imports: [],
-    controllers: [PutController, DeleteController, PostController, GetController],
+    controllers: [
+        PutController,
+        DeleteController,
+        PostController,
+        GetController,
+    ],
     providers: [
         ModelSelect,
         ModelUpdate,
@@ -30,7 +36,8 @@ import { ServiceGetProjectsByUserId } from './useCases/serviceGetAllProjectsCrea
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
-        ServiceGetProjectsByUserId
+        ServiceGetApplayedUser,
+        ServiceGetProjectsByUserId,
     ],
 })
 export class AppModule {}
