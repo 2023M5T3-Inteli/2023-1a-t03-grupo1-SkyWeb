@@ -8,16 +8,18 @@ import { ModelSelect } from './models/modelSelect';
 import { PutController } from './controller/put.controller';
 import { DeleteController } from './controller/delete.controller';
 import { PostController } from './controller/post.controller';
+import { GetController } from './controller/get.controller';
 
 import { PrismaService } from './prismaServices/prisma.service';
 import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
 import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
 import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
 import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
+import { ServiceGetProjectsByUserId } from './useCases/serviceGetAllProjectsCreatedByMe.service';
 
 @Module({
     imports: [],
-    controllers: [PutController, DeleteController, PostController],
+    controllers: [PutController, DeleteController, PostController, GetController],
     providers: [
         ModelSelect,
         ModelUpdate,
@@ -28,6 +30,7 @@ import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
+        ServiceGetProjectsByUserId
     ],
 })
 export class AppModule {}

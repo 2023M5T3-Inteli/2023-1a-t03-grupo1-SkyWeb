@@ -21,7 +21,7 @@ export class ModelUpdate {
     async updateApprovalProject(isAproved: boolean, idProject: number) {
         const result = await this.prisma.project.update({
             data: {
-                isAproved: isAproved,
+                isApproved: isAproved,
             },
             where: {
                 id: idProject,
