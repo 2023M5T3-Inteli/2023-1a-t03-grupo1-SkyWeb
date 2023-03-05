@@ -1,7 +1,7 @@
 // ALL DELETE's here
 import { Controller, Body, Post, Delete } from '@nestjs/common';
 
-import { ServicesDeleteProject } from '../useCases/serviceDeleteProject.service';
+import { ServicesDeleteProject } from '../services/serviceDeleteProject.service';
 
 import { DTOBodyDeleteProject } from '../DTOs/DtoApply';
 
