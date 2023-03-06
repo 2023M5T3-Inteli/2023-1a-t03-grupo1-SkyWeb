@@ -13,12 +13,28 @@ export class ModelSelect {
         });
     }
 
+    async getProjectsByUserId(idUser: number) {
+        return await this.prisma.project.findMany({
+            where: { idUser: idUser },
+        });
+    }
 
-    async findUserApplyProjectByIdUserAndIdProject(idUser: number, idProject: number, idRole: number) {
-        return await this.prisma.userApplyProject.findUnique({
+    async getAllUsersAployed(projectId: number) {
+        const result = await this.prisma.userApplyProject.findMany({
             where: {
-                idUser_idProject_idRole: { idProject: idProject, idUser: idUser, idRole: idRole }
-            }
-        })
+                idProject: projectId,
+            },
+            select: {
+                User: { select: { email: true, fullName: true } },
+                Role: { select: { name: true } },
+                idUser: true,
+            },
+        });
+
+        const jsonResult = result.map((item) => {
+            return { id: item.idUser, user: item.User, role: item.Role };
+        });
+
+        return jsonResult;
     }
 }

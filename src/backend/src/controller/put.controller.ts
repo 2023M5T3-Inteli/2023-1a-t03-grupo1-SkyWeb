@@ -1,8 +1,8 @@
 // ALL PUT's here
 import { Controller, Put, Body } from '@nestjs/common';
 
-import { ServiceUpdateApprovalProject } from '../useCases/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from '../useCases/serviceUpdateProjectStatus.service';
+import { ServiceUpdateApprovalProject } from '../services/serviceUpdateApprovalProject.service';
+import { ServiceUpdateProjectStatus } from '../services/serviceUpdateProjectStatus.service';
 
 import { DTOBodyApprovalProject } from '../DTOs/DTOBodyApprovalProject';
 import { DTOBodyUpdateProjectStatus } from '../DTOs/DTOBodyUpdateProjectStatus';
