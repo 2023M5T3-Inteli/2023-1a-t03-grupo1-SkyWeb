@@ -1,9 +1,9 @@
 // ALL GET's here
 import { Get, Body, Controller } from '@nestjs/common';
 import { DtoBodyApployed } from 'src/DTOs/DtoBodyGetApployed';
-import { ServiceGetApplayedUser } from 'src/useCases/serviceGetApplayedUsers.service';
+import { ServiceGetApplayedUser } from 'src/services/serviceGetApplayedUsers.service';
 import { DTOBodyGetProjectByUserId } from 'src/DTOs/DTOBodyGetProjectByUserId';
-import { ServiceGetProjectsByUserId } from 'src/useCases/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceGetProjectsByUserId } from 'src/services/serviceGetAllProjectsCreatedByMe.service';
 
 @Controller('get')
 export class GetController {

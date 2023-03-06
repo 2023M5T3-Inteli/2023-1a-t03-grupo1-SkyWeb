@@ -1,3 +1,4 @@
+import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
 import { Module } from '@nestjs/common';
 
 import { ModelDelete } from './models/modelDelete';
@@ -11,12 +12,12 @@ import { PostController } from './controller/post.controller';
 import { GetController } from './controller/get.controller';
 
 import { PrismaService } from './prismaServices/prisma.service';
-import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
-import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
-import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
-import { ServiceGetApplayedUser } from './useCases/serviceGetApplayedUsers.service';
-import { ServiceGetProjectsByUserId } from './useCases/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceCreateProject } from './services/serviceCreateProject.service';
+import { ServiceUpdateApprovalProject } from './services/serviceUpdateApprovalProject.service';
+import { ServiceUpdateProjectStatus } from './services/serviceUpdateProjectStatus.service';
+import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
+import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
+import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
 
 @Module({
     imports: [],
@@ -38,6 +39,7 @@ import { ServiceGetProjectsByUserId } from './useCases/serviceGetAllProjectsCrea
         ServiceUpdateApprovalProject,
         ServiceGetApplayedUser,
         ServiceGetProjectsByUserId,
+        ServiceAcceptApplyUser,
     ],
 })
 export class AppModule {}

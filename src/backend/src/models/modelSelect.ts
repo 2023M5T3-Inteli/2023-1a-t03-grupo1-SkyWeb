@@ -20,14 +20,21 @@ export class ModelSelect {
     }
 
     async getAllUsersAployed(projectId: number) {
-        return await this.prisma.userApplyProject.findMany({
+        const result = await this.prisma.userApplyProject.findMany({
             where: {
                 idProject: projectId,
             },
             select: {
                 User: { select: { email: true, fullName: true } },
                 Role: { select: { name: true } },
+                idUser: true,
             },
         });
+
+        const jsonResult = result.map((item) => {
+            return { id: item.idUser, user: item.User, role: item.Role };
+        });
+
+        return jsonResult;
     }
 }
