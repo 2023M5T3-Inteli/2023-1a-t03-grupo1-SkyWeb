@@ -27,7 +27,7 @@ export class ModelCreate {
                 aplicationDeadLine: new Date(aplicationDeadLine),
                 dateStart: new Date(dateStart),
                 duration: duration,
-                isAproved: isAproved,
+                isApproved: isAproved,
                 status: status,
 
                 idUser: idUser,
