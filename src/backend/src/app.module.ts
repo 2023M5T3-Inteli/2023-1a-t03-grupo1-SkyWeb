@@ -14,6 +14,7 @@ import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
 import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
 import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
 import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
+import { ServiceApplyProject } from './useCases/serviceApplyProject.service';
 
 @Module({
     imports: [],
@@ -28,6 +29,7 @@ import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
+        ServiceApplyProject
     ],
 })
-export class AppModule {}
+export class AppModule { }

@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ModelUpdate {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) { }
 
     //Update do status do projeto (criado pelo usuário após aprovação)
     async updateProjectStatus(progress: string, idProject: number) {
@@ -21,7 +21,7 @@ export class ModelUpdate {
     async updateApprovalProject(isAproved: boolean, idProject: number) {
         const result = await this.prisma.project.update({
             data: {
-                isAproved: isAproved,
+                isApproved: isAproved,
             },
             where: {
                 id: idProject,
