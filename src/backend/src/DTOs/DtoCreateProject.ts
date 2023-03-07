@@ -1,21 +1,43 @@
-import { IsNotEmpty, Length, IsString } from "class-validator"
+import { IsNotEmpty, Length, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class DTOBodyCreateProject {
-    @IsNotEmpty({ message: "name is required" })
-    @IsString({ message: "name is not a string" })
-    @Length(3, 35, { message: "name number of characters not correspond" })
+    @ApiProperty()
+    @IsNotEmpty({ message: 'name is required' })
+    @IsString({ message: 'name is not a string' })
+    @Length(3, 35, { message: 'name number of characters not correspond' })
     name: string;
 
-    description: string
-    aplicationDeadLine: string //Use Date-Time
-    dateStart: string //Use Date-Time
-    duration: string //Use Date-Time
-    isAproved: boolean
-    status: string
+    @ApiProperty()
+    description: string;
 
-    idUser: number
-    idManager: number
-    idProject: number
-    idTag: number
-    idRole: number
+    @ApiProperty()
+    aplicationDeadLine: string; //Use Date-Time
+
+    @ApiProperty()
+    dateStart: string; //Use Date-Time
+
+    @ApiProperty()
+    duration: string; //Use Date-Time
+
+    @ApiProperty()
+    isAproved: boolean;
+
+    @ApiProperty()
+    status: string;
+
+    @ApiProperty()
+    idUser: number;
+
+    @ApiProperty()
+    idManager: number;
+
+    @ApiProperty()
+    idProject: number;
+
+    @ApiProperty()
+    idTag: number;
+
+    @ApiProperty()
+    idRole: number;
 }
