@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { isNotEmpty, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class DTOBodyDeleteProject {
     @IsNotEmpty({ message: 'idProject is required' })
@@ -6,4 +6,7 @@ export class DTOBodyDeleteProject {
 
     @IsNotEmpty({ message: 'idUser is required' })
     idUser: number;
+
+    @IsNotEmpty({message: 'idRole is required'})
+    idRole: number;
 }

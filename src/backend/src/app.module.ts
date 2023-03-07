@@ -16,6 +16,7 @@ import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatu
 import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
 import { GetController } from './controller/get.controller';
 import { ServiceGetApplayedUser } from './useCases/serviceGetApplayedUsers.service';
+import {ServicesDeleteApplyUser} from './useCases/serviceDeleteApplyUser.service'
 
 @Module({
     imports: [],
@@ -31,6 +32,7 @@ import { ServiceGetApplayedUser } from './useCases/serviceGetApplayedUsers.servi
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
         ServiceGetApplayedUser,
+        ServicesDeleteApplyUser,
     ],
 })
 export class AppModule {}
