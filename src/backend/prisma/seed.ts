@@ -69,7 +69,7 @@ async function main() {
             description: 'lorem lorem lorem lorem lorem lorem lorem',
             aplicationDeadLine: new Date('August 19,2023'),
             duration: '5 semanas',
-            status: '',
+            status: 'Open',
             dateStart: new Date('August 27,2023'),
         },
     });
