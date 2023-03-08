@@ -13,6 +13,14 @@ export class ModelDelete {
         });
     }
 
+    async deleteApplayUser(idProject: number, idRole: number, idUser: number) {
+        await this.prisma.userApplyProject.delete({
+            where: {
+                idUser_idProject_idRole: { idProject, idRole, idUser },
+            },
+        });
+    }
+
     async deleteUsersApplyProject(idUsers: number[], idProject: number) {
         try {
             return await this.prisma.userApplyProject.deleteMany({

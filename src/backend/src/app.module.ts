@@ -20,6 +20,7 @@ import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.servi
 import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
 import { ServiceGetAllProjects } from './services/serviceGetProject.service';
 import { ServiceFilterTag } from './services/serviceFilterTag.service';
+import { ServicesDeleteApplyUser } from './services/serviceDeleteApplyUser.service';
 
 @Module({
     imports: [],
@@ -42,6 +43,7 @@ import { ServiceFilterTag } from './services/serviceFilterTag.service';
         ServiceUpdateApprovalProject,
         ServiceGetAllProjects,
         ServiceGetApplayedUser,
+        ServicesDeleteApplyUser,
         ServiceGetProjectsByUserId,
         ServiceAcceptApplyUser,
         ServiceFilterTag,
