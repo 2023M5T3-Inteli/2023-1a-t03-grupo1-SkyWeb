@@ -14,7 +14,7 @@ export class ModelDelete {
     }
 
     async deleteApplayUser(idProject: number, idRole: number, idUser: number) {
-        await this.prisma.userApplyProject.delete({
+        return await this.prisma.userApplyProject.delete({
             where: {
                 idUser_idProject_idRole: { idProject, idRole, idUser },
             },

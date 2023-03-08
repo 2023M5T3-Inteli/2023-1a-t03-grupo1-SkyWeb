@@ -24,7 +24,7 @@ export class ModelSelect {
         const result = await this.prisma.projectTag.findMany({
             where: {
                 idTag: { in: tag },
-                Project: { isApproved: null, status: 'Open' },
+                Project: { isApproved: true, status: 'Open' },
             },
             select: {
                 Project: {
@@ -40,7 +40,12 @@ export class ModelSelect {
                 },
             },
         });
-        return result;
+
+        const jsonResult = result.map((item) => {
+            return item.Project;
+        });
+
+        return jsonResult;
     }
     async getAllTags() {
         const result = await this.prisma.tag.findMany({
