@@ -11,15 +11,25 @@ import { PostController } from './controller/post.controller';
 import { GetController } from './controller/get.controller';
 
 import { PrismaService } from './prismaServices/prisma.service';
-import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
-import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
-import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
-import { ServiceFilterTag } from './useCases/serviceFilterTag.service';
+import { ServiceCreateProject } from './services/serviceCreateProject.service';
+import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
+import { ServiceUpdateApprovalProject } from './services/serviceUpdateApprovalProject.service';
+import { ServiceUpdateProjectStatus } from './services/serviceUpdateProjectStatus.service';
+import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
+import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
+import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceGetAllProjects } from './services/serviceGetProject.service';
+import { ServiceFilterTag } from './services/serviceFilterTag.service';
 
 @Module({
     imports: [],
-    controllers: [PutController, DeleteController, PostController, GetController],
+    controllers: [
+        PutController,
+        DeleteController,
+        PostController,
+        GetController,
+    ],
+
     providers: [
         ModelSelect,
         ModelUpdate,
@@ -30,6 +40,10 @@ import { ServiceFilterTag } from './useCases/serviceFilterTag.service';
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
+        ServiceGetAllProjects,
+        ServiceGetApplayedUser,
+        ServiceGetProjectsByUserId,
+        ServiceAcceptApplyUser,
         ServiceFilterTag,
     ],
 })
