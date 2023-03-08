@@ -19,6 +19,7 @@ import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
 import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
 import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
 import { ServiceGetAllProjects } from './services/serviceGetProject.service';
+import { ServiceFilterTag } from './services/serviceFilterTag.service';
 
 @Module({
     imports: [],
@@ -28,6 +29,7 @@ import { ServiceGetAllProjects } from './services/serviceGetProject.service';
         PostController,
         GetController,
     ],
+
     providers: [
         ModelSelect,
         ModelUpdate,
@@ -42,6 +44,7 @@ import { ServiceGetAllProjects } from './services/serviceGetProject.service';
         ServiceGetApplayedUser,
         ServiceGetProjectsByUserId,
         ServiceAcceptApplyUser,
+        ServiceFilterTag,
     ],
 })
 export class AppModule {}
