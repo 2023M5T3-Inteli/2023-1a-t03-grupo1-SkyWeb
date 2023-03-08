@@ -21,7 +21,6 @@ model user {
   projects project[]
 
   userApplyProject   userApplyProject[]
-  userWorkingProject userWorkingProject[]
   saveProject        saveProject[]
 }
 
@@ -45,7 +44,6 @@ model project {
 
   userApplyProject   userApplyProject[]
   projectRole        projectRole[]
-  userWorkingProject userWorkingProject[]
   saveProject        saveProject[]
   projectTag         projectTag[]
 }
@@ -62,24 +60,13 @@ model userApplyProject {
   @@id([idUser, idProject, idRole])
 }
 
-model userWorkingProject {
-  idProject Int
-  idUser    Int
-  idRole    Int
 
-  User    user    @relation(fields: [idUser], references: [id])
-  Project project @relation(fields: [idProject], references: [id])
-  Role    role    @relation(fields: [idRole], references: [id])
-
-  @@id([idUser, idProject, idRole])
-}
 
 model role {
   id                 Int                  @id @default(autoincrement())
   name               String
   userApplyProject   userApplyProject[]
   projectRole        projectRole[]
-  userWorkingProject userWorkingProject[]
 }
 
 model projectRole {

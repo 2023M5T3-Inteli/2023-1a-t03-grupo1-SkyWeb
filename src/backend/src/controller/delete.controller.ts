@@ -1,11 +1,10 @@
 // ALL DELETE's here
 import { Controller, Body, Post, Delete } from '@nestjs/common';
 
-import { ServicesDeleteProject} from '../useCases/serviceDeleteProject.service';
+import { ServicesDeleteProject } from '../services/serviceDeleteProject.service';
+import { ServicesDeleteApplyUser } from '../services/serviceDeleteApplyUser.service';
 
-import {ServicesDeleteApplyUser} from '../useCases/serviceDeleteApplyUser.service'
-
-import { DTOBodyDeleteProject } from '../DTOs/DtoApply';
+import { DTOBodyDeleteProject } from '../DTOs/DTOBodyDeleteProjec';
 
 @Controller('delete')
 export class DeleteController {
@@ -27,16 +26,15 @@ export class DeleteController {
     }
 
     @Delete('deleteApply')
-    async deleteAplly(@Body() body: DTOBodyDeleteProject){
-        const {idProject, idUser, idRole} = body;
+    async deleteAplly(@Body() body: DTOBodyDeleteProject) {
+        const { idProject, idUser, idRole } = body;
 
         const result = await this.serviceDeleteApplyUser.execute(
             idProject,
             idRole,
             idUser,
-        )
+        );
 
-        return result
-
+        return result;
     }
 }

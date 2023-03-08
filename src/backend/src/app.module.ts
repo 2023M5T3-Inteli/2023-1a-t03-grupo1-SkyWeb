@@ -8,19 +8,29 @@ import { ModelSelect } from './models/modelSelect';
 import { PutController } from './controller/put.controller';
 import { DeleteController } from './controller/delete.controller';
 import { PostController } from './controller/post.controller';
+import { GetController } from './controller/get.controller';
 
 import { PrismaService } from './prismaServices/prisma.service';
-import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
-import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
-import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
-import { GetController } from './controller/get.controller';
-import { ServiceGetApplayedUser } from './useCases/serviceGetApplayedUsers.service';
-import {ServicesDeleteApplyUser} from './useCases/serviceDeleteApplyUser.service'
+import { ServiceCreateProject } from './services/serviceCreateProject.service';
+import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
+import { ServiceUpdateApprovalProject } from './services/serviceUpdateApprovalProject.service';
+import { ServiceUpdateProjectStatus } from './services/serviceUpdateProjectStatus.service';
+import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
+import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
+import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceGetAllProjects } from './services/serviceGetProject.service';
+import { ServiceFilterTag } from './services/serviceFilterTag.service';
+import { ServicesDeleteApplyUser } from './services/serviceDeleteApplyUser.service';
 
 @Module({
     imports: [],
-    controllers: [PutController, DeleteController, PostController, GetController],
+    controllers: [
+        PutController,
+        DeleteController,
+        PostController,
+        GetController,
+    ],
+
     providers: [
         ModelSelect,
         ModelUpdate,
@@ -31,8 +41,12 @@ import {ServicesDeleteApplyUser} from './useCases/serviceDeleteApplyUser.service
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
+        ServiceGetAllProjects,
         ServiceGetApplayedUser,
         ServicesDeleteApplyUser,
+        ServiceGetProjectsByUserId,
+        ServiceAcceptApplyUser,
+        ServiceFilterTag,
     ],
 })
 export class AppModule {}
