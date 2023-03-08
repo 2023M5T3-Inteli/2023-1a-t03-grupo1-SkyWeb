@@ -10,17 +10,24 @@ import { DeleteController } from './controller/delete.controller';
 import { PostController } from './controller/post.controller';
 import { GetController } from './controller/get.controller';
 
-
 import { PrismaService } from './prismaServices/prisma.service';
-import { ServiceCreateProject } from './useCases/serviceCreateProject.service';
-import { ServiceUpdateApprovalProject } from './useCases/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from './useCases/serviceUpdateProjectStatus.service';
-import { ServicesDeleteProject } from './useCases/serviceDeleteProject.service';
-import { ServiceGetAllProjects } from './useCases/serviceGetProject.service';
+import { ServiceCreateProject } from './services/serviceCreateProject.service';
+import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
+import { ServiceUpdateApprovalProject } from './services/serviceUpdateApprovalProject.service';
+import { ServiceUpdateProjectStatus } from './services/serviceUpdateProjectStatus.service';
+import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
+import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
+import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceGetAllProjects } from './services/serviceGetProject.service';
 
 @Module({
     imports: [],
-    controllers: [PutController, DeleteController, PostController, GetController],
+    controllers: [
+        PutController,
+        DeleteController,
+        PostController,
+        GetController,
+    ],
     providers: [
         ModelSelect,
         ModelUpdate,
@@ -32,6 +39,9 @@ import { ServiceGetAllProjects } from './useCases/serviceGetProject.service';
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
         ServiceGetAllProjects,
+        ServiceGetApplayedUser,
+        ServiceGetProjectsByUserId,
+        ServiceAcceptApplyUser,
     ],
 })
 export class AppModule {}
