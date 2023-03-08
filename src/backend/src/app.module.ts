@@ -1,4 +1,3 @@
-import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
 import { Module } from '@nestjs/common';
 
 import { ModelDelete } from './models/modelDelete';
@@ -13,11 +12,13 @@ import { GetController } from './controller/get.controller';
 
 import { PrismaService } from './prismaServices/prisma.service';
 import { ServiceCreateProject } from './services/serviceCreateProject.service';
+import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
 import { ServiceUpdateApprovalProject } from './services/serviceUpdateApprovalProject.service';
 import { ServiceUpdateProjectStatus } from './services/serviceUpdateProjectStatus.service';
 import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
 import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
 import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceGetAllProjects } from './services/serviceGetProject.service';
 
 @Module({
     imports: [],
@@ -37,6 +38,7 @@ import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCrea
         ServicesDeleteProject,
         ServiceUpdateProjectStatus,
         ServiceUpdateApprovalProject,
+        ServiceGetAllProjects,
         ServiceGetApplayedUser,
         ServiceGetProjectsByUserId,
         ServiceAcceptApplyUser,

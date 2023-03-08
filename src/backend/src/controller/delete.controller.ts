@@ -3,7 +3,7 @@ import { Controller, Body, Post, Delete } from '@nestjs/common';
 
 import { ServicesDeleteProject } from '../services/serviceDeleteProject.service';
 
-import { DTOBodyDeleteProject } from '../DTOs/DtoApply';
+import { DTOBodyDeleteProject } from '../DTOs/DTOBodyDeleteProjec';
 
 @Controller('delete')
 export class DeleteController {

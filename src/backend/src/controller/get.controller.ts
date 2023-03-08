@@ -4,12 +4,14 @@ import { DtoBodyApployed } from 'src/DTOs/DtoBodyGetApployed';
 import { ServiceGetApplayedUser } from 'src/services/serviceGetApplayedUsers.service';
 import { DTOBodyGetProjectByUserId } from 'src/DTOs/DTOBodyGetProjectByUserId';
 import { ServiceGetProjectsByUserId } from 'src/services/serviceGetAllProjectsCreatedByMe.service';
+import { ServiceGetAllProjects } from '../services/serviceGetProject.service';
 
 @Controller('get')
 export class GetController {
     constructor(
         private serviceGetApplayedUser: ServiceGetApplayedUser,
         private readonly serviceGetProjectsByUserId: ServiceGetProjectsByUserId,
+        private readonly serviceGetAllProjects: ServiceGetAllProjects,
     ) {}
 
     @Get('getApplayed')
@@ -23,5 +25,11 @@ export class GetController {
         const { userId } = body;
         const result = await this.serviceGetProjectsByUserId.execute(userId);
         return result;
+    }
+
+    @Get('getallproject')
+    async getAllProjects() {
+        const projects = await this.serviceGetAllProjects.execute();
+        return projects;
     }
 }
