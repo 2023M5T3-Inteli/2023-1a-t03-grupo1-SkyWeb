@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom"
 import ErrorPage from '../components/errorPage'
 import { Home } from '../pages/Home'
+import { Manager } from '../pages/Manager'
 import { TestPage } from '../pages/TestPage'
 import { QueryClientProvider, QueryClient } from "react-query"
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />
+  },
+  {
+    path: "/Manager",
+    element: <Manager />
   },
   {
     path: "/test",
