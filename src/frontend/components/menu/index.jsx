@@ -58,8 +58,8 @@ width: max-content;
 text-align: left;
 margin-top: 3rem;
 &:hover {
-    transition: .2s;
-    color: #999;
+    transition: .3s;
+    border-left: 5px solid white
 }
 `
 
@@ -116,9 +116,10 @@ export function Menu(props) {
             </ProfileContainer>
             <Nav>
                 <SidebarItem to='home'>My Dashboard</SidebarItem>
-                <SidebarItem to='fodase'>All Projects</SidebarItem>
-                <SidebarItem to='fodase'>About</SidebarItem>
-                <SidebarItem to='fodase'>FAQ</SidebarItem>
+                <SidebarItem to='allprojects'>All Projects</SidebarItem>
+                <SidebarItem to='manager'>Manager Pannel</SidebarItem>
+                <SidebarItem to='about'>About</SidebarItem>
+                <SidebarItem to='faq'>FAQ</SidebarItem>
             </Nav>
             <BottomWrapper>
                 <BringButton>Bring your project</BringButton>

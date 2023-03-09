@@ -6,7 +6,7 @@ export function Allprojects(){
 
     return (
         <div style={{ display: "flex" }}>
-            <Menu/>
+            <Menu userName="Chloe Price" userRole="Developer"/>
             <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'column'}}>
                 <div id="title" style={{ paddingLeft:"50px", paddingTop: "20px" }}>
                     <h1 style={{ fontFamily: "Poppins",  }}>All projects</h1>
