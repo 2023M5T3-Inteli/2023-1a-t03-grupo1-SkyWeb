@@ -11,13 +11,13 @@ export function Filter() {
     ];
 
     return(
-        <div id="filter" style={{display:'flex', paddingLeft:'300px', paddingTop:'20px', justifyContent:'space-between' }}>
+        <div id="filter" style={{display:'flex', padding:'20px', justifyContent:'space-between' }}>
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
                 options={changes}
                 sx={{ width: 178 }}
-                style={{height:'30px'}}
+                style={{height:'30px', padding:"30px"}}
                 renderInput={(params) => <TextField {...params} label="Project Name" />}
             />
             <Autocomplete
@@ -25,6 +25,7 @@ export function Filter() {
                 id="combo-box-demo"
                 options={changes}
                 sx={{ width: 178 }}
+                style={{ height: '30px', padding: "30px" }}
                 renderInput={(params) => <TextField {...params} label="Select tags" />}
             />
             <Autocomplete
@@ -32,6 +33,7 @@ export function Filter() {
                 id="combo-box-demo"
                 options={changes}
                 sx={{ width: 178 }}
+                style={{ height: '30px', padding: "30px" }}
                 renderInput={(params) => <TextField {...params} label="Status" />}
             />
 
