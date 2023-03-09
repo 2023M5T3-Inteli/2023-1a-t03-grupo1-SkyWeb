@@ -1,7 +1,9 @@
-import { ModelSelect } from 'src/models/modelSelect';
-import { ModelDelete } from 'src/models/modelDelete';
-import { verifyAllAplyeds } from '../scripts/funcs';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+
+import { verifyAllAplyeds } from '../scripts/funcs';
+
+import { ModelSelect } from '../models/modelSelect';
+import { ModelDelete } from '../models/modelDelete';
 
 @Injectable()
 export class ServiceAcceptApplyUser {

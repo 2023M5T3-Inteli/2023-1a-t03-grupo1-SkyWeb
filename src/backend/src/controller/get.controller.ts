@@ -1,10 +1,10 @@
 // ALL GET's here
-import { Get, Body, Controller } from '@nestjs/common';
-import { DtoBodyApployed } from 'src/DTOs/DtoBodyGetApployed';
-import { DtoFilterTag } from 'src/DTOs/DtoFilterTag';
-import { ServiceGetApplayedUser } from 'src/services/serviceGetApplayedUsers.service';
-import { DTOBodyGetProjectByUserId } from 'src/DTOs/DTOBodyGetProjectByUserId';
-import { ServiceGetProjectsByUserId } from 'src/services/serviceGetAllProjectsCreatedByMe.service';
+import { Get, Body, Controller, UseGuards } from '@nestjs/common';
+import { DtoBodyApployed } from '../DTOs/DtoBodyGetApployed';
+import { DtoFilterTag } from '../DTOs/DtoFilterTag';
+import { ServiceGetApplayedUser } from '../services/serviceGetApplayedUsers.service';
+import { DTOBodyGetProjectByUserId } from '../DTOs/DTOBodyGetProjectByUserId';
+import { ServiceGetProjectsByUserId } from '../services/serviceGetAllProjectsCreatedByMe.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ServiceGetAllProjects } from '../services/serviceGetProject.service';
 import { ServiceFilterTag } from '../services/serviceFilterTag.service';

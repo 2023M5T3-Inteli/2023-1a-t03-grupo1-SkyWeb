@@ -1,32 +1,52 @@
-import { PrismaService } from 'src/prismaServices/prisma.service';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+
+import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelUpdate {
     constructor(private prisma: PrismaService) {}
 
-    //Update do status do projeto (criado pelo usuário após aprovação)
     async updateProjectStatus(progress: string, idProject: number) {
-        const result = await this.prisma.project.update({
-            data: {
-                status: progress,
-            },
-            where: {
-                id: idProject,
-            },
-        });
-        return result;
+        try {
+            const result = await this.prisma.project.update({
+                data: {
+                    status: progress,
+                },
+                where: {
+                    id: idProject,
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
     }
 
-    async updateApprovalProject(isAproved: boolean, idProject: number, idManager: number) {
-        const result = await this.prisma.project.update({
-            data: {
-                isApproved: isAproved,
-            },
-            where: {
-                id: idProject
-            },
-        });
-        return result;
+    async updateApprovalProject(isAproved: boolean, idProject: number) {
+        try {
+            const result = await this.prisma.project.update({
+                data: {
+                    isApproved: isAproved,
+                },
+                where: {
+                    id: idProject,
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
     }
 }

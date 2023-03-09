@@ -36,8 +36,8 @@ export class DTOBodyCreateProject {
     idProject: number;
 
     @ApiProperty()
-    idTag: number;
+    idTag: number[];
 
     @ApiProperty()
-    idRole: number;
+    idRole: number[];
 }
