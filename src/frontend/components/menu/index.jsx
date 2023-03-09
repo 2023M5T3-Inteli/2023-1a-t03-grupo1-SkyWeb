@@ -3,6 +3,7 @@ import { Box, Container } from "@mui/system"
 import styled from 'styled-components';
 import userProfile from '../../assets/images/chloe-price.png';
 import { Link } from 'react-router-dom';
+import '../../style.css';
 
 const Sidebar = styled.div`
 background-color: #0672CB;
@@ -11,7 +12,7 @@ width: 20vw;
 display: flex;
 flex-direction: column;
 align-items: center;
-padding-top: 3rem;
+min-width: max-content;
 `
 
 const ProfileContainer = styled.button`
@@ -21,8 +22,10 @@ align-items: center;
 background-color: #fff;
 box-shadow: .2rem .2rem .2rem #555;
 border-radius: .6rem;
+width: 70%;
 outline: none;
 border: none;
+margin-top: 3rem;
 `
 
 const UserName = styled.p`
@@ -50,12 +53,18 @@ color: #fff;
 text-decoration: none;
 font-weight: 600;
 font-size: 1.3rem;
-margin-left: 3.5rem;
+padding-left: 4.6rem;
+width: max-content;
 text-align: left;
+margin-top: 3rem;
+&:hover {
+    transition: .2s;
+    color: #999;
+}
 `
 
 const Nav = styled.nav`
-height: 17rem;
+height: 25rem;
 width: 100%;
 padding-top: 3rem;
 display: flex;
@@ -89,7 +98,7 @@ margin: 0;
 padding: 0;
 width: 100%;
 padding-left: 3rem;
-margin-left: 3.5rem;
+margin-left: 6.4rem;
 padding-bottom: 1rem;
 `
 
