@@ -5,6 +5,7 @@ import ErrorPage from '../components/errorPage'
 import { Home } from '../pages/Home'
 import { TestPage } from '../pages/TestPage'
 import { QueryClientProvider, QueryClient } from "react-query"
+import { Profile } from '../pages/Profile'
 
 const queryClient = new QueryClient()
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         element: <h1>children</h1>
       }
     ]
+  },
+  {
+    path: "/profile",
+    element: <Profile />
   }
 ])
 
