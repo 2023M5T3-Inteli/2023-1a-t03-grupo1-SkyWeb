@@ -7,6 +7,7 @@ import { Manager } from '../pages/Manager'
 import { TestPage } from '../pages/TestPage'
 import { Dell } from "../pages/Dell";
 import {Menu} from "../components/menu/menu";
+import { Allprojects } from '../pages/Allprojects';
 import { QueryClientProvider, QueryClient } from "react-query"
 
 const queryClient = new QueryClient()
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  }, 
+  {
+    path: "/Allprojects",
+    element: <Allprojects />
   },
   {
     path: "/Manager",
