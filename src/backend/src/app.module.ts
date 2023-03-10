@@ -5,48 +5,19 @@ import { ModelCreate } from './models/modelCreate';
 import { ModelUpdate } from './models/modelsUpdate';
 import { ModelSelect } from './models/modelSelect';
 
-import { PutController } from './controller/put.controller';
-import { DeleteController } from './controller/delete.controller';
-import { PostController } from './controller/post.controller';
-import { GetController } from './controller/get.controller';
-
-import { PrismaService } from './prismaServices/prisma.service';
-import { ServiceCreateProject } from './services/serviceCreateProject.service';
-import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
-import { ServiceUpdateApprovalProject } from './services/serviceUpdateApprovalProject.service';
-import { ServiceUpdateProjectStatus } from './services/serviceUpdateProjectStatus.service';
-import { ServicesDeleteProject } from './services/serviceDeleteProject.service';
-import { ServiceGetApplayedUser } from './services/serviceGetApplayedUsers.service';
-import { ServiceGetProjectsByUserId } from './services/serviceGetAllProjectsCreatedByMe.service';
-import { ServiceGetAllProjects } from './services/serviceGetProject.service';
-import { ServiceFilterTag } from './services/serviceFilterTag.service';
-import { ServicesDeleteApplyUser } from './services/serviceDeleteApplyUser.service';
+import { ProjectModule } from './Project/app.module';
+import { UserLeaderModule } from './UserLeader/app.module';
+import { SystemModule } from './System/app.module';
+import { OwnerModule } from './Owner/app.module';
+import { UserModule } from './User/app.module';
 
 @Module({
-    imports: [],
-    controllers: [
-        PutController,
-        DeleteController,
-        PostController,
-        GetController,
-    ],
-
-    providers: [
-        ModelSelect,
-        ModelUpdate,
-        ModelDelete,
-        ModelCreate,
-        PrismaService,
-        ServiceCreateProject,
-        ServicesDeleteProject,
-        ServiceUpdateProjectStatus,
-        ServiceUpdateApprovalProject,
-        ServiceGetAllProjects,
-        ServiceGetApplayedUser,
-        ServicesDeleteApplyUser,
-        ServiceGetProjectsByUserId,
-        ServiceAcceptApplyUser,
-        ServiceFilterTag,
+    imports: [
+        ProjectModule,
+        UserLeaderModule,
+        UserModule,
+        SystemModule,
+        OwnerModule,
     ],
 })
 export class AppModule {}

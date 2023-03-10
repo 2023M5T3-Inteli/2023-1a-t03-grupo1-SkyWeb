@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom"
 import ErrorPage from '../components/errorPage'
 import { Home } from '../pages/Home'
+import { Manager } from '../pages/Manager'
 import { TestPage } from '../pages/TestPage'
 import { Allprojects} from '../pages/Allprojects';
 import { Menu } from "../components/menu";
@@ -24,6 +25,15 @@ const router = createBrowserRouter([
   {
     path:"/Allprojects",
     element: <Allprojects/>
+   },
+
+{
+ path: "/Manager",
+    element: <Manager />
+
+},
+   
+
   },
   {
     path: "/test",

@@ -19,8 +19,6 @@ export function Home() {
                     shift="right"
                     shiftDuration={1700}
                     distance="100px"
-
-
                 />
 
             </Container>
