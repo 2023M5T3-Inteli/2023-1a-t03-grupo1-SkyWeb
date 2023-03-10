@@ -11,6 +11,6 @@ export type Tproject = {
     idManager: number;
     idProject: number;
 
-    idTag: number;
-    idRole: number;
+    idTag: number[];
+    idRole: number[];
 };

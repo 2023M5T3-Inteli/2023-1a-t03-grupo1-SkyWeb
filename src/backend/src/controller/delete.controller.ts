@@ -1,4 +1,3 @@
-// ALL DELETE's here
 import { Controller, Body, Post, Delete } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 

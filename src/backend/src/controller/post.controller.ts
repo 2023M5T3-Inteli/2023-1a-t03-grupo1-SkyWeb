@@ -1,11 +1,11 @@
-import { DTOBodyAcceptUser } from './../DTOs/DTOBodyAcceptUser';
-// ALL POST's here
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ServiceAcceptApplyUser } from 'src/services/serviceAcceptApplyUser.service';
+
+import { ServiceAcceptApplyUser } from '../services/serviceAcceptApplyUser.service';
+import { ServiceCreateProject } from '../services/serviceCreateProject.service';
 
 import { DTOBodyCreateProject } from '../DTOs/DtoCreateProject';
-import { ServiceCreateProject } from '../services/serviceCreateProject.service';
+import { DTOBodyAcceptUser } from './../DTOs/DTOBodyAcceptUser';
 
 @Controller('post')
 @ApiTags('Posts')
