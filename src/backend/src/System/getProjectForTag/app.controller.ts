@@ -1,7 +1,7 @@
 import { Body, Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ServiceFilterTag } from './app.service';
-import { DTOFilterTag } from './DTO/DtoFilterTag';
+import { DTOFilterTag } from 'src/System/getProjectForTag/DTO/DTOFilterTag';
 
 @Controller()
 @ApiTags('System')
