@@ -12,7 +12,7 @@ export function ContainerApproved({}) {
       deadline: "02/08/23",
       area: "Finance",
       duration: "3 Months",
-      tags: ["Javas"],
+      tags: ["Java"],
       id: 1,
     },
     {

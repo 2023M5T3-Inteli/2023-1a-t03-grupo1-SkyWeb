@@ -4,14 +4,14 @@ import { Box, Container } from "@mui/system";
 
 export function Dell() {
   return (
-      <div>
-        <Box sx={{display:"flex"}}>
-      <Menu userName="Chloe Price " userRole="Developer" />
+    <div>
+      <Box sx={{ display: "flex" }}>
+        <Menu userName="Chloe Price " userRole="Developer" />
 
-      <div id="detail">
-              <Outlet />
-          </div>
-    </Box>
+        <div id="detail">
+          <Outlet />
+        </div>
+      </Box>
     </div>
   );
 }
