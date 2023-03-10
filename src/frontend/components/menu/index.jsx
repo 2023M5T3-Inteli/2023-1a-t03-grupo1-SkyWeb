@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Box, Container } from "@mui/system"
-import styled from 'styled-components';
+import styled from 'styled-components'; //Usei Styled Components
 import userProfile from '../../assets/images/chloe-price.png';
 import { Link } from 'react-router-dom';
 import '../../style.css';
 
+//Div do menu
 const Sidebar = styled.div`
 background-color: #0672CB;
 height: 100vh;
@@ -15,6 +16,7 @@ align-items: center;
 min-width: max-content;
 `
 
+//Botão do perfil
 const ProfileContainer = styled.button`
 padding: 1.8rem;
 display: flex;
@@ -28,18 +30,22 @@ border: none;
 margin-top: 3rem;
 `
 
+//Nome do usuário
 const UserName = styled.p`
 font-weight: 600;
 font-size: 1.6rem;
 `
 
+//Cargo do usuário
 const UserRole = styled.p`
 `
 
+//Div para deixar o nome e o cargo um acima do outro
 const NameRoleWrapper = styled.div`
 padding-left: 1rem;
 `
 
+//Imagem do usuário
 const UserImage = styled.div`
 height: 2.4rem;
 width: 2.4rem;
@@ -48,6 +54,7 @@ border-radius: 100%;
 padding: 1rem;
 `
 
+//Botões de navegação
 const SidebarItem = styled(Link)`
 color: #fff;
 text-decoration: none;
@@ -63,6 +70,7 @@ margin-top: 3rem;
 }
 `
 
+//Nav para agrupar os botões
 const Nav = styled.nav`
 height: 25rem;
 width: 100%;
@@ -72,6 +80,7 @@ flex-direction: column;
 justify-content: space-between;
 `
 
+//Div para deixar os botões um acima do outro
 const BottomWrapper = styled.div`
 height: 35vh;
 width: 100%;
@@ -84,6 +93,7 @@ bottom: 0;
 width: 20vw;
 `
 
+//Botão criar projeto
 const BringButton = styled(ProfileContainer)`
 padding: 1.5rem;
 font-weight: 500;
@@ -93,6 +103,7 @@ justify-content: center;
 height: auto;
 `
 
+//Botão sair
 const Leave = styled(SidebarItem)`
 margin: 0;
 padding: 0;
@@ -102,6 +113,7 @@ margin-left: 6.4rem;
 padding-bottom: 1rem;
 `
 
+//Componente
 export function Menu(props) {
 
     return (
