@@ -1,6 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 
-import { Tproject } from '../types/TmodelCreate';
+import { Tproject } from '../Project/createProject/types/TmodelCreate';
 
 import { PrismaService } from '../prismaServices/prisma.service';
 
