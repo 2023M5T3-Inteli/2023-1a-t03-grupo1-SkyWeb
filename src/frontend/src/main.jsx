@@ -5,6 +5,8 @@ import ErrorPage from '../components/errorPage'
 import { Home } from '../pages/Home'
 import { Manager } from '../pages/Manager'
 import { TestPage } from '../pages/TestPage'
+import { Dell } from "../pages/Dell";
+import {Menu} from "../components/menu/menu";
 import { QueryClientProvider, QueryClient } from "react-query"
 
 const queryClient = new QueryClient()
@@ -40,12 +42,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/Dell",
-    element: <Menu userName="Chloe Price " userRole="Developer" />,
+    element: <Dell/>,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/Manager",
-        element: <h1>children</h1>,
+        path: "Manager",
+        element: <Manager/>,
       },
     ],
   },

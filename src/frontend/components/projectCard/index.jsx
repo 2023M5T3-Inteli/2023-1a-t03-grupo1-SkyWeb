@@ -33,7 +33,7 @@ export function ActionAreaCard({name,deadLine,area,duration,tags,status}) {
 
                     {tags.map((item) => {
                         return (
-                            <Box sx={{display:"flex",alignItems:"center", justifyContent:"center",height:25, width: 70, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, textAlign: 'center',  borderRadius: 1.5, marginBottom: -1, backgroundColor: "#855EDE",color:'white' }}>
+                            <Box key={item} sx={{display:"flex",alignItems:"center", justifyContent:"center",height:25, width: 70, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, textAlign: 'center',  borderRadius: 1.5, marginBottom: -1, backgroundColor: "#855EDE",color:'white' }}>
                             {item}
                         </Box>
                             

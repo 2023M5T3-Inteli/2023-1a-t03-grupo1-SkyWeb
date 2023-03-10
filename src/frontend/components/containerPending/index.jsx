@@ -14,6 +14,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Javas"],
+      id:1
     },
     {
       status: "Open",
@@ -22,6 +23,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
+      id:2
     },
     {
       status: "Open",
@@ -30,6 +32,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
+      id:3
     },
     {
       status: "Open",
@@ -38,6 +41,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
+      id:4
     },
     {
       status: "Open",
@@ -46,6 +50,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
+      id:5
     },
     {
       status: "Open",
@@ -54,6 +59,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
+      id:6
     },
     {
       status: "Open",
@@ -62,6 +68,7 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
+      id:7
     },
     {
       status: "Open",
@@ -70,550 +77,27 @@ export function ContainerPending({}) {
       area: "Finance",
       duration: "3 Months",
       tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-    },{
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
+      id:8
     },
   ];
     return (
 
-      <Container  sx={{background: "rgba(215, 215, 215, 0.45)",marginLeft:45}}>
+      <Container  sx={{background: "rgba(215, 215, 215, 0.45)"}}>
       <Grid item sx={{overflowX:"auto"}} >
         <Box sx={{  display: "flex",marginTop:5}}>
           {array.map((item) => {
             return (
-              <ActionAreaCard
-                status={item.status}
-                name={item.nome}
-                area={item.area}
-                deadLine={item.deadline}
-                duration={item.duration}
-                tags={item.tags}
-              />
+              <div key={item.id}>
+                <ActionAreaCard
+                  status={item.status}
+                  name={item.nome}
+                  area={item.area}
+                  deadLine={item.deadline}
+                  duration={item.duration}
+                  tags={item.tags}
+                />
+                  
+              </div>
             );
           })}
         </Box>

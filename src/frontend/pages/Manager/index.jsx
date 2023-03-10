@@ -15,9 +15,10 @@ export function Manager() {
     
     return (
       <div>
-        <Menu userName="Chloe Price " userRole="Developer" />
+        <Box sx={{marginLeft:-5}}>
         <ManagerHeader />
-        <Box sx={{ marginLeft: 50 }}>
+        </Box>
+        <Box sx={{ marginLeft: 20 }}>
           <Typography
             component="p"
             sx={{
@@ -35,10 +36,10 @@ export function Manager() {
 
         <ContainerPending />
         <Box
-          sx={{ display: "flex", flexDirection: "column", flexFlow: "wrap" }}
+          sx={{ display: "flex",flexDirection:"row" }}
         >
           <Box sx={{}}>
-            <Box sx={{ marginLeft: 50 }}>
+            <Box sx={{ marginLeft: 20}}>
               <Typography
                 component="p"
                 sx={{
@@ -55,8 +56,10 @@ export function Manager() {
             </Box>
             <ContainerApproved />
           </Box>
-          <Box sx={{ flexWrap: "wrap" }}>
-            <Box sx={{ display: "flex", marginLeft: 33 }}>
+          <Box
+            sx={{ display: "flex",  flexWrap: "wrap" }}
+          >
+            <Box sx={{ display: "flex",marginLeft:25 }}>
               <Typography
                 component="p"
                 sx={{
