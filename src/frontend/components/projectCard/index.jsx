@@ -8,12 +8,12 @@ import { flexbox,Box } from '@mui/system';
 
 export function ActionAreaCard({name,deadLine,area,duration,tags,status}) {
     return (
-        <Card sx={{ maxWidth: 345,marginLeft:20,marginBottom:5}}>
+        <Card sx={{ minWidth:345,maxWidth: 345,marginLeft:5,marginBottom:5}}>
             <CardActionArea>
 
                 <CardContent>
                     
-                    <Box sx={{ position:flexbox,height: 25, width: 40, fontFamily: "Poppins", fontWeight: 600, fontSize: 12,textAlign:'center' ,borderRadius: 1.5, marginLeft: 34, marginBottom: -2,backgroundColor:"green"}}>
+                    <Box sx={{ position:flexbox,height: 32, width: 40, fontFamily: "Poppins", fontWeight: 600, fontSize: 12,textAlign:'center' ,borderRadius: 1.5, marginLeft: 34, marginBottom: -2,backgroundColor:"green"}}>
                         {status}
                     </Box>
 
@@ -23,7 +23,7 @@ export function ActionAreaCard({name,deadLine,area,duration,tags,status}) {
                     <Typography variant="h6" color="green" sx={{ fontFamily: "Poppins", fontWeight: 50, fontSize: 15, lineHeight: 1.3, marginTop: 1, color:"#C2A746"  }}>
                         <strong>Deadline: </strong>{deadLine}
                     </Typography>
-                    <Typography variant="h6" color="black" sx={{ fontFamily: "Poppins", fontWeight: 50, fontSize: 15, lineHeight: 1.3,  marginTop: 1.5 }}>
+                    <Typography variant="h6" color="black" sx={{ fontFamily: "Poppins", fontWeight: 50, fontSize: 15, lineHeight: 1.3,  marginTop: 1.5,marginBottom:1 }}>
                         <p><strong>Area:</strong> {area} </p>
 
                         <p><strong>Duration:</strong> {duration} </p>
@@ -33,7 +33,7 @@ export function ActionAreaCard({name,deadLine,area,duration,tags,status}) {
 
                     {tags.map((item) => {
                         return (
-                            <Box sx={{display:"flex",alignItems:"center", justifyContent:"center",height:25, width: 70, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, textAlign: 'center',  borderRadius: 1.5, marginBottom: -2, backgroundColor: "#855EDE",color:'white' }}>
+                            <Box sx={{display:"flex",alignItems:"center", justifyContent:"center",height:25, width: 70, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, textAlign: 'center',  borderRadius: 1.5, marginBottom: -1, backgroundColor: "#855EDE",color:'white' }}>
                             {item}
                         </Box>
                             
