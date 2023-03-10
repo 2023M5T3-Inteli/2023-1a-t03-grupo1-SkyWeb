@@ -13,7 +13,7 @@ export function NavbarHome() {
                     </Toolbar>
                 </Grid>
 
-                <Grid xs={12} sm={8} lg={6} >
+                <Grid item xs={12} sm={8} lg={6} >
                     <Toolbar sx={{ display: "flex", justifyContent: "space-between", marginRight: 10 }}>
                         <Typography component="a" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
                             Home

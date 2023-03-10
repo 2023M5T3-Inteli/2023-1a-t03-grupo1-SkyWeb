@@ -1,6 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prismaServices/prisma.service';
-import { Tproject } from '../types/TmodelCreate';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+
+import { Tproject } from '../Project/createProject/types/TmodelCreate';
+
+import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelCreate {
@@ -13,47 +15,75 @@ export class ModelCreate {
             aplicationDeadLine,
             dateStart,
             duration,
-            isAproved,
             status,
             idUser,
             idManager,
-            idProject,
         } = data;
 
-        const result = await this.prisma.project.create({
-            data: {
-                name: name,
-                description: description,
-                aplicationDeadLine: new Date(aplicationDeadLine),
-                dateStart: new Date(dateStart),
-                duration: duration,
-                status: status,
+        try {
+            const result = await this.prisma.project.create({
+                data: {
+                    name: name,
+                    description: description,
+                    aplicationDeadLine: new Date(aplicationDeadLine),
+                    dateStart: new Date(dateStart),
+                    duration: duration,
+                    status: status,
 
-                idUser: idUser,
-                idManager: idManager,
-            },
-        });
+                    idUser: idUser,
+                    idManager: idManager,
+                },
+            });
 
-        return result;
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
     }
 
     async connectTagsProject(idProject: number, idTag: number) {
-        const result = await this.prisma.projectTag.create({
-            data: {
-                idProject: idProject,
-                idTag: idTag,
-            },
-        });
-        return result;
+        try {
+            const result = await this.prisma.projectTag.create({
+                data: {
+                    idProject: idProject,
+                    idTag: idTag,
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
     }
 
     async connectRolesProject(idProject: number, idRole: number) {
-        const result = await this.prisma.projectRole.create({
-            data: {
-                idProject: idProject,
-                idRole: idRole,
-            },
-        });
-        return result;
+        try {
+            const result = await this.prisma.projectRole.create({
+                data: {
+                    idProject: idProject,
+                    idRole: idRole,
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
     }
 }

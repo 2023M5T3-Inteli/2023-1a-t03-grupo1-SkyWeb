@@ -12,17 +12,20 @@ const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello
-      <Link to="/home">home</Link>
-    </div>
+    element: (
+      <div>
+        Hello
+        <Link to="/home">home</Link>
+      </div>
+    ),
   },
   {
     path: "/home",
-    element: <Home />
+    element: <Home />,
   },
   {
     path: "/Manager",
-    element: <Manager />
+    element: <Manager />,
   },
   {
     path: "/test",
@@ -31,11 +34,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "alo",
-        element: <h1>children</h1>
-      }
-    ]
-  }
-])
+        element: <h1>children</h1>,
+      },
+    ],
+  },
+  {
+    path: "/Dell",
+    element: <Menu userName="Chloe Price " userRole="Developer" />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/Manager",
+        element: <h1>children</h1>,
+      },
+    ],
+  },
+]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
