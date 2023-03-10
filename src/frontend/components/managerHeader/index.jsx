@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/system";
 
 export function ManagerHeader() {
     return (
-        <Container sx={{ marginLeft: 50}}> 
+        <Container sx={{ }}>
             <Box sx={{}}>
                 <Typography component="h1" sx={{ fontFamily: "Poppins", fontWeight: 700, fontSize: 70, lineHeight: 1.3,marginTop:10}}>
                     Manager Pannel

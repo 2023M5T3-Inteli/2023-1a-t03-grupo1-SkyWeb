@@ -1,9 +1,12 @@
-import { Box } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Typography } from "@mui/material";
+import { Container, } from "@mui/system";
 import Image from "mui-image"
 import { ManagerHeader } from "../../components/managerHeader";
-import { ActionAreaCard } from "../../components/pending";
-
+import { ActionAreaCard } from "../../components/projectCard";
+import { ContainerPending } from "../../components/containerPending";
+import { ContainerApproved } from "../../components/containerApproved";
+import { ContainerDennied } from "../../components/containerDennied";
+import { Menu } from "../../components/menu/menu";
 
 
 export function Manager() {
@@ -11,15 +14,71 @@ export function Manager() {
 
     
     return (
-        <div>
-            <ManagerHeader />
+      <div>
+        <Box sx={{marginLeft:-5}}>
+        <ManagerHeader />
+        </Box>
+        <Box sx={{ marginLeft: 20 }}>
+          <Typography
+            component="p"
+            sx={{
+              fontFamily: "Poppins",
+              fontWeight: 800,
+              fontSize: 30,
+              marginTop: 2,
+              marginBottom: 2,
+              color: "#C2A746",
+            }}
+          >
+            Pending
+          </Typography>
+        </Box>
 
-            {array.map((item) => {
-                return (
-                    <ActionAreaCard status={item.status} name={item.nome} area={item.area} deadLine={item.deadline} duration={item.duration} tags={item.tags} />
-                )
-            })}
-            
-        </div>
-    )
+        <ContainerPending />
+        <Box
+          sx={{ display: "flex",flexDirection:"row" }}
+        >
+          <Box sx={{}}>
+            <Box sx={{ marginLeft: 20}}>
+              <Typography
+                component="p"
+                sx={{
+                  fontFamily: "Poppins",
+                  fontWeight: 800,
+                  fontSize: 30,
+                  marginTop: 2,
+                  marginBottom: 2,
+                  color: "green",
+                }}
+              >
+                Approved
+              </Typography>
+            </Box>
+            <ContainerApproved />
+          </Box>
+          <Box
+            sx={{ display: "flex",  flexWrap: "wrap" }}
+          >
+            <Box sx={{ display: "flex",marginLeft:25 }}>
+              <Typography
+                component="p"
+                sx={{
+                  fontFamily: "Poppins",
+                  fontWeight: 800,
+                  fontSize: 30,
+                  marginTop: 2,
+                  marginBottom: 2,
+                  color: "red",
+                }}
+              >
+                Dennied
+              </Typography>
+            </Box>
+            <Box sx={{ marginLeft: -20 }}>
+              <ContainerDennied />
+            </Box>
+          </Box>
+        </Box>
+      </div>
+    );
 }
