@@ -65,5 +65,4 @@ export class ModelDelete {
                 HttpStatus.BAD_GATEWAY,
             );
         }
-    }
-}
+    }}
