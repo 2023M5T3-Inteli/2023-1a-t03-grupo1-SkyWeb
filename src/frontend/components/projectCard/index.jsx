@@ -12,11 +12,11 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status 
 
                 <CardContent>
 
-                    <Box component="div" sx={{ display: "flex", alignItems: "center" }}>
+                    <Box component="div" sx={{ justifyContent: "space-between", display: "flex", alignItems: "center" }}>
                         <Typography variant="title3" sx={{ display: "inline-flex", alignItems: 'center'}}>
                             {name}
                         </Typography>
-                        <Typography variant="title4" sx={{ color:"white.main", display: "inline-flex", alignItems: 'center', marginLeft: 15, height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "tagOpen.main", boxShadow: 2}}>
+                        <Typography variant="title4" sx={{marginRight:1.3, color:"white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "tagOpen.main", boxShadow: 2}}>
                             {status}
                         </Typography>
                     </Box>

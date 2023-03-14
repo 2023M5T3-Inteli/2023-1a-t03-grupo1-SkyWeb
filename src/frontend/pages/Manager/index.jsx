@@ -1,8 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { Container, } from "@mui/system";
-import Image from "mui-image"
 import { ManagerHeader } from "../../components/managerHeader";
-import { ProjectCardInfos } from "../../components/projectCard";
 import { ContainerPending } from "../../components/containerPending";
 import { ContainerApproved } from "../../components/containerApproved";
 import { ContainerDennied } from "../../components/containerDennied";
