@@ -1,31 +1,30 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea,Button } from '@mui/material';
-import { green, red } from '@mui/material/colors';
-import { flexbox,Box } from '@mui/system';
+import { CardActionArea } from '@mui/material';
+import { Box } from '@mui/system';
+
 
 export function ProjectCardInfos({ name, deadLine, area, duration, tags, status }) {
     return (
-        <Card sx={{ minWidth: 345, maxWidth: 345, marginLeft: 5, marginBottom: 5 }}>
+        <Card sx={{ minWidth: 340, maxWidth: 340, marginLeft: 5, marginBottom: 5 }}>
             <CardActionArea>
 
                 <CardContent>
-                    
-                    <Box component="div" sx={{ display:flexbox, flexDirection: 'column', backgroundColor: "red"}}>
-                        <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "Poppins", fontWeight: "bold", fontSize: 25, lineHeight: 1 }}>
+
+                    <Box component="div" sx={{ display: "flex", alignItems: "center" }}>
+                        <Typography variant="title3" sx={{ display: "inline-flex", alignItems: 'center'}}>
                             {name}
                         </Typography>
-                        <Box sx={{ position:flexbox,height: 32, width: 70, fontFamily: "Poppins", fontWeight: 700, fontSize: 13,textAlign:'center' ,borderRadius: 1.5, marginLeft: 34, marginBottom: -2, backgroundColor:"green", color:"white"}}>
+                        <Typography variant="title4" sx={{ color:"white.main", display: "inline-flex", alignItems: 'center', marginLeft: 15, height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "tagOpen.main", boxShadow: 2}}>
                             {status}
-                        </Box>
+                        </Typography>
                     </Box>
 
-                    <Typography variant="h6" color="green" sx={{ fontFamily: "Poppins", fontWeight: 50, fontSize: 15, lineHeight: 1.3, marginTop: 1, color:"#C2A746"  }}>
-                        <strong>Deadline: </strong>{deadLine}
+                    <Typography variant="subtitle2" sx={{color:"deadlinePending.main", lineHeight: 2, marginTop: 1.5 }}>
+                        <strong>Deadline: {deadLine} </strong>
                     </Typography>
-                    <Typography variant="h6" color="black" sx={{ fontFamily: "Poppins", fontWeight: 50, fontSize: 15, lineHeight: 1.3, marginTop: 1.5, marginBottom: 1 }}>
+                    <Typography variant="subtitle2" sx={{color:"black.main", lineHeight: 2}}>
                         <p><strong>Area:</strong> {area} </p>
 
                         <p><strong>Duration:</strong> {duration} </p>
@@ -35,9 +34,9 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status 
 
                         {tags.map((item) => {
                             return (
-                                <Box key={item} sx={{ display: "flex", alignItems: "center", justifyContent: "center", height: 25, width: 70, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, textAlign: 'center', borderRadius: 1.5, marginBottom: -1, backgroundColor: "#855EDE", color: 'white' }}>
+                                <Typography variant="subtitle2" key={item} sx={{color:"white.main", display: "flex", alignItems: "center", justifyContent: "center", height: 26, width: 70, textAlign: 'center', borderRadius: 1.5, marginBottom: 0.1, marginTop: 1, backgroundColor: "inteliPurple.main"}}>
                                     {item}
-                                </Box>
+                                </Typography>
 
                             )
                         })}

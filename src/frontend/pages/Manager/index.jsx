@@ -6,6 +6,7 @@ import { ProjectCardInfos } from "../../components/projectCard";
 import { ContainerPending } from "../../components/containerPending";
 import { ContainerApproved } from "../../components/containerApproved";
 import { ContainerDennied } from "../../components/containerDennied";
+import {AlertDialogSlide} from "../../components/confirmModal";
 
 
 export function Manager() {
@@ -29,6 +30,10 @@ export function Manager() {
             <ContainerPending />
           </Container>
         </Grid>
+
+        <AlertDialogSlide>
+
+        </AlertDialogSlide>
 
 
         <Box sx={{ display: "flex", marginLeft: 8, marginTop: 8 }}>
