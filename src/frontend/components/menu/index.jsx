@@ -128,7 +128,7 @@ export function Menu(props) {
             </ProfileContainer>
             <Nav>
                 <SidebarItem to='home'>My Dashboard</SidebarItem>
-                <SidebarItem to='allprojects'>All Projects</SidebarItem>
+                <SidebarItem to='Allproject'>All Projects</SidebarItem>
                 <SidebarItem to='manager'>Manager Pannel</SidebarItem>
                 <SidebarItem to='about'>About</SidebarItem>
                 <SidebarItem to='faq'>FAQ</SidebarItem>

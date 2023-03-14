@@ -10,14 +10,14 @@ export function Filter() {
         { label: 'C++', id: 3 },
     ];
 
-    return(
-        <div id="filter" style={{display:'flex', padding:'20px', justifyContent:'space-between' }}>
+    return (
+        <div id="filter" style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 10 }}>
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
                 options={changes}
                 sx={{ width: 178 }}
-                style={{height:'30px', padding:"30px"}}
+                style={{ height: '30px', padding: "30px", }}
                 renderInput={(params) => <TextField {...params} label="Project Name" />}
             />
             <Autocomplete
@@ -36,12 +36,7 @@ export function Filter() {
                 style={{ height: '30px', padding: "30px" }}
                 renderInput={(params) => <TextField {...params} label="Status" />}
             />
-
-            <div id=" teste">
-
-            </div>
-           
         </div>
-        
+
     )
 }
