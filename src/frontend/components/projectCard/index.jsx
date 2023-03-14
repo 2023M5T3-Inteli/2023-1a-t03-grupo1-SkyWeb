@@ -3,7 +3,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea,Button } from '@mui/material';
-import { green } from '@mui/material/colors';
+import { green, red } from '@mui/material/colors';
 import { flexbox,Box } from '@mui/system';
 
 export function ActionAreaCard({name,deadLine,area,duration,tags,status}) {
@@ -13,13 +13,15 @@ export function ActionAreaCard({name,deadLine,area,duration,tags,status}) {
 
                 <CardContent>
                     
-                    <Box sx={{ position:flexbox,height: 32, width: 40, fontFamily: "Poppins", fontWeight: 600, fontSize: 12,textAlign:'center' ,borderRadius: 1.5, marginLeft: 34, marginBottom: -2,backgroundColor:"green"}}>
-                        {status}
+                    <Box component="div" sx={{ display:flexbox, flexDirection: 'column', backgroundColor: "red"}}>
+                        <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "Poppins", fontWeight: "bold", fontSize: 25, lineHeight: 1 }}>
+                            {name}
+                        </Typography>
+                        <Box sx={{ position:flexbox,height: 32, width: 70, fontFamily: "Poppins", fontWeight: 700, fontSize: 13,textAlign:'center' ,borderRadius: 1.5, marginLeft: 34, marginBottom: -2, backgroundColor:"green", color:"white"}}>
+                            {status}
+                        </Box>
                     </Box>
 
-                    <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "Poppins", fontWeight: "bold", fontSize: 25, lineHeight: 1 }}>
-                        {name}
-                    </Typography>
                     <Typography variant="h6" color="green" sx={{ fontFamily: "Poppins", fontWeight: 50, fontSize: 15, lineHeight: 1.3, marginTop: 1, color:"#C2A746"  }}>
                         <strong>Deadline: </strong>{deadLine}
                     </Typography>
