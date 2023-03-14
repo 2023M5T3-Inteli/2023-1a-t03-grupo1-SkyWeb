@@ -1,10 +1,10 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
-import { ActionAreaCard } from "../projectCard";
+import { ProjectCardInfos } from "../projectCard";
 import { flexbox, typography } from "@mui/system";
 
-export function ContainerApproved({}) {
+export function ContainerApproved({ }) {
   const array = [
     {
       status: "Open",
@@ -80,13 +80,13 @@ export function ContainerApproved({}) {
     },
   ];
   return (
-    <Container sx={{ background: "rgba(215, 215, 215, 0.45)", marginLeft: 20,width:500, height:255 }}>
-      <Grid item sx={{ overflowY: "auto",height:"100%" }}>
-        <Box sx={{display:"grid" ,marginTop: 5 }}>
+    <Container sx={{ background: "rgba(215, 215, 215, 0.45)", width: 500, height: 255 }}>
+      <Grid item sx={{ overflowY: "auto", height: "100%" }}>
+        <Box sx={{ display: "grid", marginTop: 3 }}>
           {array.map((item) => {
             return (
               <div key={item.id}>
-                <ActionAreaCard
+                < ProjectCardInfos
                   status={item.status}
                   name={item.nome}
                   area={item.area}
