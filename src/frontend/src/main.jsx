@@ -6,8 +6,11 @@ import { Home } from '../pages/Home'
 import { Manager } from '../pages/Manager'
 import { TestPage } from '../pages/TestPage'
 import { Dell } from "../pages/Dell";
-import {Menu} from "../components/menu/menu";
+
 import { QueryClientProvider, QueryClient } from "react-query"
+import { ThemeProvider } from "@mui/material"
+import { theme } from "../themes/theme"
+import { Allprojects } from '../pages/Allprojects'
 
 const queryClient = new QueryClient()
 
@@ -42,22 +45,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/Dell",
-    element: <Dell/>,
+    element: <Dell />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "Manager",
-        element: <Manager/>,
+        element: <Manager />,
       },
+      {
+        path: "AllProject",
+        element: <Allprojects />
+      }
     ],
   },
+
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>
 )
