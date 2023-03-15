@@ -1,17 +1,34 @@
-import { ModelCreate } from "src/models/modelCreate";
-import { HttpException, HttpStatus, Injectable } from "@nestjs/common"
-import { ModelSelect } from "src/models/modelSelect";
+import { ModelCreate } from 'src/models/modelCreate';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { ModelSelect } from 'src/models/modelSelect';
 
 @Injectable()
 export class ServiceApplyProject {
-    constructor(private readonly modelCreate: ModelCreate, private readonly modelSelect: ModelSelect) { }
+    constructor(
+        private readonly modelCreate: ModelCreate,
+        private readonly modelSelect: ModelSelect,
+    ) {}
 
     async execute(_idProject: number, _idUser: number, _idRole: number) {
-        const userApply = await this.modelSelect.findUserApplyProjectByIdUserAndIdProject(_idProject, _idUser, _idRole)
-        const userRole = await this.modelSelect.findUserApplyProjectByIdRoleAndIdProject(_idRole, _idProject)
-        const userExist = await this.modelSelect.findUserApplyProjectExistUser(_idUser)
-        const projectExist = await this.modelSelect.findUserApplyProjectExistProject(_idProject)
-        const roleExist = await this.modelSelect.findUserApplyProjectExistRole(_idRole)
+        const userApply =
+            await this.modelSelect.findUserApplyProjectByIdUserAndIdProject(
+                _idProject,
+                _idUser,
+                _idRole,
+            );
+        const userRole =
+            await this.modelSelect.findUserApplyProjectByIdRoleAndIdProject(
+                _idRole,
+                _idProject,
+            );
+        const userExist = await this.modelSelect.findUserApplyProjectExistUser(
+            _idUser,
+        );
+        const projectExist =
+            await this.modelSelect.findUserApplyProjectExistProject(_idProject);
+        const roleExist = await this.modelSelect.findUserApplyProjectExistRole(
+            _idRole,
+        );
 
         if (userApply.length != 0) {
             throw new HttpException(
@@ -23,7 +40,7 @@ export class ServiceApplyProject {
             );
         }
 
-        if (userRole.length != 0) {
+        if (userRole.length === 0) {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
@@ -37,7 +54,7 @@ export class ServiceApplyProject {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: 'User does not exist'
+                    error: 'User does not exist',
                 },
                 HttpStatus.NOT_FOUND,
             );
@@ -47,7 +64,7 @@ export class ServiceApplyProject {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: 'Project does not exist'
+                    error: 'Project does not exist',
                 },
                 HttpStatus.NOT_FOUND,
             );
@@ -57,17 +74,17 @@ export class ServiceApplyProject {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: 'Role does not exist'
+                    error: 'Role does not exist',
                 },
                 HttpStatus.NOT_FOUND,
             );
         }
 
-        const result = this.modelCreate.applyProject(_idProject, _idUser, _idRole)
-        return result
-
+        const result = this.modelCreate.applyProject(
+            _idProject,
+            _idUser,
+            _idRole,
+        );
+        return result;
     }
-
 }
-
-
