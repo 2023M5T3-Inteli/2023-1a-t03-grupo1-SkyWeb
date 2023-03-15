@@ -6,7 +6,7 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelCreate {
-    constructor(private readonly prisma: PrismaService) {}
+    constructor(private readonly prisma: PrismaService) { }
 
     async createProject(data: Tproject) {
         const {
@@ -85,5 +85,18 @@ export class ModelCreate {
                 HttpStatus.BAD_REQUEST,
             );
         }
+    }
+
+
+    async applyProject(idProject: number, idUser: number, idRole: number) {
+        const result = await this.prisma.userApplyProject.create({
+            data: {
+                idProject: idProject,
+                idUser: idUser,
+                idRole: idRole
+            }
+        })
+
+        return result
     }
 }

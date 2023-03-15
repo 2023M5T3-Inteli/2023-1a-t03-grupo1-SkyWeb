@@ -4,7 +4,7 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelSelect {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) { }
 
     async getAllProjects() {
         try {
@@ -161,6 +161,104 @@ export class ModelSelect {
                     error: error,
                 },
                 HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async findUserApplyProjectByIdUserAndIdProject(idProject: number, idUser: number, idRole: number) {
+        try {
+            const result = await this.prisma.userApplyProject.findMany({
+                where: {
+                    idProject,
+                    idRole,
+                    idUser
+                }
+            })
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async findUserApplyProjectByIdRoleAndIdProject(idRole: number, idProject: number) {
+        try {
+            const result = await this.prisma.projectRole.findMany({
+                where: {
+                    idProject,
+                    idRole
+                }
+            })
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async findUserApplyProjectExistUser(idUser: number) {
+        try {
+            const result = await this.prisma.user.findMany({
+                where: {
+                    id: idUser
+                }
+            })
+            return result
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
+    async findUserApplyProjectExistProject(project: number) {
+        try {
+            const result = await this.prisma.project.findMany({
+                where: {
+                    id: project
+                }
+            })
+            return result
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
+    async findUserApplyProjectExistRole(role: number) {
+        try {
+            const result = await this.prisma.role.findMany({
+                where: {
+                    id: role
+                }
+            })
+            return result
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST
             );
         }
     }
