@@ -31,7 +31,7 @@ export function NavbarHome() {
                             FAQ
                         </Typography>
 
-                        <Button variant="outlined" sx={{ color: "white", borderColor: "white", padding: 1.3, borderRadius: 1.5 }}>
+                        <Button variant="" sx={{ color: "white", borderColor: "white", padding: 1.3, borderRadius: 1.5 }}>
                             <Typography sx={{ fontFamily: "Poppins", fontWeight: 500, fontSize: 13 }}>
                                 Start Applying
                             </Typography>
