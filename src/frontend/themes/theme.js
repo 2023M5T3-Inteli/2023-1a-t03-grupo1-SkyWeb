@@ -1,4 +1,4 @@
-import { Button, createTheme } from "@mui/material";
+import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
     palette: {
@@ -15,7 +15,7 @@ export const theme = createTheme({
             main: "#100B00",
         },
         white: {
-            main: "#FFFFF",
+            main: "#FFFFFF",
         },
         tagOpen: {
             main: "#6DA483",
@@ -52,23 +52,23 @@ export const theme = createTheme({
     typography: {
         title1: {
             color: "black",
-            fontSize: "3.125rem",
+            fontSize: "5rem",
             fontWeight: "600",
         },
         title2: {
             color: "black",
-            fontSize: "1.875rem",
+            fontSize: "3rem",
             fontWeight: "600",
         },
         title3: {
             color: "black",
-            fontSize: "1.25rem",
+            fontSize: "2.2rem",
             fontWeight: "600",
         },
         title4: {
             color: "black",
-            fontSize: "0.938rem",
-            fontWeight: "500",
+            fontSize: "1.3rem",
+            fontWeight: "600",
         },
         subtitle1: {
             color: "black",
@@ -77,23 +77,23 @@ export const theme = createTheme({
         },
         subtitle2: {
             color: "black",
-            fontSize: "1.125rem",
-            fontWeight: "500",
+            fontSize: "1.4rem",
+            fontWeight: "400",
         },
         text1: {
             color: "black",
-            fontSize: "1.125rem",
+            fontSize: "1.3rem",
             fontWeight: "500",
         },
         text2: {
             color: "black",
-            fontSize: "1.125rem",
+            fontSize: "1.2rem",
             fontWeight: "500",
         },
         text3: {
             color: "black",
-            fontSize: "1.125rem",
-            fontWeight: "600",
+            fontSize: "1.4rem",
+            fontWeight: "400",
         },
         text4: {
             color: "black",
