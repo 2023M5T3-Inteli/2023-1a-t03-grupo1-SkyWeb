@@ -11,7 +11,6 @@ import { QueryClientProvider, QueryClient } from "react-query"
 import { ThemeProvider } from "@mui/material"
 import { theme } from "../themes/theme"
 import { Allprojects } from '../pages/Allprojects'
-import { ModalProjectInfo } from '../components/modalProjectInfo'
 
 const queryClient = new QueryClient()
 
