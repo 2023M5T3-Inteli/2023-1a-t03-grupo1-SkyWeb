@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
+import { ModalProjectInfo } from '../../components/modalProjectInfo';
 
 
 export function Allprojects() {
@@ -90,6 +91,18 @@ export function Allprojects() {
                 </div>
                 <Filter />
             </div>
+
+            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <ModalProjectInfo
+                    nameProject="Test"
+                    tags={["Python", "Java", "SCRUM"]}
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, fuga. Veritatis nemo maiores pariatur illum quidem voluptates, suscipit nobis dolore porro rerum molestiae consequuntur error explicabo culpa? Dicta, odio accusamus."
+
+                    status="Progress"
+                    leader="Abner Silva"
+                    duration="3 Months"
+                    startDate="29/03/2023" />
+            </Container>
 
             <Grid container direction="row" spacing={2}>
 

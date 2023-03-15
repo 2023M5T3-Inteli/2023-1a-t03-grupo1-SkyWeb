@@ -13,7 +13,7 @@ export function Landing() {
                 </Typography>
             </Box>
 
-            <Button variant="contained" color="testeButton" sx={{ height: 55, width: 170, padding: 3, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, borderRadius: 1.5 }}>Join a project</Button>
+            <Button color="cardBackground" sx={{ backgroundColor: "dellBlue.main", height: 55, width: 170, padding: 3, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, borderRadius: 1.5 }}>Join a project</Button>
         </Container>
     )
 }

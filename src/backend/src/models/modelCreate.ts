@@ -106,4 +106,19 @@ export class ModelCreate {
             );
         }
     }
+
+
+    async applyProject(idProject: number, idUser: number, idRole: number) {
+        const result = await this.prisma.userApplyProject.create({
+            data: {
+                idProject: idProject,
+                idUser: idUser,
+                idRole: idRole
+            }
+        })
+
+        return result
+
+    }
 }
+

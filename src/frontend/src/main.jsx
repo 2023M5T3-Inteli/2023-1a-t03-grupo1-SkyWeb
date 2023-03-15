@@ -55,7 +55,11 @@ const router = createBrowserRouter([
       {
         path: "AllProject",
         element: <Allprojects />
-      }
+      },
+      // {
+      //   path: "Modal",
+      //   element: <AlertDialogSlide/>
+      // },
     ],
   },
 
