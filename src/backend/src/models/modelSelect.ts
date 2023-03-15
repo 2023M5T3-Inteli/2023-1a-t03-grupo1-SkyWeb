@@ -165,6 +165,65 @@ export class ModelSelect {
         }
     }
 
+
+    async getCheckExistentUsers(idUser: number) {
+        try {
+            const result = await this.prisma.user.findUnique({
+                where: {
+                    id: idUser
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async getExistUserAndProjectInSaveProject(idProject: number, idUser: number) {
+        try {
+            const result = await this.prisma.saveProject.findMany({
+                where: {
+                    idProject: idProject,
+                    idUser: idUser
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async getExistUserInSaveProject(idUser: number) {
+        try {
+            const result = await this.prisma.saveProject.findMany({
+                where: {
+                    idUser: idUser
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
     async findUserApplyProjectByIdUserAndIdProject(idProject: number, idUser: number, idRole: number) {
         try {
             const result = await this.prisma.userApplyProject.findMany({
@@ -213,13 +272,15 @@ export class ModelSelect {
                     id: idUser
                 }
             })
-            return result
+
+            return result;
         } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.BAD_REQUEST,
                     error: error,
                 },
+
                 HttpStatus.BAD_REQUEST
             );
         }

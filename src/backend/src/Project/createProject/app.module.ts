@@ -9,4 +9,4 @@ import { ServiceCreateProject } from './app.service';
     providers: [ServiceCreateProject],
     exports: [ServiceCreateProject],
 })
-export class CreateProjectModule {}
+export class CreateProjectModule { }
