@@ -4,7 +4,7 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelSelect {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) { }
 
     async getAllProjects() {
         try {
@@ -164,4 +164,61 @@ export class ModelSelect {
             );
         }
     }
+
+    async getCheckExistentUsers(idUser: number) {
+        try {
+            const result = await this.prisma.user.findUnique({
+                where: {
+                    id: idUser
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async getExistUserAndProjectInSaveProject(idProject: number, idUser: number) {
+        try {
+            const result = await this.prisma.saveProject.findMany({
+                where: {
+                    idProject: idProject,
+                    idUser: idUser
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    // async getExistProjectInSaveProject(idProject: number) {
+    //     try {
+    //         const result = await this.prisma.saveProject.findMany({
+    //             where: {
+    //                 idProject: idProject
+    //             },
+    //         });
+    //     } catch (error) {
+    //         throw new HttpException(
+    //             {
+    //                 status: HttpStatus.BAD_REQUEST,
+    //                 error: error,
+    //             },
+    //             HttpStatus.BAD_REQUEST,
+    //         );
+    //     }
+    // }
 }
