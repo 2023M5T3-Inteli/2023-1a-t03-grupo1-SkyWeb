@@ -204,21 +204,22 @@ export class ModelSelect {
         }
     }
 
-    // async getExistProjectInSaveProject(idProject: number) {
-    //     try {
-    //         const result = await this.prisma.saveProject.findMany({
-    //             where: {
-    //                 idProject: idProject
-    //             },
-    //         });
-    //     } catch (error) {
-    //         throw new HttpException(
-    //             {
-    //                 status: HttpStatus.BAD_REQUEST,
-    //                 error: error,
-    //             },
-    //             HttpStatus.BAD_REQUEST,
-    //         );
-    //     }
-    // }
+    async getExistUserInSaveProject(idUser: number) {
+        try {
+            const result = await this.prisma.saveProject.findMany({
+                where: {
+                    idUser: idUser
+                },
+            });
+            return result
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
 }
