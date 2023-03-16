@@ -7,9 +7,9 @@ import { ServiceGetAllProjects } from './app.service';
 export class ControllerGetAllProject {
     constructor(
         private readonly serviceGetAllProjects: ServiceGetAllProjects,
-    ) {}
+    ) { }
 
-    @Get('getallproject')
+    @Get('getAllProject')
     async getAllProjects() {
         const projects = await this.serviceGetAllProjects.execute();
         return projects;

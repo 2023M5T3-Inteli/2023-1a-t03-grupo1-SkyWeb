@@ -8,7 +8,7 @@ export class ServicesDeleteProject {
     constructor(
         private modelDelete: ModelDelete,
         private modelSelect: ModelSelect,
-    ) {}
+    ) { }
     async execute(projectId: number, idUser: number) {
         // Encontra o projeto a ser excluído
         const project = await this.modelSelect.findProjectById(projectId);
