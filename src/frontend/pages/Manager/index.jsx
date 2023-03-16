@@ -17,6 +17,7 @@ export function Manager() {
 
 
       <Grid container spacing={2} sx={{ marginLeft: "7%" }}>
+
         <Box sx={{ marginLeft: "4%", padding: 2 }}>
           <ManagerHeader />
         </Box>
