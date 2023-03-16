@@ -10,7 +10,7 @@ export function Dell() {
           <Menu userName="Chloe Price " userRole="Developer" />
         </div>
 
-        <div id="detail">
+        <div id="detail" style={{ display: "flex", justifyContent: "center" }}>
           <Outlet />
         </div>
       </Box>

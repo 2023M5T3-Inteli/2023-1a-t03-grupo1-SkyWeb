@@ -10,7 +10,7 @@ export function Allprojects() {
     const array = [
         {
             status: "Open",
-            nome: "teste card",
+            nome: "projectName",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -19,7 +19,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 2",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -28,7 +28,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 3",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -37,7 +37,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 4",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -46,7 +46,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 5",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -55,7 +55,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 6",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -64,7 +64,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 7",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -73,7 +73,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 8",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -92,17 +92,7 @@ export function Allprojects() {
                 <Filter />
             </div>
 
-            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <ModalProjectInfo
-                    nameProject="Test"
-                    tags={["Python", "Java", "SCRUM"]}
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, fuga. Veritatis nemo maiores pariatur illum quidem voluptates, suscipit nobis dolore porro rerum molestiae consequuntur error explicabo culpa? Dicta, odio accusamus."
 
-                    status="Progress"
-                    leader="Abner Silva"
-                    duration="3 Months"
-                    startDate="29/03/2023" />
-            </Container>
 
             <Grid container direction="row" spacing={2}>
 
