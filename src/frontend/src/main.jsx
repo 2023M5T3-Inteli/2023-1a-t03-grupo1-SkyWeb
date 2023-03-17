@@ -12,6 +12,7 @@ import { ThemeProvider } from "@mui/material"
 import { theme } from "../themes/theme"
 import { Allprojects } from '../pages/Allprojects'
 import { Login } from '../pages/Login'
+import { Profile } from '../pages/Profile'
 
 const queryClient = new QueryClient()
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       //   path: "Modal",
       //   element: <AlertDialogSlide/>
       // },
+      {
+        path: "Profile",
+        element: <Profile />
+      }
     ],
   },
 
