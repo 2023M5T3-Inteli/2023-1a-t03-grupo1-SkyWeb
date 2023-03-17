@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+
 :root {
     font-size: 62.5%;
 }
@@ -13,4 +14,30 @@
 
 button, a, input[type=submit], input[type=button] {
     cursor: pointer;
+}
+
+
+
+/* Estilização modais de confirmação - Sweet Alert */
+.remove-cancel-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+.remove-confirm-btn{
+    background-color: whitesmoke !important;
+    border: 1px solid white !important ;
+    color: #0672CB !important;
+}
+
+
+
+
+.remove-confirm-btn:focus{
+    outline:none;
+}
+
+.remove-cancel-btn:focus{
+    outline:none;
 }

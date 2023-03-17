@@ -1,14 +1,33 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Modal, Typography } from "@mui/material";
 import { Container, } from "@mui/system";
 import { ManagerHeader } from "../../components/managerHeader";
 import { ContainerPending } from "../../components/containerPending";
 import { ContainerApproved } from "../../components/containerApproved";
 import { ContainerDennied } from "../../components/containerDennied";
-import {AlertDialogSlide} from "../../components/confirmModal";
-
-
+import { useState } from "react";
+import RemovePersonModal from "../../components/modalConfirmRemove/removePerson";
+import ConfirmCreateProjectModal from "../../components/modalConfirmCreation/createProject";
+import { ModalCreateProject } from "../../components/modalCreateProject"
+  
 export function Manager() {
   const array = [{ status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Javasdadakdnajdhaudhaudaudaudau"] }, { status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Java", "Python", "Ruby"] }, { status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Java", "Python", "Ruby"] }, { status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Java", "Python", "Ruby"] }, { status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Java", "Python", "Ruby"] }, { status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Java", "Python", "Ruby"] }, { status: "Open", nome: "teste card", deadline: "02/08/23", area: "Finance", duration: "3 Months", tags: ["Java", "Python", "Ruby"] },]
+
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  function handleModalVisible() {
+    setModalVisible(!modalVisible);
+    console.log(modalVisible)
+  }
+
+
+  const [modalVisibleProject, setModalVisibleProject] = useState(false);
+
+  function handleModalVisibleProject() {
+    setModalVisibleProject(!modalVisibleProject);
+    console.log(modalVisibleProject)
+  }
+
 
 
   return (
@@ -29,10 +48,27 @@ export function Manager() {
           </Container>
         </Grid>
 
-        <AlertDialogSlide>
 
-        </AlertDialogSlide>
 
+        <button onClick={handleModalVisible}>Modal Remove Person</button>
+
+        {
+          modalVisible &&
+          <RemovePersonModal handleModalVisible={handleModalVisible} name="Livia Bonotto" />
+        }
+
+
+
+        <button onClick={handleModalVisibleProject}>Modal Confirm Project</button>
+
+        {
+          modalVisibleProject &&
+          <ConfirmCreateProjectModal handleModalVisibleProject={handleModalVisibleProject} />
+        }
+
+
+        <ModalCreateProject>
+        </ModalCreateProject>
 
         <Box sx={{ display: "flex", marginLeft: 8, marginTop: 8 }}>
 

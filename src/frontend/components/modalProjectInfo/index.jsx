@@ -121,8 +121,6 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                         </Grid>
 
 
-
-
                     </Box>
                 </Grid>
 
