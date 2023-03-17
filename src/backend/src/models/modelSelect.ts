@@ -183,8 +183,17 @@ export class ModelSelect {
                 };
             });
             return jsonResult;
-    } 
-
+        } 
+        catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
 
     async getCheckExistentUsers(idUser: number) {
         try {
@@ -265,11 +274,11 @@ export class ModelSelect {
             );
         }
     }
-    async findUserApprovedInfo(idUsers: number[],idProject: number) {
+    async findUserApprovedInfo(idUsers: number[], idProject: number) {
         try {
             const result = await this.prisma.user.findMany({
                 where: {
-                    id:{in:idUsers},
+                    id: { in: idUsers },
                 },
                 select: {
                     fullName: true,
@@ -281,24 +290,31 @@ export class ModelSelect {
                         select: {
                             Project: {
                                 select: {
-                                    name:true
-                                }
-                            }
-                        }
-                    
-                    } 
+                                    name: true,
+                                },
+                            },
+                        },
+                    },
                 },
             });
             const jsonResult = result.map((item) => {
                 return {
                     fullname: item.fullName,
                     email: item.email,
-                    projectName:item.userApplyProject[0].Project.name
+                    projectName: item.userApplyProject[0].Project.name,
                 };
             });
             return jsonResult;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
     }
-
     async findUserApplyProjectByIdRoleAndIdProject(idRole: number, idProject: number) {
         try {
             const result = await this.prisma.projectRole.findMany({
