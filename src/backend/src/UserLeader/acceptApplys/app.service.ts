@@ -4,6 +4,17 @@ import { verifyAllAplyeds } from './scripts/funcs';
 
 import { ModelSelect } from '../../models/modelSelect';
 import { ModelDelete } from '../../models/modelDelete';
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: process.env.LOGIN,
+        pass: process.env.PASS,
+    },
+});
 
 @Injectable()
 export class ServiceAcceptApplyUser {
@@ -69,6 +80,35 @@ export class ServiceAcceptApplyUser {
                 HttpStatus.NOT_FOUND,
             );
         }
+        
+        const ApprovedsInfo = await this.modelSelect.findUserApprovedInfo(
+            idUsers,
+            idProject,
+        );
+
+        const fullName = ApprovedsInfo.map((item) => {
+            return item.fullname;
+        });
+        const email = ApprovedsInfo.map((item) => {
+            return item.email;
+        });
+        const projectName = ApprovedsInfo[0].projectName;
+        console.log(fullName);
+        console.log(email);
+        console.log(projectName);
+        ApprovedsInfo.map((val) => {
+            const messageApproved = {
+                from: '"SkyWeb 👻" <inteliskyweb@gmail.com>', // sender address
+                to: val.email, // list of receivers
+                subject: 'Project Approved ✔', // Subject line
+                text: 'Hello world?', // plain text body
+                html: `<b>Hello ${val.fullname}, your were approved in the project ${val.projectName} that you applied, visit "dell heroes website link" to see the details.</b>`, // html body
+            };
+            let mailsent = transporter.sendMail(messageApproved);
+            return mailsent;
+        });
+        
+
 
         const result = await this.modelDelete.deleteUsersApplyProject(
             idUsers,
