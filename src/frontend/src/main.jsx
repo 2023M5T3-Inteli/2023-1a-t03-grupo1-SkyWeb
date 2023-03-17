@@ -11,22 +11,18 @@ import { QueryClientProvider, QueryClient } from "react-query"
 import { ThemeProvider } from "@mui/material"
 import { theme } from "../themes/theme"
 import { Allprojects } from '../pages/Allprojects'
+import { Login } from '../pages/Login'
 
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        Hello
-        <Link to="/home">home</Link>
-      </div>
-    ),
+    element: <Home />,
   },
   {
-    path: "/home",
-    element: <Home />,
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/Manager",
@@ -55,7 +51,11 @@ const router = createBrowserRouter([
       {
         path: "AllProject",
         element: <Allprojects />
-      }
+      },
+      // {
+      //   path: "Modal",
+      //   element: <AlertDialogSlide/>
+      // },
     ],
   },
 

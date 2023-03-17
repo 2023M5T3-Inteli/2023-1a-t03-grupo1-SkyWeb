@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
+import { ModalProjectInfo } from '../../components/modalProjectInfo';
+import { Box } from '@mui/system';
 
 
 export function Allprojects() {
@@ -9,7 +11,7 @@ export function Allprojects() {
     const array = [
         {
             status: "Open",
-            nome: "teste card",
+            nome: "projectName",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -18,7 +20,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 2",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -27,7 +29,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 3",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -36,7 +38,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 4",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -45,7 +47,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 5",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -54,7 +56,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 6",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -63,7 +65,7 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 7",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
@@ -72,30 +74,44 @@ export function Allprojects() {
         },
         {
             status: "Open",
-            nome: "teste card",
+            nome: "teste card 8",
             deadline: "02/08/23",
             area: "Finance",
             duration: "3 Months",
             tags: ["Java", "Python", "Ruby"],
             id: 8,
         },
+
+        {
+            status: "Open",
+            nome: "teste card 8",
+            deadline: "02/08/23",
+            area: "Finance",
+            duration: "3 Months",
+            tags: ["Java", "Python", "Ruby"],
+            id: 9,
+        },
     ];
 
     return (
         <div>
-            <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'column' }}>
-                <div id="title" style={{ paddingLeft: "50px", paddingTop: "20px" }}>
-                    <h1 style={{ fontFamily: "Poppins", }}>All projects</h1>
-                    <h3>Find a project that fits to you and apply!</h3>
-                </div>
-                <Filter />
-            </div>
+            <Box sx={{ marginLeft: "13.5%", padding: 1 }}>
 
-            <Grid container direction="row" spacing={2}>
+                <Typography variant='title1'>All projects</Typography>
+                <Typography variant='subtitle2'>Find a project that fits to you and apply!</Typography>
+
+            </Box>
+
+            <Box sx={{ marginLeft: "12%" }}>
+                <Filter />
+            </Box>
+
+            <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={1} columnSpacing={0}>
+
 
                 {array.map((item) => {
                     return (
-                        <Grid item lg={4} key={item.id}>
+                        <Grid item lg={3.1} key={item.id}>
                             < ProjectCardInfos
                                 status={item.status}
                                 name={item.nome}

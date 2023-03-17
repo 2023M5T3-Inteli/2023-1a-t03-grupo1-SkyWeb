@@ -2,13 +2,12 @@ import * as React from "react";
 import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
 import { ProjectCardInfos } from "../projectCard";
-import { flexbox, typography } from "@mui/system";
 
 export function ContainerDennied({ }) {
   const array = [
     {
-      status: "Open",
-      nome: "teste card",
+      status: "Pending",
+      nome: "Backoffice",
       deadline: "02/08/23",
       area: "Finance",
       duration: "3 Months",
@@ -16,8 +15,8 @@ export function ContainerDennied({ }) {
       id: 1,
     },
     {
-      status: "Open",
-      nome: "teste card",
+      status: "Closed",
+      nome: "Project Name",
       deadline: "02/08/23",
       area: "Finance",
       duration: "3 Months",
@@ -26,7 +25,7 @@ export function ContainerDennied({ }) {
     },
     {
       status: "Open",
-      nome: "teste card",
+      nome: "teste",
       deadline: "02/08/23",
       area: "Finance",
       duration: "3 Months",
