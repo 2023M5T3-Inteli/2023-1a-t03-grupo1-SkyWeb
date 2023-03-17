@@ -164,4 +164,75 @@ export class ModelSelect {
             );
         }
     }
+    async findLeaderEmailByIdProject(projectId: number) {
+        try {
+            const result = await this.prisma.project.findMany({
+                where: {
+                    id: projectId,
+                },
+                select: {
+                    name: true,
+                    User: { select: { email: true, fullName: true } },
+                },
+            });
+            const jsonResult = result.map((item) => {
+                return {
+                    name: item.name,
+                    email: item.User.email,
+                    fullName: item.User.fullName,
+                };
+            });
+            return jsonResult;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+    async findUserApprovedInfo(idUsers: number[],idProject: number) {
+        try {
+            const result = await this.prisma.user.findMany({
+                where: {
+                    id:{in:idUsers},
+                },
+                select: {
+                    fullName: true,
+                    email: true,
+                    userApplyProject: {
+                        where: {
+                            idProject: idProject,
+                        },
+                        select: {
+                            Project: {
+                                select: {
+                                    name:true
+                                }
+                            }
+                        }
+                    
+                    } 
+                },
+            });
+            const jsonResult = result.map((item) => {
+                return {
+                    fullname: item.fullName,
+                    email: item.email,
+                    projectName:item.userApplyProject[0].Project.name
+                };
+            });
+            return jsonResult;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
 }
