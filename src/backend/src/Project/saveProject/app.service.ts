@@ -36,7 +36,7 @@ export class ServiceSaveProject {
             throw new HttpException(
                 {
                     status: HttpStatus.AMBIGUOUS,
-                    error: 'This data already exist'
+                    error: 'This data of save project already exist'
                 },
                 HttpStatus.AMBIGUOUS,
             );
