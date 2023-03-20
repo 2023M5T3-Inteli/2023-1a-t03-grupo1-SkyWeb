@@ -119,8 +119,11 @@ export function Menu(props) {
     return (
         <Sidebar>
             <ProfileContainer>
-                <UserImage>
-                </UserImage>
+                <Link to="/Dell/Profile">
+                    <UserImage>
+
+                    </UserImage>
+                </Link>
                 <NameRoleWrapper>
                     <UserName>{props.userName}</UserName>
                     <UserRole>{props.userRole}</UserRole>
