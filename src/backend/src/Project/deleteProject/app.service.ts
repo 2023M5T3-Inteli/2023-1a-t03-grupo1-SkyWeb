@@ -9,6 +9,7 @@ export class ServicesDeleteProject {
         private modelDelete: ModelDelete,
         private modelSelect: ModelSelect,
     ) { }
+    
     async execute(projectId: number, idUser: number) {
         // Encontra o projeto a ser excluído
         const project = await this.modelSelect.findProjectById(projectId);
@@ -34,8 +35,18 @@ export class ServicesDeleteProject {
             );
         }
 
-        // Exclui o projeto
+        // Exclui os project roles do projeto projectrolesbyprojectid
         await this.modelDelete.deleteProject(projectId);
+
+
+        // Exclui os user apply projects do projeto
+        await this.modelDelete.deleteUserApplyProjectsByProjectId(projectId);
+
+        // Exclui os save project do projeto
+        await this.modelDelete.deleteSaveProjectsByProjectId(projectId);
+
+        // Exclui os project tags do projeto
+        await this.modelDelete.deleteProjectTagsByProjectId(projectId);
 
         return `project with id ${projectId} successful delete`;
     }

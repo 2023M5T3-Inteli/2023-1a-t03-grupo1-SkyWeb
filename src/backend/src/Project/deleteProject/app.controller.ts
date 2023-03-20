@@ -4,8 +4,9 @@ import { ServicesDeleteProject } from './app.service';
 import { DTOBodyDeleteProject } from './DTO/DTOBodyDeleteProjec';
 
 @Controller()
-@ApiTags('Project')
+@ApiTags('Projeto')
 export class ControllerDeleteProject {
+
     constructor(private servicesDeleteProject: ServicesDeleteProject) { }
 
     @Delete('deleteProject')
@@ -29,11 +30,12 @@ export class ControllerDeleteProject {
     async deleteProject(@Body() body: DTOBodyDeleteProject) {
         const { idProject, idUser } = body;
 
-        const result = await this.servicesDeleteProject.execute(
-            idProject,
-            idUser,
-        );
+    const result = await this.servicesDeleteProject.execute(
+        idProject,
+        idUser,
+    );
 
-        return { message: result };
-    }
+    return { message: result };
+}
+
 }
