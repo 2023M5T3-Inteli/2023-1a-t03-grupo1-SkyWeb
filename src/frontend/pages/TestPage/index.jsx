@@ -1,8 +1,5 @@
 import { Outlet } from "react-router-dom"
 import { ResponsiveDialog } from "../../components/modalAppliy"
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
 
 export function TestPage() {
     const top100Films = [
