@@ -28,15 +28,20 @@ function RemovePersonModal(props) {
                 background: `${theme.palette.dellBlue.main}`,
                 color: `${theme.palette.white.main}`,
                 customClass: {
-                    confirmButton: 're',
+                    confirmButton: 'remove-sucess-btn',
                 }
 
             });
         } else if (result.isDismissed) {
             // Usuário apertou "cancelar"
             Swal.fire({
-                icon: "info",
-                title: `${props.name} was not removed from your team.`
+                icon: "warning",
+                title: `${props.name} was not removed from your team.`,
+                background: `${theme.palette.dellBlue.main}`,
+                color: `${theme.palette.white.main}`,
+                customClass: {
+                    confirmButton: 'remove-abort-btn',
+                }
             });
         }
         props.handleModalVisible();

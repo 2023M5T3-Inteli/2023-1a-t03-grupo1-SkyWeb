@@ -19,6 +19,7 @@ button, a, input[type=submit], input[type=button] {
 
 
 /* Estilização modais de confirmação - Sweet Alert */
+
 .remove-cancel-btn{
     border: 1px solid #fff !important;
     background-color: #0672CB !important;
@@ -31,9 +32,6 @@ button, a, input[type=submit], input[type=button] {
     color: #0672CB !important;
 }
 
-
-
-
 .remove-confirm-btn:focus{
     outline:none;
 }
@@ -41,3 +39,111 @@ button, a, input[type=submit], input[type=button] {
 .remove-cancel-btn:focus{
     outline:none;
 }
+
+.remove-sucess-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+.remove-abort-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+
+
+
+
+.create-confirm-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+.create-confirm-btn:focus{
+    outline: none;
+}
+
+
+
+
+.cancel-cancel-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+.cancel-confirm-btn{
+    background-color: whitesmoke !important;
+    border: 1px solid white !important ;
+    color: #0672CB !important;
+}
+
+.cancel-confirm-btn:focus{
+    outline:none;
+}
+
+.cancel-cancel-btn:focus{
+    outline:none;
+}
+
+.cancel-sucess-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+.cancel-abort-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+
+
+
+.apply-confirm-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+.apply-confirm-btn:focus{
+    outline: none;
+}
+
+
+
+
+.delete-cancel-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+.delete-confirm-btn{
+    background-color: whitesmoke !important;
+    border: 1px solid white !important ;
+    color: #0672CB !important;
+}
+
+.delete-confirm-btn:focus{
+    outline:none;
+}
+
+.delete-cancel-btn:focus{
+    outline:none;
+}
+
+.delete-sucess-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
+.delete-abort-btn{
+    border: 1px solid #fff !important;
+    background-color: #0672CB !important;
+    color: white !important;
+}
+
