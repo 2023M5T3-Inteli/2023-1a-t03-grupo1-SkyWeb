@@ -6,6 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { Grid } from '@mui/material';
+import { Box } from '@mui/system';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -24,28 +26,54 @@ export function AlertDialogSlide() {
 
   return (
     <div>
+
       <Button variant="outlined" onClick={handleClickOpen}>
         Slide in alert dialog
       </Button>
+
+
+
       <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+        aria-describedby="alert-dsialog-slide-description"
+        sx={{ color: "white.main", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor:"red" }}
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
+
+        {/* <Grid container sx={{backgroundColor:"red", display: "flex", justifyContent: "center", alignItems: "center" ,marginTop: "10%", position: "relative"}} > */}
+
+        {/* <Box sx={{ display: "flex", width: 550, height: 400, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}> */}
+
+        <DialogTitle variant='title2' sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          Use Google's location service lalalaalall?
+        </DialogTitle>
+
+
+        <DialogContent sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+
+          <DialogContentText variant="text5" id="alert-dialog-slide-description" sx={{ color: "white.main" }}>
             Let Google help apps determine location. This means sending anonymous
             location data to Google, even when no apps are running.
           </DialogContentText>
+
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
+
+
+        <DialogActions sx={{ display: "flex", justifyContent: "center", alignItems: "center", typography: "title1" }}>
+
+          <Button variant="outlined" sx={{ color: "white.main", borderColor: "white.main" }} onClick={handleClose}>Disagree</Button>
+          <Button variant="outlined" sx={{ color: "white.main", borderColor: "white.main" }} onClick={handleClose}>Agree</Button>
+
         </DialogActions>
+
+        {/* </Box> */}
+
+        {/* </Grid> */}
+
       </Dialog>
+
     </div>
   );
 }
