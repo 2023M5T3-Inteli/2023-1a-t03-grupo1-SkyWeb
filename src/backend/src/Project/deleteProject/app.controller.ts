@@ -4,21 +4,21 @@ import { ServicesDeleteProject } from './app.service';
 import { DTOBodyDeleteProject } from './DTO/DTOBodyDeleteProjec';
 
 @Controller()
-@ApiTags('Project')
+@ApiTags('Projeto')
 export class ControllerDeleteProject {
-    constructor(private servicesDeleteProject: ServicesDeleteProject) {}
+constructor(private servicesDeleteProject: ServicesDeleteProject) {}
 
-    @Delete('deleteProject')
-    @ApiOperation({ summary: 'Delete some project by ID' })
-    // TODO fazer Api response para sucess e faild
-    async deleteProject(@Body() body: DTOBodyDeleteProject) {
-        const { idProject, idUser } = body;
+@Delete('deleteProject')
+@ApiOperation({ summary: 'Excluir projeto por ID' })
+async deleteProject(@Body() body: DTOBodyDeleteProject) {
+    const { idProject, idUser } = body;
 
-        const result = await this.servicesDeleteProject.execute(
-            idProject,
-            idUser,
-        );
+    const result = await this.servicesDeleteProject.execute(
+        idProject,
+        idUser,
+    );
 
-        return { message: result };
-    }
+    return { message: result };
+}
+
 }

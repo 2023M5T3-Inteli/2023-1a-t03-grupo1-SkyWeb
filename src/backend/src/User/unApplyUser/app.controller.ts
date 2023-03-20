@@ -1,14 +1,19 @@
 import { Body, Controller, Delete } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiAcceptedResponse, ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ServicesDeleteApplyUser } from './app.service';
 import { DTOBodyunApplyUser } from './DTO/DTOBodyunApplyUser';
 
 @Controller()
-@ApiTags('User')
+@ApiTags('unApplyUser')
 export class ControllerUnApplyUser {
     constructor(private servicesDeleteApplyUser: ServicesDeleteApplyUser) {}
-
+    
     @Delete('deleteApply')
+    @ApiOperation({ summary: 'Deleta a inscrição do usuário para o projeto' })
+    @ApiAcceptedResponse({
+        description: 'Usuário removido com sucesso',
+        type: String,
+    })
     async deleteAplly(@Body() body: DTOBodyunApplyUser) {
         const { idProject, idUser, idRole } = body;
 

@@ -1,6 +1,7 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, NotAcceptableException } from '@nestjs/common';
 
 import { PrismaService } from '../prismaServices/prisma.service';
+
 
 @Injectable()
 export class ModelSelect {
@@ -25,6 +26,7 @@ export class ModelSelect {
             );
         }
     }
+    
 
     async findProjectById(projectId: number) {
         try {
@@ -136,6 +138,24 @@ export class ModelSelect {
         }
     }
 
+    async getUserById(idUser: number) {
+        try {
+            const user = await this.prisma.user.findUnique({
+                where: { id: idUser }
+
+            });
+                     
+            return user;
+       } catch (error) {
+            throw new HttpException(
+              {
+            status: HttpStatus.BAD_REQUEST,
+            error: error,
+              },
+              HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
     async getAllUsersAployed(projectId: number) {
         try {
             const result = await this.prisma.userApplyProject.findMany({
