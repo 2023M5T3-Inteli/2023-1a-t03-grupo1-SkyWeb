@@ -10,7 +10,7 @@ export class ServiceCreateProject {
     constructor(
         private readonly modelCreate: ModelCreate,
         private readonly modelSelect: ModelSelect,
-    ) {}
+    ) { }
 
     async execute(data: Tproject) {
         const { idTag, idRole, name, aplicationDeadLine, dateStart } = data;
@@ -35,7 +35,7 @@ export class ServiceCreateProject {
                 throw new HttpException(
                     {
                         status: HttpStatus.CONFLICT,
-                        error: 'This name is using',
+                        error: 'This name is in use',
                     },
                     HttpStatus.CONFLICT,
                 );
@@ -46,7 +46,7 @@ export class ServiceCreateProject {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: 'Não existe tags com esses nomes',
+                    error: `does not exist tags with this id's`,
                 },
                 HttpStatus.NOT_FOUND,
             );
@@ -56,7 +56,7 @@ export class ServiceCreateProject {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: 'Não existe roles com esses nomes',
+                    error: `does not exist roles with this id's`,
                 },
                 HttpStatus.NOT_FOUND,
             );

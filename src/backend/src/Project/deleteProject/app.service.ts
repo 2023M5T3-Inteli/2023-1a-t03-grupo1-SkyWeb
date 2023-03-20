@@ -8,8 +8,8 @@ export class ServicesDeleteProject {
     constructor(
         private modelDelete: ModelDelete,
         private modelSelect: ModelSelect,
-        
-    ) {}
+    ) { }
+    
     async execute(projectId: number, idUser: number) {
         // Encontra o projeto a ser excluído
         const project = await this.modelSelect.findProjectById(projectId);
@@ -18,7 +18,7 @@ export class ServicesDeleteProject {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: 'Não existe projeto com esse ID',
+                    error: `don't have project with this id`,
                 },
                 HttpStatus.NOT_FOUND,
             );
@@ -29,7 +29,7 @@ export class ServicesDeleteProject {
             throw new HttpException(
                 {
                     status: HttpStatus.UNAUTHORIZED,
-                    error: 'Você não tem permissão para excluir este projeto',
+                    error: `The user don't have permission to delete this project`,
                 },
                 HttpStatus.UNAUTHORIZED,
             );
@@ -37,6 +37,7 @@ export class ServicesDeleteProject {
 
         // Exclui os project roles do projeto projectrolesbyprojectid
         await this.modelDelete.deleteProject(projectId);
+
 
         // Exclui os user apply projects do projeto
         await this.modelDelete.deleteUserApplyProjectsByProjectId(projectId);
@@ -47,7 +48,6 @@ export class ServicesDeleteProject {
         // Exclui os project tags do projeto
         await this.modelDelete.deleteProjectTagsByProjectId(projectId);
 
-
-        return `Projeto com o ID ${projectId} foi excluído com sucesso.`;
+        return `project with id ${projectId} successful delete`;
     }
 }

@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ServiceGetAllProjects } from './app.service';
 
 @Controller()
@@ -7,9 +7,10 @@ import { ServiceGetAllProjects } from './app.service';
 export class ControllerGetAllProject {
     constructor(
         private readonly serviceGetAllProjects: ServiceGetAllProjects,
-    ) {}
+    ) { }
 
-    @Get('getallproject')
+    @Get('getAllProjects')
+    @ApiOperation({ summary: `get all projects from database` })
     async getAllProjects() {
         const projects = await this.serviceGetAllProjects.execute();
         return projects;

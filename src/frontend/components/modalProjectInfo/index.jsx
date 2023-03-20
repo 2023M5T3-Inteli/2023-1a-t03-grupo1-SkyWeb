@@ -2,53 +2,42 @@ import { Box, Button, Grid, Modal, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 
-export function ModalProjectInfo({ nameProject, tags, description, status, leader, startDate, duration, _open }) {
-
-    const [open, setOpen] = useState(false)
-
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
-
-
+export function ModalProjectInfo({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose }) {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+
 
             <Modal
-                open={open}
+                open={isOpen}
                 onClose={handleClose}
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
             >
 
                 <Grid container sx={{ display: "flex", justifyContent: "center", marginTop: "10%", position: "relative" }}>
-                    <Box sx={{ display: "flex", width: 550, height: 400, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
+                    <Box sx={{ display: "flex", width: 670, height: 420, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
 
 
 
-                        <Grid item lg={6}>
+                        <Grid item lg={7}>
                             <Container sx={{ padding: 2 }}>
-                                <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center", gap: 2 }}>
-                                    <Typography variant="title3" sx={{ color: "#ffffff", backgroundColor: "tagOpen.main", width: 70, height: 35, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2 }}>
-                                        {/*Fazer isso com o campo isOpen do projeto*/}
-                                        New!
-                                    </Typography>
+                                <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center", gap: 1.5 }}>
+                                    <Box component="div" sx={{ backgroundColor: "tagOpen.main", padding: 1, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2 }}>
+                                        <Typography variant="title3" sx={{ color: "#ffffff" }}>
+                                            {status}
+                                        </Typography>
+                                    </Box>
                                     <Typography variant="title2">
                                         {nameProject}
                                     </Typography>
                                 </Box>
 
                                 <Box sx={{ display: "flex", gap: 3, marginTop: 2, marginBottom: 2 }}>
-                                    <Grid container spacing={2}>
+                                    <Grid container spacing={10}>
                                         {tags.map((item) => {
                                             return (
-                                                <Grid key={item} item lg={4}>
+                                                <Grid key={item} item lg={2}>
                                                     <Box sx={{ backgroundColor: "inteliPurple.main", padding: 0.4, borderRadius: 2, width: 60, display: "flex", justifyContent: "center" }}>
                                                         <Typography variant="text3" sx={{ color: "#ffffff" }}>
                                                             {item}
@@ -62,13 +51,18 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                                 </Box>
 
                                 <Box sx={{ width: 250, display: "flex", flexDirection: "column", gap: 1.2 }}>
-                                    <Typography variant="title4">
-                                        Project Description:
-                                    </Typography>
 
-                                    <Typography variant="text4">
-                                        {description}
-                                    </Typography>
+                                    <Grid container>
+
+
+                                        <Typography variant="title4">
+                                            Project Description:
+                                        </Typography>
+
+                                        <Typography variant="text4">
+                                            {description}
+                                        </Typography>
+                                    </Grid>
 
                                     <Box sx={{ display: "flex", flexDirection: "column" }}>
                                         <Typography variant="title4">
@@ -98,29 +92,27 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                             </Container>
                         </Grid>
 
-                        <Grid item lg={6} sx={{ marginTop: "10%", }}>
+                        <Grid item lg={5} sx={{ display: "flex", justifyContent: "end", alignItems: "center" }}>
 
                             <Box sx={{ position: "absolute", top: "5%", right: "36%" }}>
                                 <Button onClick={handleClose} sx={{ fontSize: 18 }}>X</Button>
                             </Box>
 
                             <Container>
-                                <Box sx={{ marginLeft: "20%" }}>
+                                <Box sx={{ marginLeft: "10%" }}>
                                     <Typography variant="title4" >Team:</Typography>
 
                                     <Box sx={{ display: "flex", flexDirection: "column", marginTop: "3%" }}>
-                                        <Typography variant="text3"><Typography variant="text3" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text3"><Typography variant="text3" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text3"><Typography variant="text3" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text3"><Typography variant="text3" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text3"><Typography variant="text3" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text3"><Typography variant="text3" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
+                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
+                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
+                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
+                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
+                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
+                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
                                     </Box>
                                 </Box>
                             </Container>
                         </Grid>
-
-
 
 
                     </Box>
