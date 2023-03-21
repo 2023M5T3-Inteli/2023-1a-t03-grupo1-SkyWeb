@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiAcceptedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiAcceptedResponse, ApiOperation, ApiTags,ApiResponse } from '@nestjs/swagger';
 import { ServiceAcceptApplyUser } from './app.service';
 import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 
@@ -8,9 +8,27 @@ import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 export class ControllerAcceptApply {
     constructor(private serviceAcceptApplyUser: ServiceAcceptApplyUser) {}
 
-    @Post('acceptApplys')
-    @ApiOperation({ summary: 'Aceitar candidaturas de usuários para trabalhar em um projeto' })
-    @ApiAcceptedResponse({ description: 'Candidaturas de usuários aceitas com sucesso' })
+
+    @Post('acceptUserForWorkinProject')
+    @ApiOperation({ summary: 'Choice which users can working in project' })
+    @ApiResponse({
+        status: 201,
+
+        description: '[{"count": 0}]',
+    })
+    @ApiResponse({
+        status: 400,
+        description: 'idOwnerProject should not be empty',
+    })
+    @ApiResponse({
+        status: 401,
+        description: 'you do not have a permission for this action',
+    })
+    @ApiResponse({
+        status: 404,
+        description: 'this project does not  exist',
+    })
+    // TODO fazer Api response para sucess e faild
     async acceptUserForWorkinProject(@Body() body: DTOBodyAcceptUser) {
         const { idProject, idOwnerProject, idUsers } = body;
 
