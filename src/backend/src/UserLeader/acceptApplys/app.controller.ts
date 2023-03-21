@@ -1,5 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { ApiAcceptedResponse, ApiOperation, ApiTags,ApiResponse } from '@nestjs/swagger';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+    ApiAcceptedResponse,
+    ApiOperation,
+    ApiTags,
+    ApiResponse,
+} from '@nestjs/swagger';
 import { ServiceAcceptApplyUser } from './app.service';
 import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 
@@ -7,7 +12,6 @@ import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 @ApiTags('UserLeader')
 export class ControllerAcceptApply {
     constructor(private serviceAcceptApplyUser: ServiceAcceptApplyUser) {}
-
 
     @Post('acceptUserForWorkinProject')
     @ApiOperation({ summary: 'Choice which users can working in project' })
@@ -38,5 +42,10 @@ export class ControllerAcceptApply {
             idProject,
         );
         return result;
+    }
+
+    @Get('/')
+    async hello() {
+        return 'Hello skyWeb APi';
     }
 }
