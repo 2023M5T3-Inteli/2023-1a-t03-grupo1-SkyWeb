@@ -1,9 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { Container, } from "@mui/system";
 import { DashboardHeader } from "../../components/dashboardHeader";
-import { ContainerPending } from "../../components/containerPending";
-import { ContainerApproved } from "../../components/containerApproved";
-import { ContainerDennied } from "../../components/containerDennied";
 import { ContainerLeading } from "../../components/DashboardContainerLeading";
 import { ContainerMyProjects } from "../../components/DashboardContainerMyProjects";
 import { ContainerRecent } from "../../components/DashboardContainerRecent";
@@ -24,31 +21,16 @@ export function Dashboard() {
                 </Box>
 
 
-                {/* <Grid item lg={12} sx={{ display: "flex", justifyContent: "center", marginLeft: 6 }}>
-
-                    <Container>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 1.2 }}>
-
-                            <Typography variant="title2">
-                                Pending
-                            </Typography>
-                            <Box component="div" sx={{ width: 345, height: 7, backgroundColor: "deadlinePending.main", borderRadius: 6 }} />
-                        </Box>
-
-
-                        <ContainerPending />
-                    </Container>
-                </Grid> */}
-
                 <Box sx={{ display: "flex", marginLeft: 8, marginTop: 1, justifyContent: "center", gap: 7 }}>
 
                     <Grid item lg={6} >
                         <Container>
                             <Box sx={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 1.2 }}>
 
-                                <Typography variant="title2" sx={{}}>
+                                <Typography variant="title2">
                                     My Projects
                                 </Typography>
+
                             </Box>
                             <ContainerMyProjects />
                         </Container>
