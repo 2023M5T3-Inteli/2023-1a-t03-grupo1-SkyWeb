@@ -1,6 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
-import { type } from 'os';
+import { ApiAcceptedResponse, ApiOperation, ApiTags,ApiResponse } from '@nestjs/swagger';
 import { ServiceAcceptApplyUser } from './app.service';
 import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 
@@ -8,6 +7,7 @@ import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 @ApiTags('UserLeader')
 export class ControllerAcceptApply {
     constructor(private serviceAcceptApplyUser: ServiceAcceptApplyUser) {}
+
 
     @Post('acceptUserForWorkinProject')
     @ApiOperation({ summary: 'Choice which users can working in project' })
