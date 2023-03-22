@@ -4,30 +4,30 @@ import { Injectable } from '@nestjs/common';
 import { ModelUpdate } from '../../models/modelsUpdate';
 import { ModelSelect } from '../../models/modelSelect';
 
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: process.env.LOGIN,
-            pass: process.env.PASS,
-        },
-    });
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: process.env.LOGIN,
+        pass: process.env.PASS,
+    },
+});
 
 @Injectable()
 export class ServiceUpdateApprovalProject {
-    constructor(private modelUpdate: ModelUpdate, private modelSelect:ModelSelect) {}
+    constructor(private modelUpdate: ModelUpdate, private modelSelect: ModelSelect) { }
 
-    async execute(idManager: number, idProject: number, isAproved: boolean) {
+    async execute(idManager: number, idProject: number, isApproved: boolean) {
         const result = await this.modelUpdate.updateApprovalProject(
-            isAproved,
+            isApproved,
             idProject,
         );
 
         const leaderInfo = await this.modelSelect.findLeaderEmailByIdProject(
             idProject,
         );
-        
+
         const email = leaderInfo.map((item) => {
             return item.email;
         });
@@ -38,9 +38,9 @@ export class ServiceUpdateApprovalProject {
             return item.name;
         });
 
-        
 
-        if (isAproved == true) {
+
+        if (isApproved == true) {
             const messageApproved = {
                 from: '"SkyWeb 👻" <inteliskyweb@gmail.com>', // sender address
                 to: "daniel_desc@outlook.com", // list of receivers
@@ -48,14 +48,14 @@ export class ServiceUpdateApprovalProject {
                 text: 'Hello world?', // plain text body
                 html: `<b>Hello ${fullName}, your project ${projectName} that was submitted in Dell Heroes was Approved, you may now start the selection of your project team</b>`, // html body
             };
-                
+
             async function run() {
                 let mailsent = await transporter.sendMail(messageApproved);
                 return mailsent;
             };
             run();
         }
-        if (isAproved == false) {
+        if (isApproved == false) {
             const messageDennied = {
                 from: '"SkyWeb 👻" <inteliskyweb@gmail.com>', // sender address
                 to: 'daniel_desc@outlook.com', // list of receivers

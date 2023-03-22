@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common/decorators";
-import { ModelSelect } from "src/models/modelSelect";
+import { ModelSelect } from "../../models/modelSelect";
 
 
 @Injectable()
