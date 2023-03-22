@@ -97,6 +97,9 @@ async function main() {
             duration: '10 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
+            idUser: 3,
+            idManager: 1,
+            isApproved: true
         },
     });
 
@@ -108,6 +111,8 @@ async function main() {
             duration: '10 semanas',
             status: '',
             dateStart: new Date('August 27,2023'),
+            idManager: 1,
+            idUser: 3
         },
     });
 
@@ -260,6 +265,13 @@ async function main() {
         },
     });
 
+    await prisma.projectRole.create({
+        data: {
+            idProject: 3,
+            idRole: 2,
+        },
+    });
+
     await prisma.projectTag.create({
         data: {
             idProject: 1,
@@ -323,6 +335,22 @@ async function main() {
             idUser: 3,
             idProject: 1,
             idRole: 3,
+        },
+    });
+
+    await prisma.userApplyProject.create({
+        data: {
+            idUser: 2,
+            idProject: 3,
+            idRole: 2,
+        },
+    });
+
+    await prisma.userApplyProject.create({
+        data: {
+            idUser: 4,
+            idProject: 3,
+            idRole: 2,
         },
     });
 }

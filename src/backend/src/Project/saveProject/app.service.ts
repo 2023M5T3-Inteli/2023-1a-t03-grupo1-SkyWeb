@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { ModelCreate } from "src/models/modelCreate";
-import { ModelSelect } from "src/models/modelSelect";
+import { ModelCreate } from "../../models/modelCreate";
+import { ModelSelect } from "../../models/modelSelect";
 
 @Injectable()
 export class ServiceSaveProject {
@@ -11,7 +11,6 @@ export class ServiceSaveProject {
         const checkUser = await this.modelSelect.getCheckExistentUsers(idUser)
         const getUsersAndProjectId = await this.modelSelect.getExistUserAndProjectInSaveProject(idProject, idUser)
 
-        console.log(getUsersAndProjectId)
         if (!checkProject) {
             throw new HttpException(
                 {

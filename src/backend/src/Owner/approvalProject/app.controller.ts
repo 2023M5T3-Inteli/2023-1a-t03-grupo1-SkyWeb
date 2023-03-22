@@ -8,18 +8,18 @@ import { DTOBodyApprovalProject } from './DTO/DTOBodyApprovalProject';
 export class ControllerApprovalProject {
     constructor(
         private serviceUpdateApprovalProject: ServiceUpdateApprovalProject,
-    ) {}
+    ) { }
 
     @Put('approvalProject')
     @ApiOperation({ summary: 'Choice if project is accept or denied' })
     // TODO fazer Api response para sucess e faild
     async approvalProject(@Body() body: DTOBodyApprovalProject) {
-        const { idManager, idProject, isAproved } = body;
+        const { idManager, idProject, isApproved } = body;
 
         const result = await this.serviceUpdateApprovalProject.execute(
             idManager,
             idProject,
-            isAproved,
+            isApproved,
         );
 
         return result;

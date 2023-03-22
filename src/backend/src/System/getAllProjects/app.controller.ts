@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ServiceGetAllProjects } from './app.service';
 
@@ -13,6 +13,6 @@ export class ControllerGetAllProject {
     @ApiOperation({ summary: `get all projects from database` })
     async getAllProjects() {
         const projects = await this.serviceGetAllProjects.execute();
-        return projects;
+        return HttpStatus.OK;
     }
 }

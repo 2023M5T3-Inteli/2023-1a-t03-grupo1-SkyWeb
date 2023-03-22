@@ -1,13 +1,13 @@
-import { ModelCreate } from 'src/models/modelCreate';
+import { ModelCreate } from '../../models/modelCreate';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { ModelSelect } from 'src/models/modelSelect';
+import { ModelSelect } from '../../models/modelSelect';
 
 @Injectable()
 export class ServiceApplyProject {
     constructor(
         private readonly modelCreate: ModelCreate,
         private readonly modelSelect: ModelSelect,
-    ) {}
+    ) { }
 
     async execute(_idProject: number, _idUser: number, _idRole: number) {
         const userApply =

@@ -6,7 +6,7 @@ import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 
 @Controller()
 @ApiTags('User')
-export class PostApplyProject {
+export class ControllerApplyProject {
     constructor(private readonly serviceApplyProject: ServiceApplyProject) { }
 
     @Post('applyProject')
