@@ -1,5 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+    ApiAcceptedResponse,
+    ApiOperation,
+    ApiTags,
+    ApiResponse,
+} from '@nestjs/swagger';
 import { ServiceAcceptApplyUser } from './app.service';
 import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
 
@@ -10,6 +15,23 @@ export class ControllerAcceptApply {
 
     @Post('acceptUserForWorkinProject')
     @ApiOperation({ summary: 'Choice which users can working in project' })
+    @ApiResponse({
+        status: 201,
+
+        description: '[{"count": 0}]',
+    })
+    @ApiResponse({
+        status: 400,
+        description: 'idOwnerProject should not be empty',
+    })
+    @ApiResponse({
+        status: 401,
+        description: 'you do not have a permission for this action',
+    })
+    @ApiResponse({
+        status: 404,
+        description: 'this project does not  exist',
+    })
     // TODO fazer Api response para sucess e faild
     async acceptUserForWorkinProject(@Body() body: DTOBodyAcceptUser) {
         const { idProject, idOwnerProject, idUsers } = body;
@@ -20,5 +42,10 @@ export class ControllerAcceptApply {
             idProject,
         );
         return result;
+    }
+
+    @Get('/')
+    async hello() {
+        return 'Hello skyWeb APi';
     }
 }
