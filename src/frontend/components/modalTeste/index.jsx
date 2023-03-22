@@ -1,10 +1,5 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -13,27 +8,19 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import Avatar from '@mui/material/Avatar';
+import { Close, Delete } from '@mui/icons-material/';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SearchIcon from '@mui/icons-material/Search';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import { useTheme } from '@mui/material/styles';
-import { Typography } from '@mui/material'
+import { Icon, Typography } from '@mui/material'
 import { Box } from '@mui/material';
+import { display } from '@mui/system';
 
 
 
-export function ResponsiveDialog(name, areas, application, position ) {
-
-    function createData(name, areas, application, position) {
-        return {name, areas, application, position};
-    }
-
-    const rows = [
-        createData('Chloe Price', 'UX/Developer', 6.0, 28),
-        createData('Chloe Price', 'UX/Developer', 9.0, 37),
-        createData('Chloe Price', 'UX/Developer', 16.0, 24),
-        createData('Chloe Price', 'UX/Developer', 3.7, 67),
-        createData('Chloe Price', 'UX/Developer', 16.0, 49),
-    ];
+export function ResponsiveDialogTeste(name, areas, application, position) {
 
 
     const [open, setOpen] = React.useState(false);
@@ -52,7 +39,7 @@ export function ResponsiveDialog(name, areas, application, position ) {
     return (
         <div >
             <Button variant="outlined" onClick={handleClickOpen}>
-                Gerenciar projeto
+                Gerenciar projeto teste
             </Button>
 
             <Dialog
@@ -65,32 +52,27 @@ export function ResponsiveDialog(name, areas, application, position ) {
             >
 
 
-                <DialogContent sx={{ backgroundColor:"cardBackground"}} >
+
+                <DialogContent sx={{ backgroundColor: "cardBackground" }} >
                     <DialogContentText >
+
+                        <DialogActions>
+                            <Button autoFocus onClick={handleClose}>
+                                <Close />
+                            </Button>
+                            <Button onClick={handleClose} autoFocus>
+                                <Delete />
+                            </Button>
+                        </DialogActions>
+
+
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
                             <div id="tags" style={{ display: "flex", justifyContent: "left", width: "100%" }}>
 
                                 <Typography variant="title3" sx={{ color: "#ffffff", backgroundColor: "tagOpen.main", width: 70, height: 35, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2 }}>
                                     New!
                                 </Typography>
-
                                 <Typography variant="title1" style={{ paddingLeft: "10px" }}>Dell IA<br /></Typography>
-
-                                {/*<Box sx={{ display: "flex", gap: 3, marginTop: 2, marginBottom: 2 }}>
-                                    <Grid container spacing={2}>
-                                        {tags.map((item) => {
-                                            return (
-                                                <Grid key={item} item lg={4}>
-                                                    <Box sx={{ backgroundColor: "inteliPurple.main", padding: 0.4, borderRadius: 2, width: 60, display: "flex", justifyContent: "center" }}>
-                                                        <Typography variant="text3" sx={{ color: "#ffffff" }}>
-                                                            {item}
-                                                        </Typography>
-                                                    </Box>
-                                                </Grid>)
-                                        })}
-                                    </Grid>
-                                </Box>*/}
-
                             </div>
 
                             <div id="text" style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
@@ -120,13 +102,108 @@ export function ResponsiveDialog(name, areas, application, position ) {
                             </div>
                             <br />
 
+
                             <Box sx={{ display: "flex", justifyContent: "right", width: "100%", padding: "5px" }}>
                                 <Box sx={{ height: "20px ", width: "100px", border: 1, borderWidth: "3px", borderColor: "black", borderRadius: "5px" }}>
                                     <SearchIcon />
                                 </Box>
-
                             </Box>
-                            <Box component={Paper} style={{ background: "white", width: "728px", height: "392px", display: "flex", justifyContent: "center", flexWrap: "wrap", overflowY: "scroll" }} >
+
+
+                            <Box component={Paper} sx={{ flexGrow: 1 }} >
+                                <Paper elevation={0} style={{ padding: '5px' }} >
+                                    <Grid container spacing={2} style={{ display: 'flex', alignItems: "center" }}>
+
+                                        <Grid item lg={3}>
+                                            Profile
+                                        </Grid>
+
+                                        <Grid item lg={3}>
+                                            Chosen Areas
+                                        </Grid>
+
+                                        <Grid item lg={3}>
+                                            Application
+                                        </Grid>
+
+                                        <Grid item lg={3}>
+                                            Position
+                                        </Grid>
+
+
+                                        <Grid container spacing={2} style={{ display: 'flex', alignItems: "center", marginLeft:"0", background:"red" }} >
+                                            <Grid item lg={3}>
+                                                Chloe Price
+                                            </Grid>
+
+                                            <Grid item lg={3}>
+                                                UX/Developer
+                                            </Grid>
+
+                                            <Grid item lg={3}>
+
+
+                                                <Autocomplete
+                                                    disablePortal
+                                                    id="combo-box-demo"
+                                                    options={'a'}
+                                                    sx={{ width: 100 }}
+                                                    size={'small'}
+                                                    renderInput={(params) => <TextField {...params} label="Select" />}
+                                                />
+
+                                            </Grid>
+
+                                            <Grid item lg={3}>
+                                                <Autocomplete
+                                                    disablePortal
+                                                    id="combo-box-demo"
+                                                    options={'a'}
+                                                    sx={{ width: 100 }}
+                                                    size={'small'}
+                                                    renderInput={(params) => <TextField {...params} label="Select" />}
+                                                />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
+                            </Box>
+                        </div>
+                    </DialogContentText>
+                </DialogContent>
+
+
+
+            </Dialog>
+        </div>
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*
                                 <Typography variant="title4" sx={{ paddingLeft: "" }}> Profile </Typography>
                                 <Typography variant="title4" sx={{ paddingLeft: "100px" }}> Chosen Areas </Typography>
                                 <Typography variant="title4" sx={{ paddingLeft: "100px" }}> Application </Typography>
@@ -151,52 +228,4 @@ export function ResponsiveDialog(name, areas, application, position ) {
                                     <Avatar alt="Remy Sharp" src="imagens\game.jpg" />
                                     <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Chloe Price</Typography>
                                     <Typography variant="title4" sx={{ paddingLeft: "30px" }}>UX, Developer </Typography>
-                                </div>
-                            </Box>
-
-                            {/*<TableContainer component={Paper}>
-                                <Table sx={{ minWidth: 200 }} aria-label="simple table">
-
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Profile</TableCell>
-                                            <TableCell align="right">Chosen Areas</TableCell>
-                                            <TableCell align="right">Application</TableCell>
-                                            <TableCell align="right">Position</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-
-                                    <TableBody>
-                                        {rows.map((row) => (
-                                            <TableRow
-                                                key={row.name}
-                                                sx={{ '&:last-child td, &:last-child th': { border: "1" }, backgroundColor:"grey"}}
-                                            >
-                                                <TableCell component="th" scope="row" >{row.name}</TableCell>
-                                                <TableCell align="right">{row.areas}</TableCell>
-                                                <TableCell align="right">{row.application}</TableCell>
-                                                <TableCell align="right">{row.position}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>*/}
-
-                        </div>
-
-                    </DialogContentText>
-                </DialogContent>
-
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
-                        Fechar
-                    </Button>
-                    <Button onClick={handleClose} autoFocus>
-                        Abrir
-                    </Button>
-                </DialogActions>
-
-            </Dialog>
-        </div>
-    );
-}
+                                </div>*/}
