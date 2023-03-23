@@ -18,7 +18,7 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.TARGET }}
           SCRIPT_AFTER: |
-            cd 2023-1a-t03-grupo5
+            cd 2023-1a-t03-grupo1
             sudo npm install
             pm2 install
             pm2 stop all
