@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, UseGuards, HttpStatus } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
     ApiBearerAuth,
@@ -6,6 +6,7 @@ import {
     ApiResponse,
     ApiTags,
 } from '@nestjs/swagger';
+
 import { ServiceGetAllProjects } from './app.service';
 
 @Controller()
@@ -21,6 +22,6 @@ export class ControllerGetAllProject {
     @ApiOperation({ summary: `get all projects from database` })
     async getAllProjects() {
         const projects = await this.serviceGetAllProjects.execute();
-        return projects;
+        return HttpStatus.OK;
     }
 }

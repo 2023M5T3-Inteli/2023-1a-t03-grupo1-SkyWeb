@@ -4,7 +4,7 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelUpdate {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) { }
 
     async updateProjectStatus(progress: string, idProject: number) {
         try {
@@ -28,11 +28,11 @@ export class ModelUpdate {
         }
     }
 
-    async updateApprovalProject(isAproved: boolean, idProject: number) {
+    async updateApprovalProject(isApproved: boolean, idProject: number) {
         try {
             const result = await this.prisma.project.update({
                 data: {
-                    isApproved: isAproved,
+                    isApproved: isApproved,
                 },
                 where: {
                     id: idProject,

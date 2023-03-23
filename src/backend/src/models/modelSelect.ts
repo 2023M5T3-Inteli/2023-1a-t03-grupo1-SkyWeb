@@ -58,17 +58,8 @@ export class ModelSelect {
                     Project: { isApproved: true, status: 'Open' },
                 },
                 select: {
-                    Project: {
-                        select: {
-                            name: true,
-                            description: true,
-                            aplicationDeadLine: true,
-                            duration: true,
-                            dateStart: true,
-                            isApproved: true,
-                            status: true,
-                        },
-                    },
+                    Project:  
+                           true 
                 },
             });
 
@@ -264,6 +255,10 @@ export class ModelSelect {
                 where: {
                     idUser: idUser,
                 },
+                select:
+                {
+                    Project:true
+                }
             });
             return result;
         } catch (error) {
