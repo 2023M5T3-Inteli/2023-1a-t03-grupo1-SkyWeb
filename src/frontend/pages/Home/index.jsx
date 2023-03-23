@@ -6,6 +6,10 @@ import Image from "mui-image"
 import { useContext } from "react"
 
 export function Home() {
+
+    localStorage.clear("token")
+    localStorage.clear("user")
+
     return (
         <div>
             <NavbarHome />

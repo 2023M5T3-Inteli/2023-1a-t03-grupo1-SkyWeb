@@ -180,7 +180,7 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
 
                         <Grid item lg={5} sx={{ display: "flex", alignItems: "center", marginBottom: 22 }}>
 
-                            <Box sx={{ position: "absolute", top: "5%", right: "30%" }}>
+                            <Box sx={{ position: "absolute", top: "5%", right: "35%" }}>
                                 <Button onClick={handleClose} sx={{ fontSize: 18 }}>X</Button>
                             </Box>
 

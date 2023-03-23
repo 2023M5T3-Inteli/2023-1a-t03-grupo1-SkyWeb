@@ -39,7 +39,7 @@ export function Manager() {
   //Delete project confirmation modal
   const [modalVisibleDelete, setModalVisibleDelete] = useState(false);
 
-  function handleModalVisibleDelete(){
+  function handleModalVisibleDelete() {
     setModalVisibleDelete(!modalVisibleDelete);
     console.log(modalVisibleDelete)
   }
@@ -48,7 +48,7 @@ export function Manager() {
   //Apply project confirmation modal
   const [modalVisibleApply, setModalVisibleApply] = useState(false);
 
-  function handleModalVisibleApply(){
+  function handleModalVisibleApply() {
     setModalVisibleApply(!modalVisibleApply);
     console.log(modalVisibleApply)
   }
@@ -57,7 +57,7 @@ export function Manager() {
   //Cancel application confirmation modal
   const [modalVisibleCancel, setModalVisibleCancel] = useState(false);
 
-  function handleModalVisibleCancelApply(){
+  function handleModalVisibleCancelApply() {
     setModalVisibleCancel(!modalVisibleCancel);
     console.log(modalVisibleCancel)
   }
@@ -87,7 +87,7 @@ export function Manager() {
             </Box>
 
 
-            <ContainerPending />
+            {/* <ContainerPending /> */}
           </Container>
         </Grid>
 
@@ -124,15 +124,15 @@ export function Manager() {
         <button onClick={handleModalVisibleApply}> Modal Apply Project </button>
         {
           modalVisibleApply &&
-          <ConfirmApplyProjectModal handleModalVisibleApply={handleModalVisibleApply}/>
+          <ConfirmApplyProjectModal handleModalVisibleApply={handleModalVisibleApply} />
         }
 
 
         {/* Cancel application confirmation modal */}
         <button onClick={handleModalVisibleCancelApply}> Modal cancel application </button>
         {
-          modalVisibleCancel && 
-          <CancelApplyProject handleModalVisibleCancelApply={handleModalVisibleCancelApply} projectName="Backoffice"/>
+          modalVisibleCancel &&
+          <CancelApplyProject handleModalVisibleCancelApply={handleModalVisibleCancelApply} projectName="Backoffice" />
         }
 
 
@@ -157,7 +157,7 @@ export function Manager() {
                 </Typography>
                 <Box component="div" sx={{ width: 325, height: 7, backgroundColor: "tagOpen.main", borderRadius: 6 }} />
               </Box>
-              <ContainerApproved />
+              {/* <ContainerApproved /> */}
             </Container>
 
           </Grid>
@@ -171,7 +171,7 @@ export function Manager() {
                 </Typography>
                 <Box component="div" sx={{ width: 345, height: 7, backgroundColor: "tagClosed.main", borderRadius: 6 }} />
               </Box>
-              <ContainerDennied />
+              {/* <ContainerDennied /> */}
             </Container>
           </Grid>
 
