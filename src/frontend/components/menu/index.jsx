@@ -3,6 +3,8 @@ import { Box, Container } from "@mui/system"
 import styled from 'styled-components'; //Usei Styled Components
 import userProfile from '../../assets/images/chloe-price.png';
 import { Link } from 'react-router-dom';
+import { ModalCreateProject } from "../createProjectModal/projectCreation"
+import { useState } from "react"
 import '../../style.css';
 
 //Div do menu
@@ -116,6 +118,12 @@ padding-bottom: 1rem;
 //Componente
 export function Menu(props) {
 
+    const [modalVisibleCreateProject, setModalVisibleCreateProject] = useState(false)
+
+    function handleModalVisibleCreateProject() {
+        setModalVisibleCreateProject(!modalVisibleCreateProject)
+    }
+
     return (
         <Sidebar>
             <ProfileContainer>
@@ -137,10 +145,12 @@ export function Menu(props) {
                 <SidebarItem to='faq'>FAQ</SidebarItem>
             </Nav>
             <BottomWrapper>
-                <BringButton>Bring your project</BringButton>
+                <BringButton onClick={handleModalVisibleCreateProject}>Bring your project</BringButton>
                 <Leave>Leave</Leave>
             </BottomWrapper>
+            <ModalCreateProject _open={modalVisibleCreateProject} _handleClose={handleModalVisibleCreateProject} />
         </Sidebar>
+
     )
 
 }

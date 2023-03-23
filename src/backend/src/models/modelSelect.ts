@@ -212,6 +212,7 @@ export class ModelSelect {
             );
         }
     }
+
     async getAllUsersAployed(projectId: number) {
         try {
             const result = await this.prisma.userApplyProject.findMany({
@@ -240,6 +241,7 @@ export class ModelSelect {
             );
         }
     }
+
     async findLeaderEmailByIdProject(projectId: number) {
         try {
             const result = await this.prisma.project.findMany({
@@ -358,6 +360,7 @@ export class ModelSelect {
             );
         }
     }
+
     async findUserApprovedInfo(idUsers: number[], idProject: number) {
         try {
             const result = await this.prisma.user.findMany({
@@ -399,6 +402,7 @@ export class ModelSelect {
             );
         }
     }
+
     async findUserApplyProjectByIdRoleAndIdProject(
         idRole: number,
         idProject: number,
@@ -486,6 +490,26 @@ export class ModelSelect {
             const result = await this.prisma.user.findMany({
                 where: {
                     email: email,
+                },
+            });
+
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+    async getProjectByOwnerId(idOwner: number) {
+        try {
+            const result = await this.prisma.project.findMany({
+                where: {
+                    idManager: idOwner,
                 },
             });
 

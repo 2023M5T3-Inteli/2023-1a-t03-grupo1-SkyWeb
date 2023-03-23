@@ -4,7 +4,7 @@ import { ManagerHeader } from "../../components/managerHeader";
 import { ContainerPending } from "../../components/containerPending";
 import { ContainerApproved } from "../../components/containerApproved";
 import { ContainerDennied } from "../../components/containerDennied";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ModalCreateProject } from "../../components/createProjectModal/projectCreation"
 import RemovePersonModal from "../../components/modalConfirmRemoveUser/confirmRemoveUser";
 import ConfirmCreateProjectModal from "../../components/modalConfirmCreation/createProject";
@@ -12,9 +12,28 @@ import ConfirmDeleteProjectModal from "../../components/modalConfirmDeleteProjec
 import ConfirmApplyProjectModal from "../../components/modalConfirmApplyProject/confirmApply";
 import CancelApplyProject from "../../components/modalConfirmCancelApply/confirmCancelApply";
 import { AlertDialogSlide } from "../../components/confirmModal";
+import api from "../../api";
 
 
 export function Manager() {
+
+  const [dataProject, setDataProject] = useState([])
+
+  const { idManager } = JSON.parse(localStorage.getItem("user"))
+
+  async function reqProjectbyManager() {
+
+    await api.get(`/projectsowner/${idManager}`).then((item) => {
+      setDataProject(item.data)
+    }).catch((e) => {
+      alert(e)
+    })
+
+  }
+
+  useEffect(() => {
+    reqProjectbyManager()
+  }, [])
 
 
 
@@ -63,6 +82,8 @@ export function Manager() {
   }
 
 
+
+
   return (
     <Container >
 
@@ -87,7 +108,7 @@ export function Manager() {
             </Box>
 
 
-            {/* <ContainerPending /> */}
+            <ContainerPending datas={dataProject} />
           </Container>
         </Grid>
 
@@ -134,11 +155,6 @@ export function Manager() {
           modalVisibleCancel &&
           <CancelApplyProject handleModalVisibleCancelApply={handleModalVisibleCancelApply} projectName="Backoffice" />
         }
-
-
-
-        <ModalCreateProject>
-        </ModalCreateProject>
 
         {/* <AlertDialogSlide>
 
