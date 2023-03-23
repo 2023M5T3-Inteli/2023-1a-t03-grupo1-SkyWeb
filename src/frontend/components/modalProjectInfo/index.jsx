@@ -1,6 +1,6 @@
 import { Box, Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import api from "../../api";
 import ConfirmApplyProjectModal from "../modalConfirmApplyProject/confirmApply"
 
@@ -15,9 +15,12 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
 
 
 
-    if (idUser === id) {
-        setIsApply(false)
-    }
+    useEffect(() => {
+
+        if (idUser === id) {
+            setIsApply(false)
+        }
+    }, [])
 
     function handleModalVisibleApply() {
         setModalVisibleApply(!modalVisibleApply);
@@ -147,7 +150,7 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                                         <Typography variant="title3">This project is no longer receiving applications</Typography>
                                     </Box>}
 
-                                {status === "Open" && <Box sx={{ backgroundColor: "#e3e1e1", width: 572, marginTop: 5, padding: 2, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                                {status === "Open" && isApply && <Box sx={{ backgroundColor: "#e3e1e1", width: 572, marginTop: 5, padding: 2, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                                     {errorSameApply && <Typography variant="title4" color="error.main">You already applied to this project!</Typography>}
                                     <FormControl sx={{ backgroundColor: "#ffffff", width: 400 }}>
                                         <InputLabel id="">Areas</InputLabel>
