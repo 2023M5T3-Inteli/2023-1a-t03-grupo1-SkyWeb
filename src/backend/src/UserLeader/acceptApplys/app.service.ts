@@ -46,6 +46,7 @@ export class ServiceAcceptApplyUser {
                 );
             }
 
+            console.log(idUser)
             if (idUser != idOwnerProject) {
                 throw new HttpException(
                     {

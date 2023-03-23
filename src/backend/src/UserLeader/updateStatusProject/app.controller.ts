@@ -1,4 +1,4 @@
-import { Controller, Put, Body } from '@nestjs/common';
+import { Controller, Put, Body, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ServiceUpdateProjectStatus } from './app.service';
 import { DTOBodyUpdateProjectStatus } from './DTO/DTOBodyUpdateProjectStatus';
@@ -8,7 +8,7 @@ import { DTOBodyUpdateProjectStatus } from './DTO/DTOBodyUpdateProjectStatus';
 export class ControllerUpdateStatusProject {
     constructor(
         private readonly serviceUpdateProjectStatus: ServiceUpdateProjectStatus,
-    ) {}
+    ) { }
 
     @Put('updateStatusProject')
     @ApiOperation({ summary: 'Update status project ' })
@@ -16,12 +16,12 @@ export class ControllerUpdateStatusProject {
     async updateStatusProject(@Body() body: DTOBodyUpdateProjectStatus) {
         const { idLeader, idProject, progress } = body;
 
-        const result = await this.serviceUpdateProjectStatus.execute(
+        await this.serviceUpdateProjectStatus.execute(
             idLeader,
             idProject,
             progress,
         );
 
-        return result;
+        return HttpStatus.OK;
     }
 }

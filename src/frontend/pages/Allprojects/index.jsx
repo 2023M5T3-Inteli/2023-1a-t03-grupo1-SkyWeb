@@ -4,94 +4,25 @@ import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
 import { ModalProjectInfo } from '../../components/modalProjectInfo';
 import { Box } from '@mui/system';
+import api from '../../api';
+
 
 
 export function Allprojects() {
 
-    const array = [
-        {
-            status: "Open",
-            nome: "projectName",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java"],
-            id: 1,
-        },
-        {
-            status: "Open",
-            nome: "teste card 2",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 2,
-        },
-        {
-            status: "Open",
-            nome: "teste card 3",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 3,
-        },
-        {
-            status: "Open",
-            nome: "teste card 4",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 4,
-        },
-        {
-            status: "Open",
-            nome: "teste card 5",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 5,
-        },
-        {
-            status: "Open",
-            nome: "teste card 6",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 6,
-        },
-        {
-            status: "Open",
-            nome: "teste card 7",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 7,
-        },
-        {
-            status: "Open",
-            nome: "teste card 8",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 8,
-        },
+    const [dataProject, setDataProject] = React.useState([])
 
-        {
-            status: "Open",
-            nome: "teste card 8",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 9,
-        },
-    ];
+    async function reqProject() {
+        const data = await api.get("/getAllProjects")
+
+        setDataProject(data.data)
+    }
+
+    React.useEffect(() => {
+        reqProject()
+    }, [])
+
+    console.log(dataProject)
 
     return (
         <div>
@@ -109,16 +40,16 @@ export function Allprojects() {
             <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={1} columnSpacing={0}>
 
 
-                {array.map((item) => {
+                {dataProject.map((item) => {
                     return (
                         <Grid item lg={3.1} key={item.id}>
                             < ProjectCardInfos
                                 status={item.status}
-                                name={item.nome}
-                                area={item.area}
-                                deadLine={item.deadline}
+                                name={item.name}
+                                area={["Role"]}
+                                deadLine={item.aplicationDeadLine}
                                 duration={item.duration}
-                                tags={item.tags}
+                                tags={["Java"]}
                             />
                         </Grid>
                     );

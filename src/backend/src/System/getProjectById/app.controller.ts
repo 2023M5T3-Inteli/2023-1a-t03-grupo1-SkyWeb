@@ -8,14 +8,14 @@ import { DTOBodyGetProjectByUserId } from './DTO/DTOBodyGetProjectByUserId';
 export class ControllerGetProjectById {
     constructor(
         private serviceGetProjectsByUserId: ServiceGetProjectsByUserId,
-    ) {}
+    ) { }
 
     @Get('getProjectByUserId')
     @ApiOperation({ summary: 'Get infos project by id leader' })
     // TODO fazer Api response para sucess e faild
     async getProjectByUserId(@Body() body: DTOBodyGetProjectByUserId) {
-        const { userId } = body;
-        const result = await this.serviceGetProjectsByUserId.execute(userId);
+        const { idUser } = body;
+        const result = await this.serviceGetProjectsByUserId.execute(idUser);
         return result;
     }
 }

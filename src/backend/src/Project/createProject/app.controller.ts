@@ -1,6 +1,6 @@
 import { ServiceCreateProject } from './app.service';
 import { Body, Controller, Post } from '@nestjs/common';
-import { DTOBodyCreateProject } from 'src/Project/createProject/DTO/DTOCreateProject';
+import { DTOBodyCreateProject } from './DTO/DTOCreateProject';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller()

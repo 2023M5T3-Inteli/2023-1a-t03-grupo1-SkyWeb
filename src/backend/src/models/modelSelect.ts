@@ -1,10 +1,15 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import {
+    Injectable,
+    HttpException,
+    HttpStatus,
+    NotAcceptableException,
+} from '@nestjs/common';
 
 import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelSelect {
-    constructor(private prisma: PrismaService) { }
+    constructor(private prisma: PrismaService) {}
 
     async getAllProjects() {
         try {
@@ -53,17 +58,8 @@ export class ModelSelect {
                     Project: { isApproved: true, status: 'Open' },
                 },
                 select: {
-                    Project: {
-                        select: {
-                            name: true,
-                            description: true,
-                            aplicationDeadLine: true,
-                            duration: true,
-                            dateStart: true,
-                            isApproved: true,
-                            status: true,
-                        },
-                    },
+                    Project:  
+                           true 
                 },
             });
 
@@ -136,6 +132,23 @@ export class ModelSelect {
         }
     }
 
+    async getUserById(idUser: number) {
+        try {
+            const user = await this.prisma.user.findUnique({
+                where: { id: idUser },
+            });
+
+            return user;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
     async getAllUsersAployed(projectId: number) {
         try {
             const result = await this.prisma.userApplyProject.findMany({
@@ -183,8 +196,7 @@ export class ModelSelect {
                 };
             });
             return jsonResult;
-        } 
-        catch (error) {
+        } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.BAD_REQUEST,
@@ -199,7 +211,7 @@ export class ModelSelect {
         try {
             const result = await this.prisma.user.findUnique({
                 where: {
-                    id: idUser
+                    id: idUser,
                 },
             });
             return result;
@@ -214,12 +226,15 @@ export class ModelSelect {
         }
     }
 
-    async getExistUserAndProjectInSaveProject(idProject: number, idUser: number) {
+    async getExistUserAndProjectInSaveProject(
+        idProject: number,
+        idUser: number,
+    ) {
         try {
             const result = await this.prisma.saveProject.findMany({
                 where: {
                     idProject: idProject,
-                    idUser: idUser
+                    idUser: idUser,
                 },
             });
             return result;
@@ -238,8 +253,12 @@ export class ModelSelect {
         try {
             const result = await this.prisma.saveProject.findMany({
                 where: {
-                    idUser: idUser
+                    idUser: idUser,
                 },
+                select:
+                {
+                    Project:true
+                }
             });
             return result;
         } catch (error) {
@@ -248,22 +267,25 @@ export class ModelSelect {
                     status: HttpStatus.BAD_REQUEST,
                     error: error,
                 },
-                HttpStatus.BAD_REQUEST
+                HttpStatus.BAD_REQUEST,
             );
         }
     }
 
-    async findUserApplyProjectByIdUserAndIdProject(idProject: number, idUser: number, idRole: number) {
+    async findUserApplyProjectByIdUserAndIdProject(
+        idProject: number,
+        idUser: number,
+        idRole: number,
+    ) {
         try {
             const result = await this.prisma.userApplyProject.findMany({
                 where: {
                     idProject,
                     idRole,
-                    idUser
-                }
-            })
+                    idUser,
+                },
+            });
             return result;
-
         } catch (error) {
             throw new HttpException(
                 {
@@ -315,14 +337,17 @@ export class ModelSelect {
             );
         }
     }
-    async findUserApplyProjectByIdRoleAndIdProject(idRole: number, idProject: number) {
+    async findUserApplyProjectByIdRoleAndIdProject(
+        idRole: number,
+        idProject: number,
+    ) {
         try {
             const result = await this.prisma.projectRole.findMany({
                 where: {
                     idProject,
-                    idRole
-                }
-            })
+                    idRole,
+                },
+            });
             return result;
         } catch (error) {
             throw new HttpException(
@@ -339,9 +364,9 @@ export class ModelSelect {
         try {
             const result = await this.prisma.user.findMany({
                 where: {
-                    id: idUser
-                }
-            })
+                    id: idUser,
+                },
+            });
 
             return result;
         } catch (error) {
@@ -351,7 +376,7 @@ export class ModelSelect {
                     error: error,
                 },
 
-                HttpStatus.BAD_REQUEST
+                HttpStatus.BAD_REQUEST,
             );
         }
     }
@@ -360,17 +385,17 @@ export class ModelSelect {
         try {
             const result = await this.prisma.project.findMany({
                 where: {
-                    id: project
-                }
-            })
-            return result
+                    id: project,
+                },
+            });
+            return result;
         } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.BAD_REQUEST,
                     error: error,
                 },
-                HttpStatus.BAD_REQUEST
+                HttpStatus.BAD_REQUEST,
             );
         }
     }
@@ -379,10 +404,10 @@ export class ModelSelect {
         try {
             const result = await this.prisma.role.findMany({
                 where: {
-                    id: role
-                }
-            })
-            return result
+                    id: role,
+                },
+            });
+            return result;
         } catch (error) {
             throw new HttpException(
                 {
@@ -390,7 +415,26 @@ export class ModelSelect {
                     error: error,
                 },
                 HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
 
+    async getUserByEmail(email: string) {
+        try {
+            const result = await this.prisma.user.findMany({
+                where: {
+                    email: email,
+                },
+            });
+
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
             );
         }
     }
