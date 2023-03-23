@@ -100,11 +100,10 @@ export class ServiceAcceptApplyUser {
         ApprovedsInfo.map((val) => {
             const messageApproved = {
                 from: '"SkyWeb Developers - Dell Heroes" <inteliskyweb@gmail.com>', // sender address
-                // to: val.email, // list of receivers
-                to: 'livia.cabral@sou.inteli.edu.br',
+                to: val.email, // list of receivers
+                // to: 'livia.cabral@sou.inteli.edu.br',
                 subject: 'You were accepted ✔', // Subject line
                 text: 'Hello world?', // plain text body
-                // html: `<b>Hello ${val.fullname}, your were approved in the project ${val.projectName} that you applied, visit the Dell Heroes platform to see the details.</b>`, // html body
                 html: ` <!DOCTYPE html>
                         <html>
                         <head>
