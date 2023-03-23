@@ -99,11 +99,42 @@ export class ServiceAcceptApplyUser {
         console.log(projectName);
         ApprovedsInfo.map((val) => {
             const messageApproved = {
-                from: '"SkyWeb 👻" <inteliskyweb@gmail.com>', // sender address
+                from: '"SkyWeb Developers - Dell Heroes" <inteliskyweb@gmail.com>', // sender address
                 to: val.email, // list of receivers
-                subject: 'Project Approved ✔', // Subject line
+                // to: 'livia.cabral@sou.inteli.edu.br',
+                subject: 'You were accepted ✔', // Subject line
                 text: 'Hello world?', // plain text body
-                html: `<b>Hello ${val.fullname}, your were approved in the project ${val.projectName} that you applied, visit "dell heroes website link" to see the details.</b>`, // html body
+                html: ` <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <meta charset="utf-8">
+                            <title>Projeto aprovado Dell Heroes</title>
+                            <header> <img src="https://i.pinimg.com/originals/69/40/d9/6940d928e9da1cf20d2dcd5bf5a98c33.png"></header>
+                            <style>
+                                body {
+                                    font-family: Poppins, sans-serif;
+                                    background-color: #f5f5f5;
+                                    padding: 20px;
+                                }
+                                h1 {
+                                    color: #0672CB;
+                                    font-size: 24px;
+                                    margin-bottom: 20px;
+                                }
+                                p {
+                                    color: #666666;
+                                    font-size: 16px;
+                                    line-height: 1.5;
+                                    margin-bottom: 20px;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <h1>Hello ${val.fullname}!</h1>
+                            <p> <strong> Good news! </strong> Your application to the project <strong> ${val.projectName} </strong> were accepted! Visit "dell heroes website link" to see the details. </p>
+                        </body>
+                        </html>
+                        `,
             };
             let mailsent = transporter.sendMail(messageApproved);
             return mailsent;
