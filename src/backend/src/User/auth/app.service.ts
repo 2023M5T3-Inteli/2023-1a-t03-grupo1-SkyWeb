@@ -13,6 +13,7 @@ export class AuthServices {
         const payload = { sub: user.id };
 
         return {
+            user: user,
             token: this.jwtServices.sign(payload),
         };
     }

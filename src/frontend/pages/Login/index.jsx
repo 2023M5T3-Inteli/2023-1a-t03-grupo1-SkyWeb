@@ -1,20 +1,45 @@
-import { TextField, Container, Box, Button } from "@mui/material"
+import { TextField, Container, Box, Button, Typography } from "@mui/material"
 import { NavbarHome } from "../../components/navbarHome"
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import { Navigate, redirect, useNavigate } from "react-router-dom";
+import api from "../../api";
 
 export function Login() {
+    const ref = useRef(null)
 
-    const [textFieldValue, setTextFieldValue] = useState('');
+    const [stateError, setStateError] = useState(false)
+
     const navigate = useNavigate()
 
-    const handleTextFieldChange = ((event) => {
-        setTextFieldValue(event.target.value);
-    });
+    useEffect(() => {
+        const token = localStorage.getItem("token")
 
-    const loginOk = () => {
+        if (token) {
+            api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+        }
+    }, [])
+
+
+    const loginOk = async () => {
+
         // TODO Fazer as validações de login -> Sugestão utilizar talz react forms
-        return navigate("/Dell/AllProject")
+
+        await api.post("/login", { email: ref.current.value, password: 1 }).catch((res) => {
+
+            setStateError(true)
+
+            setTimeout(() => {
+                setStateError(false)
+            }, 3000)
+
+        }).then((res) => {
+
+            api.defaults.headers.Authorization = `Bearer ${res.data.token}`
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("user", JSON.stringify(res.data.user))
+
+            return navigate("/Dell/AllProject")
+        })
     }
 
     return (
@@ -25,12 +50,14 @@ export function Login() {
 
 
                 <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 4, border: 2, padding: 4, borderRadius: 5, borderColor: "dellBlue.main" }}>
+                    {stateError && <Typography variant="text2" sx={{ color: "red" }}>Email invalido</Typography>}
                     <TextField sx={{}}
                         label="Email"
                         InputProps={{ style: { fontSize: 20, height: 60, width: 330 } }}
                         InputLabelProps={{ style: { fontSize: 20 } }}
-                        value={textFieldValue}
-                        onChange={handleTextFieldChange}
+
+                        inputRef={ref}
+
 
                     />
 

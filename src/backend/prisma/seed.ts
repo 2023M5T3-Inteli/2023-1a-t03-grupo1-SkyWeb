@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 async function main() {
     await prisma.user.create({
         data: {
+            id: 1,
             fullName: 'Gustavo lion',
             email: 'gustavolion@dell.com',
             phoneNumber: 123456789,
@@ -17,6 +18,7 @@ async function main() {
 
     await prisma.user.create({
         data: {
+            id: 2,
             fullName: 'laura silva',
             email: 'laurasilva@dell.com',
             phoneNumber: 123456789,
@@ -29,6 +31,7 @@ async function main() {
 
     await prisma.user.create({
         data: {
+            id: 3,
             fullName: 'Diego souza',
             email: 'diegosouza@dell.com',
             phoneNumber: 123456789,
@@ -41,6 +44,7 @@ async function main() {
 
     await prisma.user.create({
         data: {
+            id: 4,
             fullName: 'gabriela lima',
             email: 'gabielalima@dell.com',
             phoneNumber: 123456789,
@@ -53,6 +57,7 @@ async function main() {
 
     await prisma.user.create({
         data: {
+            id: 5,
             fullName: 'Pedro ninja',
             email: 'pedroninja@dell.com',
             phoneNumber: 123456789,
@@ -65,6 +70,7 @@ async function main() {
 
     await prisma.project.create({
         data: {
+            id: 1,
             name: 'projeto 1',
             description: 'lorem lorem lorem lorem lorem lorem lorem',
             aplicationDeadLine: new Date('August 19,2023'),
@@ -78,6 +84,7 @@ async function main() {
 
     await prisma.project.create({
         data: {
+            id: 2,
             name: 'projeto 2',
             description: 'lorem lorem lorem lorem lorem lorem lorem',
             aplicationDeadLine: new Date('August 19,2023'),
@@ -91,6 +98,7 @@ async function main() {
 
     await prisma.project.create({
         data: {
+            id: 3,
             name: 'projeto 3',
             description: 'lorem lorem lorem lorem lorem lorem lorem',
             aplicationDeadLine: new Date('August 19,2023'),
@@ -102,6 +110,7 @@ async function main() {
 
     await prisma.project.create({
         data: {
+            id: 4,
             name: 'projeto 4',
             description: 'lorem lorem lorem lorem lorem lorem lorem',
             aplicationDeadLine: new Date('August 19,2023'),
@@ -113,6 +122,7 @@ async function main() {
 
     await prisma.project.create({
         data: {
+            id: 5,
             name: 'projeto 5',
             description: 'lorem lorem lorem lorem lorem lorem lorem',
             aplicationDeadLine: new Date('August 19,2023'),
