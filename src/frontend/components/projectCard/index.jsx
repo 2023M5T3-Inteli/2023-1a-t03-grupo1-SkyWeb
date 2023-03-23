@@ -7,7 +7,7 @@ import { Box, Container } from '@mui/material';
 import { useState } from 'react';
 
 
-export function ProjectCardInfos({ name, deadLine, area, duration, tags, status }) {
+export function ProjectCardInfos({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject }) {
 
     const [open, setOpen] = useState(false)
 
@@ -19,7 +19,12 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status 
         setOpen(true)
     }
 
-    console.log(open)
+    let deadLine_ = new Date(deadLine)
+    let dateStart_ = new Date(dateStart)
+
+    deadLine_ = deadLine_.getDate() + " / 0" + deadLine_.getMonth() + " / " + deadLine_.getFullYear()
+    dateStart_ = dateStart_.getDate() + " / 0" + dateStart_.getMonth() + " / " + dateStart_.getFullYear()
+
 
     return (
         <Card sx={{ minWidth: 340, maxWidth: 340, marginLeft: 5, marginBottom: 5 }}>
@@ -28,14 +33,19 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status 
                 <ModalProjectInfo
                     nameProject={name}
                     tags={tags}
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, fuga. Veritatis nemo maiores pariatur illum quidem voluptates, suscipit nobis dolore porro rerum molestiae consequuntur error explicabo culpa? Dicta, odio accusamus."
+                    description={description}
 
                     status={status}
-                    leader="Abner Silva"
+                    leader={leader}
                     duration={duration}
-                    startDate="29/03/2023"
+                    startDate={dateStart_}
                     isOpen={open}
-                    handleClose={handleClose} />
+                    handleClose={handleClose}
+                    idUser={idUser}
+                    idProject={idProject}
+                    roles={roles}
+                    userApplyProject={userApplyProject}
+                />
             </Container>
 
             <CardActionArea onClick={handleOpen}>
@@ -43,16 +53,27 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status 
                 <CardContent>
 
                     <Box component="div" sx={{ justifyContent: "space-between", display: "flex", alignItems: "center" }}>
+
                         <Typography variant="title3" sx={{ display: "inline-flex", alignItems: 'center' }}>
                             {name}
                         </Typography>
-                        <Typography variant="title4" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "tagOpen.main", boxShadow: 2 }}>
+
+                        {status === "Open" && <Typography variant="title4" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "tagOpen.main", boxShadow: 2 }}>
                             {status}
-                        </Typography>
+                        </Typography>}
+
+                        {status === "Closed" && <Typography variant="title4" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "tagClosed.main", boxShadow: 2 }}>
+                            {status}
+                        </Typography>}
+
+                        {status === "Done" && <Typography variant="title4" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center", borderRadius: 1.5, backgroundColor: "doneInactive.main", boxShadow: 2 }}>
+                            {status}
+                        </Typography>}
+
                     </Box>
 
                     <Typography variant="subtitle2" sx={{ color: "deadlinePending.main", lineHeight: 2, marginTop: 1.5 }}>
-                        <strong>Deadline: {deadLine} </strong>
+                        <strong>Deadline: {deadLine_} </strong>
                     </Typography>
                     <Typography variant="subtitle2" sx={{ color: "black.main", lineHeight: 2 }}>
                         <p><strong>Area:</strong> {area} </p>

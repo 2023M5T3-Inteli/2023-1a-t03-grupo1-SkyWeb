@@ -17,9 +17,73 @@ export class ModelSelect {
                 where: {
                     isApproved: true,
                 },
+                select: {
+                    id: true,
+                    idUser: true,
+                    name: true,
+                    description: true,
+                    duration: true,
+                    status: true,
+                    aplicationDeadLine: true,
+                    dateStart: true,
+                    User: {
+                        select: {
+                            fullName: true,
+                        },
+                    },
+                    projectTag: {
+                        select: {
+                            Tag: {
+                                select: {
+                                    name: true,
+                                },
+                            },
+                        },
+                    },
+
+                    projectRole: {
+                        select: {
+                            Role: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                },
+                            },
+                        },
+                    },
+
+                    userApplyProject: {
+                        select: {
+                            idUser: true,
+                        },
+                    },
+                },
             });
 
-            return result;
+            const jsonResult = result.map((item) => {
+                return {
+                    id: item.id,
+                    idUser: item.idUser,
+                    name: item.name,
+                    description: item.description,
+                    duration: item.duration,
+                    status: item.status,
+                    aplicationDeadLine: item.aplicationDeadLine,
+                    dateStart: item.dateStart,
+                    leader: item.User.fullName,
+                    projectTag: item.projectTag.map((item) => {
+                        return item.Tag.name;
+                    }),
+                    projectRole: item.projectRole.map((item) => {
+                        return { id: item.Role.id, name: item.Role.name };
+                    }),
+                    userApplyProject: item.userApplyProject.map((item) => {
+                        return { id: item.idUser };
+                    }),
+                };
+            });
+
+            return jsonResult;
         } catch (error) {
             throw new HttpException(
                 {
@@ -58,8 +122,7 @@ export class ModelSelect {
                     Project: { isApproved: true, status: 'Open' },
                 },
                 select: {
-                    Project:  
-                           true 
+                    Project: true,
                 },
             });
 
@@ -255,10 +318,9 @@ export class ModelSelect {
                 where: {
                     idUser: idUser,
                 },
-                select:
-                {
-                    Project:true
-                }
+                select: {
+                    Project: true,
+                },
             });
             return result;
         } catch (error) {

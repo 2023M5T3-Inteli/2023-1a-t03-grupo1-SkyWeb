@@ -22,6 +22,6 @@ export class ControllerGetAllProject {
     @ApiOperation({ summary: `get all projects from database` })
     async getAllProjects() {
         const projects = await this.serviceGetAllProjects.execute();
-        return HttpStatus.OK;
+        return projects;
     }
 }

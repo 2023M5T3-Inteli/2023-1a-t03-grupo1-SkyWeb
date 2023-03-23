@@ -12,7 +12,7 @@ export function Login() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const token = localStorage.getItem("token")
+        const token = JSON.stringify(localStorage.getItem("token"))
 
         if (token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`

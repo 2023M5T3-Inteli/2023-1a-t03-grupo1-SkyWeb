@@ -1,28 +1,34 @@
-import * as React from 'react';
 import { Container, Grid, Typography } from "@mui/material";
 import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
 import { ModalProjectInfo } from '../../components/modalProjectInfo';
 import { Box } from '@mui/system';
 import api from '../../api';
+import { useState, useEffect } from "react";
 
 
 
 export function Allprojects() {
 
-    const [dataProject, setDataProject] = React.useState([])
+    const [dataProject, setDataProject] = useState([])
 
     async function reqProject() {
         const data = await api.get("/getAllProjects")
-
         setDataProject(data.data)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
+        const token = JSON.stringify(localStorage.getItem("token"))
+
+        if (token) {
+            api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+        }
         reqProject()
     }, [])
 
     console.log(dataProject)
+
+
 
     return (
         <div>
@@ -37,19 +43,27 @@ export function Allprojects() {
                 <Filter />
             </Box>
 
-            <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={1} columnSpacing={0}>
+            <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={4} columnSpacing={0}>
 
 
                 {dataProject.map((item) => {
                     return (
-                        <Grid item lg={3.1} key={item.id}>
+                        <Grid item lg={3.5} key={item.id}>
                             < ProjectCardInfos
                                 status={item.status}
                                 name={item.name}
-                                area={["Role"]}
+                                idProject={item.id}
+                                area={"Tech"}
                                 deadLine={item.aplicationDeadLine}
                                 duration={item.duration}
-                                tags={["Java"]}
+                                tags={item.projectTag}
+                                description={item.description}
+                                leader={item.leader}
+                                dateStart={item.dateStart}
+                                idUser={item.idUser}
+                                roles={item.projectRole}
+                                userApplyProject={item.userApplyProject}
+
                             />
                         </Grid>
                     );

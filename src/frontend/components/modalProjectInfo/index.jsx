@@ -1,13 +1,50 @@
-import { Box, Button, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import api from "../../api";
+import ConfirmApplyProjectModal from "../modalConfirmApplyProject/confirmApply"
 
-export function ModalProjectInfo({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose }) {
+export function ModalProjectInfo({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose, idUser, roles, idProject, userApplyProject }) {
+
+    const [isApply, setIsApply] = useState(true)
+    const [modalVisibleApply, setModalVisibleApply] = useState(false);
+    const [errorSameApply, setErrorSameApply] = useState(false)
+    const refSelect = useRef(null)
+
+    const { id } = JSON.parse(localStorage.getItem("user"))
+
+
+
+    if (idUser === id) {
+        setIsApply(false)
+    }
+
+    function handleModalVisibleApply() {
+        setModalVisibleApply(!modalVisibleApply);
+    }
+
+    async function applyUser() {
+
+        await api.post("/applyProject", { idProject: idProject, idUser: id, idRole: refSelect.current.value }).then(() => {
+            handleModalVisibleApply()
+            handleClose()
+
+        }).catch((e) => {
+            if (e.response.status === 300) {
+                setErrorSameApply(true)
+
+                setTimeout(() => {
+                    setErrorSameApply(false)
+                }, 3000)
+            }
+        })
+
+    }
+
+
 
     return (
         <div>
-
-
             <Modal
                 open={isOpen}
                 onClose={handleClose}
@@ -16,18 +53,32 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
             >
 
                 <Grid container sx={{ display: "flex", justifyContent: "center", marginTop: "10%", position: "relative" }}>
-                    <Box sx={{ display: "flex", width: 670, height: 420, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
-
-
-
+                    <Box sx={{ display: "flex", width: 670, height: 460, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
                         <Grid item lg={7}>
                             <Container sx={{ padding: 2 }}>
                                 <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center", gap: 1.5 }}>
-                                    <Box component="div" sx={{ backgroundColor: "tagOpen.main", padding: 1, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2 }}>
-                                        <Typography variant="title3" sx={{ color: "#ffffff" }}>
-                                            {status}
-                                        </Typography>
-                                    </Box>
+
+                                    {status === "Open" &&
+                                        <Box component="div" sx={{ backgroundColor: "tagOpen.main", padding: 1, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2 }}>
+                                            <Typography variant="title3" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center" }}>
+                                                {status}
+                                            </Typography>
+                                        </Box>}
+
+                                    {status === "Closed" &&
+                                        <Box component="div" sx={{ backgroundColor: "tagClosed.main", padding: 1, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2 }}>
+                                            <Typography variant="title3" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center" }}>
+                                                {status}
+                                            </Typography>
+                                        </Box>}
+
+                                    {status === "Done" &&
+                                        <Box component="div" sx={{ backgroundColor: "doneInactive.main", padding: 1, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 2, textAlign: "center" }}>
+                                            <Typography variant="title3" sx={{ marginRight: 1.3, color: "white.main", display: "inline-flex", alignItems: 'center', height: 32, width: 70, justifyContent: "center" }}>
+                                                {status}
+                                            </Typography>
+                                        </Box>}
+
                                     <Typography variant="title2">
                                         {nameProject}
                                     </Typography>
@@ -86,15 +137,47 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                                     </Box>
                                 </Box>
 
+                                {status === "Done" &&
+                                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 592, height: 200 }}>
+                                        <Typography variant="title3">This project is already finished</Typography>
+                                    </Box>}
 
+                                {status === "Closed" &&
+                                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 592, height: 200 }}>
+                                        <Typography variant="title3">This project is no longer receiving applications</Typography>
+                                    </Box>}
+
+                                {status === "Open" && <Box sx={{ backgroundColor: "#e3e1e1", width: 572, marginTop: 5, padding: 2, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                                    {errorSameApply && <Typography variant="title4" color="error.main">You already applied to this project!</Typography>}
+                                    <FormControl sx={{ backgroundColor: "#ffffff", width: 400 }}>
+                                        <InputLabel id="">Areas</InputLabel>
+                                        <Select
+                                            inputRef={refSelect}
+                                            label="Areas"
+                                        >
+                                            {roles.map((item) => {
+                                                return <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
+                                            })}
+                                        </Select>
+                                    </FormControl>
+
+                                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                                        <Checkbox />
+                                        <Typography variant="text4">My manager is aware and according to my participation in the project</Typography>
+                                    </Box>
+
+                                    <Box>
+                                        <Button onClick={applyUser} sx={{ color: "doneInactive.main", backgroundColor: "inactiveCard.main" }}>Apply Now</Button>
+                                    </Box>
+                                </Box>}
 
 
                             </Container>
                         </Grid>
 
-                        <Grid item lg={5} sx={{ display: "flex", justifyContent: "end", alignItems: "center" }}>
+                        <Grid item lg={5} sx={{ display: "flex", alignItems: "center", marginBottom: 22 }}>
 
-                            <Box sx={{ position: "absolute", top: "5%", right: "36%" }}>
+                            <Box sx={{ position: "absolute", top: "5%", right: "30%" }}>
                                 <Button onClick={handleClose} sx={{ fontSize: 18 }}>X</Button>
                             </Box>
 
@@ -116,9 +199,15 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
 
 
                     </Box>
+
+
                 </Grid>
 
-            </Modal>
-        </div>
+            </Modal >
+
+            {modalVisibleApply && <ConfirmApplyProjectModal handleModalVisibleApply={handleModalVisibleApply} />
+            }
+
+        </div >
     )
 }
