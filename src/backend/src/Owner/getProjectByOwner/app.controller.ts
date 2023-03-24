@@ -11,7 +11,6 @@ export class ControllerGetProjectByOwner {
 
     @Get('projectsowner/:idOwner')
     async projectsowner(@Param() params) {
-        console.log(params);
         const result = await this.serviceGetProjectByOwner.execute(
             Number(params.idOwner),
         );

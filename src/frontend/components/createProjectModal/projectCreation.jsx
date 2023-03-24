@@ -87,13 +87,15 @@ export function ModalCreateProject({ _open, _handleClose }) {
 
         const { id, idManager } = JSON.parse(localStorage.getItem("user"))
 
+        // refStatusProject.current.value
+
         await api.post("/createProject", {
             name: refNameProject.current.value,
             description: refDescriptionProject.current.value,
             aplicationDeadLine: new Date(refDeadLineProject.current.value),
             dateStart: new Date(refStartDateProject.current.value),
             duration: refDurationProject.current.value,
-            status: refStatusProject.current.value,
+            status: "Open",
             idUser: id,
             idManager: idManager,
             idTag: tagArray,

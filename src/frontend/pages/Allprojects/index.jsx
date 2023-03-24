@@ -26,6 +26,8 @@ export function Allprojects() {
         reqProject()
     }, [])
 
+    console.log(dataProject)
+
 
 
 

@@ -1,11 +1,12 @@
-import * as React from 'react';
 import { Box, Container } from "@mui/system"
 import styled from 'styled-components'; //Usei Styled Components
 import userProfile from '../../assets/images/chloe-price.png';
 import { Link } from 'react-router-dom';
 import { ModalCreateProject } from "../createProjectModal/projectCreation"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import '../../style.css';
+
+
 
 //Div do menu
 const Sidebar = styled.div`
@@ -20,13 +21,13 @@ min-width: max-content;
 
 //Botão do perfil
 const ProfileContainer = styled.button`
-padding: 1.8rem;
+padding: 1.2rem;
 display: flex;
 align-items: center;
 background-color: #fff;
 box-shadow: .2rem .2rem .2rem #555;
 border-radius: .6rem;
-width: 70%;
+width: 120%;
 outline: none;
 border: none;
 margin-top: 3rem;
@@ -118,6 +119,16 @@ padding-bottom: 1rem;
 //Componente
 export function Menu(props) {
 
+    const { isManager } = JSON.parse(localStorage.getItem("user"))
+
+    const [state, setState] = useState(false)
+
+    useEffect(() => {
+        if (isManager) {
+            setState(true)
+        }
+    }, [])
+
     const [modalVisibleCreateProject, setModalVisibleCreateProject] = useState(false)
 
     function handleModalVisibleCreateProject() {
@@ -126,27 +137,29 @@ export function Menu(props) {
 
     return (
         <Sidebar>
-            <ProfileContainer>
-                <Link to="/Dell/Profile">
-                    <UserImage>
+            <Link to="/Dell/Profile">
+                <div style={{ width: 210, marginRight: 70 }}>
+                    <ProfileContainer>
+                        <UserImage>
 
-                    </UserImage>
-                </Link>
-                <NameRoleWrapper>
-                    <UserName>{props.userName}</UserName>
-                    <UserRole>{props.userRole}</UserRole>
-                </NameRoleWrapper>
-            </ProfileContainer>
+                        </UserImage>
+                        <NameRoleWrapper>
+                            <UserName>{props.userName}</UserName>
+                            <UserRole>{props.userRole}</UserRole>
+                        </NameRoleWrapper>
+                    </ProfileContainer>
+                </div>
+            </Link>
             <Nav>
                 <SidebarItem to='home'>My Dashboard</SidebarItem>
                 <SidebarItem to='Allproject'>All Projects</SidebarItem>
-                <SidebarItem to='manager'>Manager Pannel</SidebarItem>
+                {state && <SidebarItem to='manager'>Manager Pannel</SidebarItem>}
                 <SidebarItem to='about'>About</SidebarItem>
                 <SidebarItem to='faq'>FAQ</SidebarItem>
             </Nav>
             <BottomWrapper>
                 <BringButton onClick={handleModalVisibleCreateProject}>Bring your project</BringButton>
-                <Leave>Leave</Leave>
+                <Leave to="/">Leave</Leave>
             </BottomWrapper>
             <ModalCreateProject _open={modalVisibleCreateProject} _handleClose={handleModalVisibleCreateProject} />
         </Sidebar>

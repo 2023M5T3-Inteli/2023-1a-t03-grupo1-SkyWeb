@@ -4,44 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import api from "../../api";
 import ConfirmApplyProjectModal from "../modalConfirmApplyProject/confirmApply"
 
-export function ModalProjectInfoPeding({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose, idUser, roles, idProject, userApplyProject }) {
+export function ModalProjectInfoPeding({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose, idUser, roles, idProject, userApplyProject, isApproved }) {
 
     const [isApply, setIsApply] = useState(true)
     const [modalVisibleApply, setModalVisibleApply] = useState(false);
     const [errorSameApply, setErrorSameApply] = useState(false)
     const refSelect = useRef(null)
 
-    const { id } = JSON.parse(localStorage.getItem("user"))
+    const { id, idManager } = JSON.parse(localStorage.getItem("user"))
 
-
-
-    useEffect(() => {
-
-        if (idUser === id) {
-            setIsApply(false)
-        }
-    }, [])
-
-    function handleModalVisibleApply() {
-        setModalVisibleApply(!modalVisibleApply);
-    }
-
-    async function applyUser() {
-
-        await api.post("/applyProject", { idProject: idProject, idUser: id, idRole: refSelect.current.value }).then(() => {
-            handleModalVisibleApply()
+    async function approvalProject(isApproved) {
+        await api.put("/approvalProject", { idManager: idManager, idProject: idProject, isApproved: isApproved }).then(() => {
             handleClose()
-
-        }).catch((e) => {
-            if (e.response.status === 300) {
-                setErrorSameApply(true)
-
-                setTimeout(() => {
-                    setErrorSameApply(false)
-                }, 3000)
-            }
-        })
-
+        }).catch(e => alert(e))
     }
 
 
@@ -140,39 +115,13 @@ export function ModalProjectInfoPeding({ nameProject, tags, description, status,
                                     </Box>
                                 </Box>
 
-                                {status === "Done" &&
-                                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 592, height: 200 }}>
-                                        <Typography variant="title3">This project is already finished</Typography>
-                                    </Box>}
+                                {isApproved === null &&
 
-                                {status === "Closed" &&
-                                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 592, height: 200 }}>
-                                        <Typography variant="title3">This project is no longer receiving applications</Typography>
-                                    </Box>}
-
-                                {status === "Open" && isApply && <Box sx={{ backgroundColor: "#e3e1e1", width: 572, marginTop: 5, padding: 2, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                                    {errorSameApply && <Typography variant="title4" color="error.main">You already applied to this project!</Typography>}
-                                    <FormControl sx={{ backgroundColor: "#ffffff", width: 400 }}>
-                                        <InputLabel id="">Areas</InputLabel>
-                                        <Select
-                                            inputRef={refSelect}
-                                            label="Areas"
-                                        >
-                                            {roles.map((item) => {
-                                                return <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
-                                            })}
-                                        </Select>
-                                    </FormControl>
-
-                                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                                        <Checkbox />
-                                        <Typography variant="text4">My manager is aware and according to my participation in the project</Typography>
+                                    <Box sx={{ display: "flex", justifyContent: "space-around", width: 600, marginTop: "25%" }}>
+                                        <Button onClick={() => { approvalProject(true) }} sx={{ backgroundColor: "sucess.main", color: "white.main", width: 100, height: 40 }}>accept</Button>
+                                        <Button onClick={() => { approvalProject(false) }} sx={{ backgroundColor: "error.main", color: "white.main", width: 100, height: 40 }} >Denied</Button>
                                     </Box>
-
-                                    <Box>
-                                        <Button onClick={applyUser} sx={{ color: "doneInactive.main", backgroundColor: "inactiveCard.main" }}>Apply Now</Button>
-                                    </Box>
-                                </Box>}
+                                }
 
 
                             </Container>

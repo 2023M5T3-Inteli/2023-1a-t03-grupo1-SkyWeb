@@ -17,23 +17,16 @@ import api from "../../api";
 
 export function Manager() {
 
-  const [dataProject, setDataProject] = useState([])
+  const { isManager } = JSON.parse(localStorage.getItem("user"))
 
-  const { idManager } = JSON.parse(localStorage.getItem("user"))
+  const [state, setState] = useState(false)
 
-  async function reqProjectbyManager() {
-
-    await api.get(`/projectsowner/${idManager}`).then((item) => {
-      setDataProject(item.data)
-    }).catch((e) => {
-      alert(e)
-    })
-
-  }
 
   useEffect(() => {
-    reqProjectbyManager()
-  }, [])
+    if (isManager != true) {
+      setState(true)
+    }
+  })
 
 
 
@@ -82,7 +75,7 @@ export function Manager() {
   }
 
 
-
+  if (state) return <Typography variant="title1">You don't have permission for acess this page</Typography>
 
   return (
     <Container >
@@ -108,57 +101,14 @@ export function Manager() {
             </Box>
 
 
-            <ContainerPending datas={dataProject} />
+            <ContainerPending />
           </Container>
         </Grid>
 
 
 
 
-        {/* Remove person confirmation modal */}
-        <button onClick={handleModalVisible}>Modal Remove Person</button>
 
-        {
-          modalVisible &&
-          <RemovePersonModal handleModalVisible={handleModalVisible} name="Livia Bonotto" />
-        }
-
-
-        {/* Create project confirmation modal */}
-        <button onClick={handleModalVisibleProject}>Modal Confirm Project</button>
-
-        {
-          modalVisibleProject &&
-          <ConfirmCreateProjectModal handleModalVisibleProject={handleModalVisibleProject} />
-        }
-
-
-        {/* Delete project confirmation modal */}
-        <button onClick={handleModalVisibleDelete}> Modal Delete Project </button>
-        {
-          modalVisibleDelete &&
-          <ConfirmDeleteProjectModal handleModalVisibleDelete={handleModalVisibleDelete} projectName="Backoffice" />
-        }
-
-
-        {/* Apply project confirmation modal */}
-        <button onClick={handleModalVisibleApply}> Modal Apply Project </button>
-        {
-          modalVisibleApply &&
-          <ConfirmApplyProjectModal handleModalVisibleApply={handleModalVisibleApply} />
-        }
-
-
-        {/* Cancel application confirmation modal */}
-        <button onClick={handleModalVisibleCancelApply}> Modal cancel application </button>
-        {
-          modalVisibleCancel &&
-          <CancelApplyProject handleModalVisibleCancelApply={handleModalVisibleCancelApply} projectName="Backoffice" />
-        }
-
-        {/* <AlertDialogSlide>
-
-        </AlertDialogSlide> */}
 
 
 
@@ -173,7 +123,7 @@ export function Manager() {
                 </Typography>
                 <Box component="div" sx={{ width: 325, height: 7, backgroundColor: "tagOpen.main", borderRadius: 6 }} />
               </Box>
-              {/* <ContainerApproved /> */}
+              <ContainerApproved />
             </Container>
 
           </Grid>
@@ -187,7 +137,7 @@ export function Manager() {
                 </Typography>
                 <Box component="div" sx={{ width: 345, height: 7, backgroundColor: "tagClosed.main", borderRadius: 6 }} />
               </Box>
-              {/* <ContainerDennied /> */}
+              <ContainerDennied />
             </Container>
           </Grid>
 

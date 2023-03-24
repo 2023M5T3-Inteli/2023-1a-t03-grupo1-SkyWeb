@@ -6,13 +6,32 @@ import { ProjectCardInfosManager } from "../projectCardManager";
 import api from "../../api";
 
 
-export function ContainerPending({ datas }) {
+export function ContainerPending({ }) {
 
   // TODO fazer requisição os projetos do manager logado
 
-  console.log(datas)
+  const [dataProject, setDataProject] = useState([])
+
+  const { idManager } = JSON.parse(localStorage.getItem("user"))
+
+  async function reqProjectbyManager() {
+
+    await api.get(`/projectsowner/${idManager}`).then((item) => {
+      const filter = item.data.filter(item => item.isApproved === null)
+      setDataProject(filter)
+    }).catch((e) => {
+      alert(e)
+    })
+
+  }
+
+  useEffect(() => {
+    reqProjectbyManager()
+  }, [])
 
 
+
+  console.log(dataProject)
 
 
   return (
@@ -20,21 +39,29 @@ export function ContainerPending({ datas }) {
     <Container sx={{ background: "rgba(215, 215, 215, 0.45)" }}>
       <Grid item sx={{ overflowX: "auto" }} >
         <Box sx={{ display: "flex", marginTop: 5 }}>
-          {/* {array.map((item) => {
+          {dataProject.map((item) => {
             return (
               <div key={item.id}>
                 < ProjectCardInfosManager
+                  isApproved={item.isApproved}
                   status={item.status}
-                  name={item.nome}
-                  area={item.area}
-                  deadLine={item.deadline}
+                  name={item.name}
+                  idProject={item.id}
+                  area={"Tech"}
+                  deadLine={item.aplicationDeadLine}
                   duration={item.duration}
-                  tags={item.tags}
+                  tags={item.projectTag}
+                  description={item.description}
+                  leader={item.leader}
+                  dateStart={item.dateStart}
+                  idUser={item.idUser}
+                  roles={item.projectRole}
+                  userApplyProject={item.userApplyProject}
                 />
 
               </div>
             );
-          })} */}
+          })}
         </Box>
       </Grid>
     </Container>
