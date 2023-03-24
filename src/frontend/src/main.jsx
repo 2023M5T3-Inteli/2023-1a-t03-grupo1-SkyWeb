@@ -13,6 +13,8 @@ import { theme } from "../themes/theme"
 import { Allprojects } from '../pages/Allprojects'
 import { Login } from '../pages/Login'
 import { Profile } from '../pages/Profile'
+import { Dashboard } from '../pages/Dashboard'
+
 
 const queryClient = new QueryClient()
 
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/Manager",
     element: <Manager />,
+  },
+  {
+    path: "/Dashboard",
+    element: <Dashboard/>,
   },
   {
     path: "/test",
@@ -47,16 +53,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: "Manager",
-        element: <Manager />,
+        element: <Manager name="Chloe"/>,
       },
       {
         path: "AllProject",
         element: <Allprojects />
       },
-      // {
-      //   path: "Modal",
-      //   element: <AlertDialogSlide/>
-      // },
+      {
+        path: "Dashboard",
+        element: <Dashboard/>
+      },
       {
         path: "Profile",
         element: <Profile />
