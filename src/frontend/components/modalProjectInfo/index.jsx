@@ -101,7 +101,6 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                                         })}
                                     </Grid>
 
-
                                 </Box>
 
                                 <Box sx={{ width: 250, display: "flex", flexDirection: "column", gap: 1.2 }}>

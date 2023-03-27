@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "install": "^0.13.0"
+    "i": "^0.3.7",
+    "install": "^0.13.0",
+    "vitee": "^1.0.4"
   }
 }

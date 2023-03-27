@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
 import { ModalProjectInfo } from '../../components/modalProjectInfo';
+import { ModalProjectAplly } from '../../components/modalApllyproject'
 import { Box } from '@mui/system';
 import api from '../../api';
 import { useState, useEffect } from "react";
@@ -46,6 +47,19 @@ export function Allprojects() {
 
             <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={4} columnSpacing={0}>
 
+                <ModalProjectAplly
+                    nameProject="hello"
+                    tags={["Python", "Java", "SCRUM"]}
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, fuga. Veritatis nemo maiores pariatur illum quidem voluptates, suscipit nobis dolore porro rerum molestiae consequuntur error explicabo culpa? Dicta, odio accusamus."
+
+                    status="Progress"
+                    leader="Abner Silva"
+                    duration="3 Months"
+                    startDate="29/03/2023" 
+                
+                />
+                
+            
 
                 {dataProject.map((item) => {
                     return (
