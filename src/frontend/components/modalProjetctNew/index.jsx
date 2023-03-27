@@ -1,20 +1,12 @@
 import * as React from 'react';
 import { Paper, Grid, TextField, IconButton, Button, Dialog, DialogActions, DialogContent, DialogContentText, Avatar, useMediaQuery, useTheme, Typography, Box, Autocomplete } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { Close, Delete } from '@mui/icons-material/'
 import { styled } from "@mui/material/styles";
 
 
 
 export function ResponsiveDialog() {
-    const GreyGrid = styled(Grid)(({ theme }) => ({
-
-        borderBottom: `1px solid ${theme.palette.grey[300]}`,
-        padding: theme.spacing(2),
-        ":first-of-type": {
-            backgroundColor: theme.palette.grey[300],
-        },
-
-    }));
 
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
@@ -54,6 +46,15 @@ export function ResponsiveDialog() {
                 <DialogContent sx={{ backgroundColor: "cardBackground" }} >
                     <DialogContentText >
 
+                        <DialogActions>
+                            <Button autoFocus onClick={handleClose} >
+                                <Delete />
+                            </Button>
+                            <Button onClick={handleClose} autoFocus>
+                                <Close />
+                            </Button>
+                        </DialogActions>
+
                         <Grid container spacing={2}>
                             <Grid item sm={12}>
                                 <div id="tags" style={{ display: "flex", justifyContent: "left", width: "100%" }}>
@@ -70,19 +71,19 @@ export function ResponsiveDialog() {
                             </Grid>
                             <Grid item lg={6}>
                                 
-                                    <Typography variant="title4">Project description</Typography>
-                                    <br />
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                                <Typography variant="title4">Project description</Typography>
+                                <br />
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
                               
                             </Grid>
 
                             <Grid item lg={3}>
                                 
-                                    <Typography variant="title4">Project Status</Typography><br />
-                                    New project<br />
+                                <Typography variant="title4">Project Status</Typography><br />
+                                New project<br />
 
-                                    <Typography variant="title4">Team</Typography><br />
-                                    2 Developers, 1 Designer, 1 QA<br />
+                                <Typography variant="title4">Team</Typography><br />
+                                2 Developers, 1 Designer, 1 QA<br />
                             </Grid>
 
                             <Grid item lg={3}>
@@ -111,10 +112,10 @@ export function ResponsiveDialog() {
                             </Grid>
 
                             <Grid item lg={12}>
-                                <Paper style={{width:"100%", height:"300px"}} >
+                                <Paper style={{width:"100%", height:"300px", overflowY:"scroll" }} >
                                     <Grid container spacing={2}>
                                         <Grid item lg={3}>
-                                            <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Profile</Typography>
+                                            <Typography variant="title4" sx={{ paddingLeft: "10px" }}>Profile</Typography>
                                         </Grid>
                                         <Grid item lg={3}>
                                             <Typography variant="title4"> Chosen areas</Typography>
@@ -127,7 +128,7 @@ export function ResponsiveDialog() {
                                         </Grid>
                                         
                                         <Grid item lg={3} style={{display:"flex", alignItems:"center" }}>
-                                            <Avatar src='imagens\game.jpg'></Avatar>
+                                            <Avatar sx={{ marginLeft: "5px" }} src='imagens\game.jpg'></Avatar>
                                             <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Chloe Price</Typography><br></br>
                                             
                                         </Grid>
@@ -162,16 +163,6 @@ export function ResponsiveDialog() {
                         </Grid>       
                     </DialogContentText>
                 </DialogContent>
-
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
-                        Fechar
-                    </Button>
-                    <Button onClick={handleClose} autoFocus>
-                        Abrir
-                    </Button>
-                </DialogActions>
-
             </Dialog>
         </div>
     );
