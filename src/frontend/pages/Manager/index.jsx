@@ -4,7 +4,7 @@ import { ManagerHeader } from "../../components/managerHeader";
 import { ContainerPending } from "../../components/containerPending";
 import { ContainerApproved } from "../../components/containerApproved";
 import { ContainerDennied } from "../../components/containerDennied";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ModalCreateProject } from "../../components/createProjectModal/projectCreation"
 import RemovePersonModal from "../../components/modalConfirmRemoveUser/confirmRemoveUser";
 import ConfirmCreateProjectModal from "../../components/modalConfirmCreation/createProject";
@@ -12,9 +12,21 @@ import ConfirmDeleteProjectModal from "../../components/modalConfirmDeleteProjec
 import ConfirmApplyProjectModal from "../../components/modalConfirmApplyProject/confirmApply";
 import CancelApplyProject from "../../components/modalConfirmCancelApply/confirmCancelApply";
 import { AlertDialogSlide } from "../../components/confirmModal";
+import api from "../../api";
 
 
 export function Manager() {
+
+  const { isManager } = JSON.parse(sessionStorage.getItem("user"))
+
+  const [state, setState] = useState(false)
+
+
+  useEffect(() => {
+    if (isManager != true) {
+      setState(true)
+    }
+  })
 
 
 
@@ -39,7 +51,7 @@ export function Manager() {
   //Delete project confirmation modal
   const [modalVisibleDelete, setModalVisibleDelete] = useState(false);
 
-  function handleModalVisibleDelete(){
+  function handleModalVisibleDelete() {
     setModalVisibleDelete(!modalVisibleDelete);
     console.log(modalVisibleDelete)
   }
@@ -48,7 +60,7 @@ export function Manager() {
   //Apply project confirmation modal
   const [modalVisibleApply, setModalVisibleApply] = useState(false);
 
-  function handleModalVisibleApply(){
+  function handleModalVisibleApply() {
     setModalVisibleApply(!modalVisibleApply);
     console.log(modalVisibleApply)
   }
@@ -57,11 +69,13 @@ export function Manager() {
   //Cancel application confirmation modal
   const [modalVisibleCancel, setModalVisibleCancel] = useState(false);
 
-  function handleModalVisibleCancelApply(){
+  function handleModalVisibleCancelApply() {
     setModalVisibleCancel(!modalVisibleCancel);
     console.log(modalVisibleCancel)
   }
 
+
+  if (state) return <Typography variant="title1">You don't have permission for acess this page</Typography>
 
   return (
     <Container >
@@ -94,55 +108,7 @@ export function Manager() {
 
 
 
-        {/* Remove person confirmation modal */}
-        <button onClick={handleModalVisible}>Modal Remove Person</button>
 
-        {
-          modalVisible &&
-          <RemovePersonModal handleModalVisible={handleModalVisible} name="Livia Bonotto" />
-        }
-
-
-        {/* Create project confirmation modal */}
-        <button onClick={handleModalVisibleProject}>Modal Confirm Project</button>
-
-        {
-          modalVisibleProject &&
-          <ConfirmCreateProjectModal handleModalVisibleProject={handleModalVisibleProject} />
-        }
-
-
-        {/* Delete project confirmation modal */}
-        <button onClick={handleModalVisibleDelete}> Modal Delete Project </button>
-        {
-          modalVisibleDelete &&
-          <ConfirmDeleteProjectModal handleModalVisibleDelete={handleModalVisibleDelete} projectName="Backoffice" />
-        }
-
-
-        {/* Apply project confirmation modal */}
-        <button onClick={handleModalVisibleApply}> Modal Apply Project </button>
-        {
-          modalVisibleApply &&
-          <ConfirmApplyProjectModal handleModalVisibleApply={handleModalVisibleApply}/>
-        }
-
-
-        {/* Cancel application confirmation modal */}
-        <button onClick={handleModalVisibleCancelApply}> Modal cancel application </button>
-        {
-          modalVisibleCancel && 
-          <CancelApplyProject handleModalVisibleCancelApply={handleModalVisibleCancelApply} projectName="Backoffice"/>
-        }
-
-
-
-        <ModalCreateProject>
-        </ModalCreateProject>
-
-        {/* <AlertDialogSlide>
-
-        </AlertDialogSlide> */}
 
 
 

@@ -7,7 +7,7 @@ import { Box, Container } from '@mui/material';
 import { useState } from 'react';
 
 
-export function ProjectCardInfos({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject }) {
+export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject }) {
 
     const [open, setOpen] = useState(false)
 
@@ -30,7 +30,7 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status,
         <Card sx={{ minWidth: 340, maxWidth: 340, marginLeft: 5, marginBottom: 5 }}>
 
             <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <ModalProjectInfo
+                {/* <ModalProjectInfo
                     nameProject={name}
                     tags={tags}
                     description={description}
@@ -45,7 +45,7 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status,
                     idProject={idProject}
                     roles={roles}
                     userApplyProject={userApplyProject}
-                />
+                /> */}
             </Container>
 
             <CardActionArea onClick={handleOpen}>

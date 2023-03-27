@@ -12,7 +12,7 @@ export function Login() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const token = localStorage.getItem("token")
+        const token = JSON.stringify(sessionStorage.getItem("token"))
 
         if (token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
@@ -35,8 +35,8 @@ export function Login() {
         }).then((res) => {
 
             api.defaults.headers.Authorization = `Bearer ${res.data.token}`
-            localStorage.setItem("token", res.data.token)
-            localStorage.setItem("user", JSON.stringify(res.data.user))
+            sessionStorage.setItem("token", res.data.token)
+            sessionStorage.setItem("user", JSON.stringify(res.data.user))
 
             return navigate("/Dell/AllProject")
         })

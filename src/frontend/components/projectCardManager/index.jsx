@@ -2,12 +2,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { ModalProjectInfo } from '../modalProjectInfo';
 import { Box, Container } from '@mui/material';
 import { useState } from 'react';
+import { ModalProjectInfoPeding } from '../modalProjectInfoPeding';
 
 
-export function ProjectCardInfos({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject }) {
+export function ProjectCardInfosManager({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject, isApproved }) {
 
     const [open, setOpen] = useState(false)
 
@@ -25,16 +25,15 @@ export function ProjectCardInfos({ name, deadLine, area, duration, tags, status,
     deadLine_ = deadLine_.getDate() + " / 0" + deadLine_.getMonth() + " / " + deadLine_.getFullYear()
     dateStart_ = dateStart_.getDate() + " / 0" + dateStart_.getMonth() + " / " + dateStart_.getFullYear()
 
-
     return (
         <Card sx={{ minWidth: 340, maxWidth: 340, marginLeft: 5, marginBottom: 5 }}>
 
             <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <ModalProjectInfo
+                <ModalProjectInfoPeding
                     nameProject={name}
                     tags={tags}
                     description={description}
-
+                    isApproved={isApproved}
                     status={status}
                     leader={leader}
                     duration={duration}

@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from "@mui/material";
-import { ProjectCardInfos } from "../projectCard"
+import { ProjectCardInfosTest } from "../projectCardTest"
 
 export function ContainerProfileCard() {
     const array = [
@@ -84,7 +84,7 @@ export function ContainerProfileCard() {
                     {array.map((item) => {
                         return (
                             <Grid item lg={12} key={item.id}>
-                                < ProjectCardInfos
+                                < ProjectCardInfosTest
                                     status={item.status}
                                     name={item.nome}
                                     area={item.area}

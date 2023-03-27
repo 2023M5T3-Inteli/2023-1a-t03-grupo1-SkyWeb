@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { DeleteProjectModule } from './approvalProject/app.module';
+import { GetProjectsByOwner } from './getProjectByOwner/app.module';
 
 @Module({
-    imports: [DeleteProjectModule],
-    exports: [DeleteProjectModule],
+    imports: [DeleteProjectModule, GetProjectsByOwner],
+    exports: [DeleteProjectModule, GetProjectsByOwner],
 })
 export class OwnerModule {}

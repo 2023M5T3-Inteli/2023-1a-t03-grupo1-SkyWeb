@@ -1,7 +1,7 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
-import { ProjectCardInfos } from "../projectCard";
+import { ProjectCardInfosTest } from "../projectCardTest";
 import { flexbox, typography } from "@mui/system";
 
 export function ContainerRecent({ }) {
@@ -86,7 +86,7 @@ export function ContainerRecent({ }) {
           {array.map((item) => {
             return (
               <div key={item.id}>
-                < ProjectCardInfos
+                < ProjectCardInfosTest
                   status={item.status}
                   name={item.nome}
                   area={item.area}
