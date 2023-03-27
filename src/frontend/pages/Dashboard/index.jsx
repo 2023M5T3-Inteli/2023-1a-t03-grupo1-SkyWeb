@@ -5,11 +5,32 @@ import { ContainerLeading } from "../../components/DashboardContainerLeading";
 import { ContainerMyProjects } from "../../components/DashboardContainerMyProjects";
 import { ContainerRecent } from "../../components/DashboardContainerRecent";
 import { ContainerSaved } from "../../components/DashboardContainerSaved";
+import { useState, useEffect } from "react"
 
 
 
 
 export function Dashboard() {
+
+    // const [dataProject , setDataProject] = useState([])
+    // const [myProjects,setMyProjects] = useState([])
+
+    // const { id } = JSON.parse(sessionStorage.getItem("user"))
+
+    // async function reqProjectbyManager() {
+
+    //     await api.get(`/projectsowner/${idManager}`).then((item) => {
+    //         const filter = item.data.filter(item => item.isApproved === true)
+    //         setDataProject(filter)
+    //     }).catch((e) => {
+    //         alert(e)
+    //     })
+
+    // }
+
+    // useEffect(() => {
+    //     reqProjectbyManager()
+    // }, [])
 
     return (
         <Container >
@@ -63,7 +84,7 @@ export function Dashboard() {
                                     Recent Applications
                                 </Typography>
                             </Box>
-                            <ContainerRecent/>
+                            <ContainerRecent />
                         </Container>
 
                     </Grid>

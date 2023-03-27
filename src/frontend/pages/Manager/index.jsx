@@ -17,7 +17,7 @@ import api from "../../api";
 
 export function Manager() {
 
-  const { isManager } = JSON.parse(localStorage.getItem("user"))
+  const { isManager } = JSON.parse(sessionStorage.getItem("user"))
 
   const [state, setState] = useState(false)
 

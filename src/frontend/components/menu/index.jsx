@@ -119,7 +119,7 @@ padding-bottom: 1rem;
 //Componente
 export function Menu(props) {
 
-    const { isManager } = JSON.parse(localStorage.getItem("user"))
+    const { fullName, isManager, job } = JSON.parse(sessionStorage.getItem("user"))
 
     const [state, setState] = useState(false)
 
@@ -144,14 +144,14 @@ export function Menu(props) {
 
                         </UserImage>
                         <NameRoleWrapper>
-                            <UserName>{props.userName}</UserName>
-                            <UserRole>{props.userRole}</UserRole>
+                            <UserName>{fullName}</UserName>
+                            <UserRole>{job}</UserRole>
                         </NameRoleWrapper>
                     </ProfileContainer>
                 </div>
             </Link>
             <Nav>
-                <SidebarItem to='home'>My Dashboard</SidebarItem>
+                <SidebarItem to='Dashboard'>My Dashboard</SidebarItem>
                 <SidebarItem to='Allproject'>All Projects</SidebarItem>
                 {state && <SidebarItem to='manager'>Manager Pannel</SidebarItem>}
                 <SidebarItem to='about'>About</SidebarItem>

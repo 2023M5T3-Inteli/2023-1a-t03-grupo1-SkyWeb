@@ -11,7 +11,7 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
     const [errorSameApply, setErrorSameApply] = useState(false)
     const refSelect = useRef(null)
 
-    const { id } = JSON.parse(localStorage.getItem("user"))
+    const { id } = JSON.parse(sessionStorage.getItem("user"))
 
 
 

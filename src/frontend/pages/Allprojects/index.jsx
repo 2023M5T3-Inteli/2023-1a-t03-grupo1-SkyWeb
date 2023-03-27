@@ -18,7 +18,7 @@ export function Allprojects() {
     }
 
     useEffect(() => {
-        const token = JSON.stringify(localStorage.getItem("token"))
+        const token = JSON.stringify(sessionStorage.getItem("token"))
 
         if (token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`

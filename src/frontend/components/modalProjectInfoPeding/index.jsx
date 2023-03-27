@@ -11,7 +11,7 @@ export function ModalProjectInfoPeding({ nameProject, tags, description, status,
     const [errorSameApply, setErrorSameApply] = useState(false)
     const refSelect = useRef(null)
 
-    const { id, idManager } = JSON.parse(localStorage.getItem("user"))
+    const { id, idManager } = JSON.parse(sessionStorage.getItem("user"))
 
     async function approvalProject(isApproved) {
         await api.put("/approvalProject", { idManager: idManager, idProject: idProject, isApproved: isApproved }).then(() => {

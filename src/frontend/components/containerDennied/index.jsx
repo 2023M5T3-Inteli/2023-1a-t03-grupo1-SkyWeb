@@ -8,7 +8,7 @@ export function ContainerDennied({ }) {
 
   const [dataProject, setDataProject] = useState([])
 
-  const { idManager } = JSON.parse(localStorage.getItem("user"))
+  const { idManager } = JSON.parse(sessionStorage.getItem("user"))
 
   async function reqProjectbyManager() {
 

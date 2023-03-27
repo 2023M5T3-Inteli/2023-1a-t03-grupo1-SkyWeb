@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 import { Injectable } from '@nestjs/common';
 
 import { ModelUpdate } from '../../models/modelsUpdate';
@@ -16,7 +16,10 @@ const transporter = nodemailer.createTransport({
 
 @Injectable()
 export class ServiceUpdateApprovalProject {
-    constructor(private modelUpdate: ModelUpdate, private modelSelect: ModelSelect) { }
+    constructor(
+        private modelUpdate: ModelUpdate,
+        private modelSelect: ModelSelect,
+    ) {}
 
     async execute(idManager: number, idProject: number, isApproved: boolean) {
         const result = await this.modelUpdate.updateApprovalProject(
@@ -38,12 +41,10 @@ export class ServiceUpdateApprovalProject {
             return item.name;
         });
 
-
-
         if (isApproved == true) {
             const messageApproved = {
                 from: '"SkyWeb Developers - Dell Heroes" <inteliskyweb@gmail.com>', // sender address
-                to: 'livia.cabral@sou.inteli.edu.br', // list of receivers
+                to: email, // list of receivers
                 subject: 'Project Approved ✔', // Subject line
                 text: 'Hello world?', // plain text body
                 html: ` <!DOCTYPE html>
@@ -82,13 +83,13 @@ export class ServiceUpdateApprovalProject {
             async function run() {
                 let mailsent = await transporter.sendMail(messageApproved);
                 return mailsent;
-            };
+            }
             run();
         }
         if (isApproved == false) {
             const messageDennied = {
                 from: '"SkyWeb Developers - Dell Heroes" <inteliskyweb@gmail.com>', // sender address
-                to: 'livia.cabral@sou.inteli.edu.br', // list of receivers
+                to: email, // list of receivers
                 subject: 'Project Dennied', // Subject line
                 text: 'Hello world?', // plain text body
                 html: ` <!DOCTYPE html>

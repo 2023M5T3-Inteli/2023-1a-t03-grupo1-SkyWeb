@@ -85,7 +85,7 @@ export function ModalCreateProject({ _open, _handleClose }) {
         console.log(refDeadLineProject.current.value)
         console.log(roleArray)
 
-        const { id, idManager } = JSON.parse(localStorage.getItem("user"))
+        const { id, idManager } = JSON.parse(sessionStorage.getItem("user"))
 
         // refStatusProject.current.value
 

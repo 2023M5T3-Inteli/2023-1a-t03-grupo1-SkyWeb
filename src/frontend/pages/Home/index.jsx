@@ -7,8 +7,8 @@ import { useContext } from "react"
 
 export function Home() {
 
-    localStorage.clear("token")
-    localStorage.clear("user")
+    sessionStorage.clear("token")
+    sessionStorage.clear("user")
 
     return (
         <div>
