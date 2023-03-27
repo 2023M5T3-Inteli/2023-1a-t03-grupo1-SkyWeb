@@ -102,3 +102,15 @@ export class ServiceCreateProject {
         }
     }
 }
+
+/**This code is a service in the application that handles project creation. It imports ModelSelect and ModelCreate from other modules, as well as some external NestJS libraries (Injectable, HttpException, and HttpStatus).
+
+ServiceCreateProject is an injectable service that receives the ModelCreate and ModelSelect models in its constructor. The execute function is asynchronous and receives a data object of type Tproject that contains several properties, such as idTag, idRole, name, aplicationDeadLine, and dateStart.
+
+The function starts by fetching all projects, tags, and roles using ModelSelect. It then validates whether the provided tags and roles exist in the records. If not, an HttpException exception is thrown with a NOT_FOUND status code.
+
+Next, it checks if the project name is already in use by another project. If so, an HttpException exception is thrown with a CONFLICT status code.
+
+After that, it attempts to create the project using ModelCreate.createProject(). If project creation is successful, it connects the tags and roles to the project with the ModelCreate.connectTagsProject() and ModelCreate.connectRolesProject() functions. If any of these steps fail, an HttpException exception is thrown with a BAD_REQUEST status code.
+
+Finally, the function returns the created project object or throws an HttpException exception with a BAD_REQUEST status code if there is any error during project creation. */
