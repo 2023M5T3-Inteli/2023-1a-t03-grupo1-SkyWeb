@@ -1,8 +1,14 @@
-import { Box, Button, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, Grid, Modal, Typography, Autocomplete, TextField } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 
 export function ModalProjectAplly({ nameProject, tags, description, status, leader, startDate, duration, _open }) {
+    const top100Films = [
+        { label: 'The Shawshank Redemption', year: 1994 },
+        { label: 'The Godfather', year: 1972 },
+    ]
+
+
 
     const [open, setOpen] = useState(false)
 
@@ -28,7 +34,7 @@ export function ModalProjectAplly({ nameProject, tags, description, status, lead
             >
 
                 <Grid container sx={{ display: "flex", justifyContent: "center", marginTop: "10%", position: "relative" }}>
-                    <Box sx={{ display: "flex", width: 550, height: 400, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
+                    <Box sx={{ display: "flex", width: 550, height: 400, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3, height: "100%" }}>
 
 
 
@@ -91,17 +97,31 @@ export function ModalProjectAplly({ nameProject, tags, description, status, lead
                                     </Box>
                                 </Box>
 
-                                <Grid item lg={10}>
-                                    <Container style={{backgroundColor:"red", with:""}}>
-                                        
-                                    </Container>
+
+                                <Grid container spacing={2} style={{ borderRadius: "5px", width: "500px", paddingTop:"5px"}}>
+                                    <Grid item xs={12} sm={12} md={12} style={{ display: "flex", justifyContent: "center" }}>
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={top100Films}
+                                            sx={{ width: 300, padding: "10px" }}
+                                            renderInput={(params) => <TextField {...params} label="Movie" />}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} style={{ display: "flex", justifyContent: "center" }}>
+                                        My manager is aware and according to my participation in the project
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} style={{ display: "flex", justifyContent: "center" }}>
+                                        <Button variant="outlined">Apply Now</Button>
+                                    </Grid>
                                 </Grid>
+
 
 
                             </Container>
                         </Grid>
 
-                        
+
                         <Grid item lg={6} sx={{ marginTop: "10%", }}>
 
                             <Box sx={{ position: "absolute", top: "5%", right: "36%" }}>
@@ -122,10 +142,10 @@ export function ModalProjectAplly({ nameProject, tags, description, status, lead
                                     </Box>
                                 </Box>
                             </Container>
-                            
+
                         </Grid>
 
-                        
+
 
 
                     </Box>

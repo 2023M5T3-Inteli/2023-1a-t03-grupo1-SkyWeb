@@ -131,7 +131,7 @@ export function ResponsiveDialogTeste(name, areas, application, position) {
                                         </Grid>
 
 
-                                        <Grid container spacing={2} style={{ display: 'flex', alignItems: "center", marginLeft:"0", background:"red" }} >
+                                        <Grid container spacing={2} style={{ display: 'flex', alignItems: "center", marginLeft:"0", padding:"0", background:"red" }} >
                                             <Grid item lg={3}>
                                                 Chloe Price
                                             </Grid>
@@ -171,61 +171,7 @@ export function ResponsiveDialogTeste(name, areas, application, position) {
                         </div>
                     </DialogContentText>
                 </DialogContent>
-
-
-
             </Dialog>
         </div>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/*
-                                <Typography variant="title4" sx={{ paddingLeft: "" }}> Profile </Typography>
-                                <Typography variant="title4" sx={{ paddingLeft: "100px" }}> Chosen Areas </Typography>
-                                <Typography variant="title4" sx={{ paddingLeft: "100px" }}> Application </Typography>
-                                <Typography variant="title4" sx={{ paddingLeft: "100px" }}> Position </Typography>
-
-                                <div style={{ width: "90%", height: "68px", borderRadius: "5px", backgroundColor: "grey", display: "flex", alignItems: "center" }}>
-                                    <Avatar alt="Remy Sharp" src="imagens\game.jpg" />
-                                    <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Chloe Price</Typography>
-                                    <Typography variant="title4" sx={{ paddingLeft: "30px" }}>UX, Developer </Typography>
-                                </div>
-                                <div style={{ width: "90%", height: "68px", borderRadius: "5px", backgroundColor: "grey", display: "flex", alignItems: "center" }}>
-                                    <Avatar alt="Remy Sharp" src="imagens\game.jpg" />
-                                    <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Chloe Price</Typography>
-                                    <Typography variant="title4" sx={{ paddingLeft: "30px" }}>UX, Developer </Typography>
-                                </div>
-                                <div style={{ width: "90%", height: "68px", borderRadius: "5px", backgroundColor: "grey", display: "flex", alignItems: "center" }}>
-                                    <Avatar alt="Remy Sharp" src="imagens\game.jpg" />
-                                    <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Chloe Price</Typography>
-                                    <Typography variant="title4" sx={{ paddingLeft: "30px" }}>UX, Developer </Typography>
-                                </div>
-                                <div style={{ width: "90%", height: "68px", borderRadius: "5px", backgroundColor: "grey", display: "flex", alignItems: "center" }}>
-                                    <Avatar alt="Remy Sharp" src="imagens\game.jpg" />
-                                    <Typography variant="title4" sx={{ paddingLeft: "5px" }}>Chloe Price</Typography>
-                                    <Typography variant="title4" sx={{ paddingLeft: "30px" }}>UX, Developer </Typography>
-                                </div>*/}

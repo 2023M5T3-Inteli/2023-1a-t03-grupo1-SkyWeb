@@ -3,7 +3,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
 import { ModalProjectInfo } from '../../components/modalProjectInfo';
-import { ModalProjectAplly } from '../../components/modalAplication'
+import { ModalProjectAplly } from '../../components/modalApllyproject'
 
 
 export function Allprojects() {
