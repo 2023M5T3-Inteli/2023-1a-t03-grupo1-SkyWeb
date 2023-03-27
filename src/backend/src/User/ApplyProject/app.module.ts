@@ -10,3 +10,7 @@ import { ServiceApplyProject } from "./app.service";
     exports: [ServiceApplyProject]
 })
 export class applyProject { }
+
+/**This code defines a module applyProject using the NestJS framework. 
+ * It imports a module, defines a controller and a service, and exports the service for other modules to use.
+ */

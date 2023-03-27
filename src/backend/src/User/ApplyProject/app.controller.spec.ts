@@ -34,3 +34,11 @@ describe(' user apply for a project', () => {
         })
     })
 })
+
+/**This is a unit test that verifies if the function to apply for a project returns the expected values.
+
+To perform the test, objects from the PrismaService, ModelCreate, ModelSelect, ServiceApplyProject, and ControllerApplyProject classes are defined. These objects are used to execute the business logic for applying to a project and handle HTTP requests related to this functionality.
+
+The actual test verifies if the applyProject() function from ControllerApplyProject returns an object with the expected values. The expected object contains information about the project (idProject), the user (idUser), and the role (idRole) that the user would like to have in the project.
+
+If the applyProject() function returns an object with these values, the test passes; otherwise, the test fails. */

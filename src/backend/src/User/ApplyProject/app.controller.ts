@@ -35,3 +35,12 @@ export class ControllerApplyProject {
         return result;
     }
 }
+
+/**
+ * This is a controller file for a /applyProject route in a NestJS application. 
+ * When a user makes a POST request to this route, it calls the applyProject() function. 
+ * The request body is passed to this function as a parameter,
+ *  which is used to call the execute() function on the ServiceApplyProject object. 
+ * The result of this function is returned as a response to the request. 
+ * The route is documented using the '@ApiOperation' and '@ApiResponse' annotations.
+ */
