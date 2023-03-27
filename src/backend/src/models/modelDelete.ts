@@ -4,9 +4,10 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelDelete {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) { }
 
     async deleteProject(projectId: number) {
+        console.log(projectId)
         try {
             await this.prisma.project.delete({
                 where: {
@@ -65,4 +66,5 @@ export class ModelDelete {
                 HttpStatus.BAD_GATEWAY,
             );
         }
-    }}
+    }
+}

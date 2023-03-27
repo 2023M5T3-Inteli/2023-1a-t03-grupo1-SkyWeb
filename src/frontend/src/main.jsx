@@ -11,26 +11,29 @@ import { QueryClientProvider, QueryClient } from "react-query"
 import { ThemeProvider } from "@mui/material"
 import { theme } from "../themes/theme"
 import { Allprojects } from '../pages/Allprojects'
+import { Login } from '../pages/Login'
+import { Profile } from '../pages/Profile'
+import { Dashboard } from '../pages/Dashboard'
+
 
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        Hello
-        <Link to="/home">home</Link>
-      </div>
-    ),
+    element: <Home />,
   },
   {
-    path: "/home",
-    element: <Home />,
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/Manager",
     element: <Manager />,
+  },
+  {
+    path: "/Dashboard",
+    element: <Dashboard/>,
   },
   {
     path: "/test",
@@ -50,11 +53,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "Manager",
-        element: <Manager />,
+        element: <Manager name="Chloe"/>,
       },
       {
         path: "AllProject",
         element: <Allprojects />
+      },
+      {
+        path: "Dashboard",
+        element: <Dashboard/>
+      },
+      {
+        path: "Profile",
+        element: <Profile />
       }
     ],
   },
@@ -64,6 +75,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <RouterProvider router={router} />

@@ -1,109 +1,52 @@
-import * as React from 'react';
 import { Container, Grid, Typography } from "@mui/material";
 import { Filter } from "../../components/filter"
 import { ProjectCardInfos } from "../../components/projectCard"
 import { ModalProjectInfo } from '../../components/modalProjectInfo';
 import { ModalProjectAplly } from '../../components/modalApllyproject'
+import { Box } from '@mui/system';
+import api from '../../api';
+import { useState, useEffect } from "react";
+
 
 
 export function Allprojects() {
 
-    const array = [
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java"],
-            id: 1,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 2,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 3,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 4,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 5,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 6,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 7,
-        },
-        {
-            status: "Open",
-            nome: "teste card",
-            deadline: "02/08/23",
-            area: "Finance",
-            duration: "3 Months",
-            tags: ["Java", "Python", "Ruby"],
-            id: 8,
-        },
-    ];
+    const [dataProject, setDataProject] = useState([])
+
+    async function reqProject() {
+        const data = await api.get("/getAllProjects")
+        setDataProject(data.data)
+    }
+
+    useEffect(() => {
+        const token = JSON.stringify(sessionStorage.getItem("token"))
+
+        if (token) {
+            api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+        }
+        reqProject()
+    }, [])
+
+    console.log(dataProject)
+
+
+
 
     return (
         <div>
-            <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'column' }}>
-                <div id="title" style={{ paddingLeft: "50px", paddingTop: "20px" }}>
-                    <h1 style={{ fontFamily: "Poppins", }}>All projects</h1>
-                    <h3>Find a project that fits to you and apply!</h3>
-                </div>
+            <Box sx={{ marginLeft: "13.5%", padding: 1 }}>
+
+                <Typography variant='title1'>All projects</Typography>
+                <Typography variant='subtitle2'>Find a project that fits to you and apply!</Typography>
+
+            </Box>
+
+            <Box sx={{ marginLeft: "12%" }}>
                 <Filter />
-            </div>
+            </Box>
 
-            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <ModalProjectInfo
-                    nameProject="Test"
-                    tags={["Python", "Java", "SCRUM"]}
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, fuga. Veritatis nemo maiores pariatur illum quidem voluptates, suscipit nobis dolore porro rerum molestiae consequuntur error explicabo culpa? Dicta, odio accusamus."
+            <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={4} columnSpacing={0}>
 
-                    status="Progress"
-                    leader="Abner Silva"
-                    duration="3 Months"
-                    startDate="29/03/2023" 
-                />
                 <ModalProjectAplly
                     nameProject="hello"
                     tags={["Python", "Java", "SCRUM"]}
@@ -116,20 +59,26 @@ export function Allprojects() {
                 
                 />
                 
-            </Container>
+            
 
-            <Grid container direction="row" spacing={2}>
-
-                {array.map((item) => {
+                {dataProject.map((item) => {
                     return (
-                        <Grid item lg={4} key={item.id}>
+                        <Grid item lg={3.5} key={item.id}>
                             < ProjectCardInfos
                                 status={item.status}
-                                name={item.nome}
-                                area={item.area}
-                                deadLine={item.deadline}
+                                name={item.name}
+                                idProject={item.id}
+                                area={"Tech"}
+                                deadLine={item.aplicationDeadLine}
                                 duration={item.duration}
-                                tags={item.tags}
+                                tags={item.projectTag}
+                                description={item.description}
+                                leader={item.leader}
+                                dateStart={item.dateStart}
+                                idUser={item.idUser}
+                                roles={item.projectRole}
+                                userApplyProject={item.userApplyProject}
+
                             />
                         </Grid>
                     );

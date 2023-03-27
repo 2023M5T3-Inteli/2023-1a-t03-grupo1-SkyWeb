@@ -6,7 +6,7 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelCreate {
-    constructor(private readonly prisma: PrismaService) {}
+    constructor(private readonly prisma: PrismaService) { }
 
     async createProject(data: Tproject) {
         const {
@@ -86,4 +86,39 @@ export class ModelCreate {
             );
         }
     }
+
+    async saveProject(idProject: number, idUser: number) {
+        try {
+            const result = await this.prisma.saveProject.create({
+                data: {
+                    idProject: idProject,
+                    idUser: idUser
+                },
+            });
+            return result;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error
+                },
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
+
+    async applyProject(idProject: number, idUser: number, idRole: number) {
+        const result = await this.prisma.userApplyProject.create({
+            data: {
+                idProject: idProject,
+                idUser: idUser,
+                idRole: idRole
+            }
+        })
+
+        return result
+
+    }
 }
+

@@ -18,5 +18,5 @@ export class DTOBodyApprovalProject {
     @ApiProperty()
     @IsNotEmpty({ message: 'isAproved is required' })
     @IsBoolean({ message: 'isApproved must be a boolean' })
-    isAproved: boolean;
+    isApproved: boolean;
 }

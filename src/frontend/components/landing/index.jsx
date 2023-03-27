@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import { Link } from "react-router-dom";
 
 export function Landing() {
     return (
@@ -13,7 +14,7 @@ export function Landing() {
                 </Typography>
             </Box>
 
-            <Button color="cardBackground" sx={{ backgroundColor: "dellBlue.main", height: 55, width: 170, padding: 3, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, borderRadius: 1.5 }}>Join a project</Button>
+            <Link to="/login"><Button color="cardBackground" sx={{ backgroundColor: "dellBlue.main", height: 55, width: 170, padding: 3, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, borderRadius: 1.5 }}>Join a project</Button></Link>
         </Container>
     )
 }

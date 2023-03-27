@@ -9,6 +9,7 @@ export class DTOBodyCreateProject {
     name: string;
 
     @ApiProperty()
+    @IsString({ message: `descriptionis not a string` })
     description: string;
 
     @ApiProperty()
