@@ -6,6 +6,7 @@ import { ContainerMyProjects } from "../../components/DashboardContainerMyProjec
 import { ContainerRecent } from "../../components/DashboardContainerRecent";
 import { ContainerSaved } from "../../components/DashboardContainerSaved";
 import { useState, useEffect } from "react"
+import api from '../../api';
 
 
 
@@ -32,6 +33,30 @@ export function Dashboard() {
     //     reqProjectbyManager()
     // }, [])
 
+    // Assim funciona :)
+    const { id } = JSON.parse(sessionStorage.getItem("user"))
+    console.log(id)
+
+
+
+    const [myProjects, setMyProjects] = useState([])
+
+    async function reqProjectByManager() {
+        const data = await api.get("/getProjectByUserId", { idUser: id })
+        setMyProjects(data.data)
+    }
+
+    useEffect(() => {
+        const token = JSON.stringify(sessionStorage.getItem("token"))
+
+        if (token) {
+            api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+        }
+        reqProjectByManager()
+    }, [])
+
+    console.log(myProjects)
+
     return (
         <Container >
 
@@ -53,7 +78,19 @@ export function Dashboard() {
                                 </Typography>
 
                             </Box>
-                            <ContainerMyProjects />
+                            {myProjects.map((item) => {
+                                return (
+                                    <ContainerMyProjects
+                                        id={item.id}
+                                        status={item.status}
+                                        name={item.name}
+                                        area={"tech"}
+                                        deadline={item.deadline}
+                                        duration={item.duration}
+                                        tags={item.tags}
+                                    />
+                                );
+                            })}
                         </Container>
 
                     </Grid>
