@@ -107,7 +107,7 @@ async function main() {
             dateStart: new Date('August 27,2023'),
             idUser: 3,
             idManager: 1,
-            isApproved: true
+            isApproved: ""
         },
     });
 
