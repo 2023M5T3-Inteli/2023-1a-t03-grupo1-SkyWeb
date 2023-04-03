@@ -27,10 +27,6 @@
   &emsp;|-->backend<br>
   &emsp;|-->frontend<br>
 
-|-->src<br>
-  &emsp;|-->backend<br>
-  &emsp;|-->frontend<br>
-
 
 ## 💻 Execução do projeto
 
