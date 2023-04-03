@@ -23,7 +23,7 @@
   &emsp;|--> Workflows<br>
         &emsp;|--> Action.txt<br>
         &emsp;|--> AWS.yml<br>
-|-->src<br>
+|-->Src<br>
   &emsp;|-->Backend<br>
   &emsp;|-->Frontend<br>
 
