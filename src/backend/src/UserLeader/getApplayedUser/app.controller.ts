@@ -1,10 +1,12 @@
-import { Body, Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ServiceGetApplayedUser } from './app.service';
 import { DtoBodyApployed } from './DTO/DtoBodyGetApployed';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 @ApiTags('UserLeader')
+@UseGuards(AuthGuard('jwt'))
 export class ControllerGetApplayedUser {
     constructor(private serviceGetApplayedUser: ServiceGetApplayedUser) {}
 

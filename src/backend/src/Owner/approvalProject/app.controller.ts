@@ -1,14 +1,16 @@
-import { Body, Controller, Put } from '@nestjs/common';
-import { ApiOperation, ApiTags,ApiResponse } from '@nestjs/swagger';
+import { Body, Controller, Put, UseGuards } from '@nestjs/common';
+import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 import { ServiceUpdateApprovalProject } from './app.service';
 import { DTOBodyApprovalProject } from './DTO/DTOBodyApprovalProject';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 @ApiTags('Owner')
+@UseGuards(AuthGuard('jwt'))
 export class ControllerApprovalProject {
     constructor(
         private serviceUpdateApprovalProject: ServiceUpdateApprovalProject,
-    ) { }
+    ) {}
 
     @Put('approvalProject')
     @ApiOperation({ summary: 'Choice if project is accept or denied' })
@@ -22,7 +24,7 @@ export class ControllerApprovalProject {
         status: 400,
         description: 'idManager is required',
     })
-    
+
     // TODO fazer Api response para sucess e faild
     async approvalProject(@Body() body: DTOBodyApprovalProject) {
         const { idManager, idProject, isApproved } = body;

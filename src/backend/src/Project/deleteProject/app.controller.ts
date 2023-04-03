@@ -1,7 +1,9 @@
-import { Body, Controller, Delete, Param } from '@nestjs/common';
+import { Body, Controller, Delete, Param, UseGuards } from '@nestjs/common';
 import { ServicesDeleteProject } from './app.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
+@UseGuards(AuthGuard('jwt'))
 export class ControllerDeleteProject {
     constructor(private readonly serviceDeleteProject: ServicesDeleteProject) {}
 

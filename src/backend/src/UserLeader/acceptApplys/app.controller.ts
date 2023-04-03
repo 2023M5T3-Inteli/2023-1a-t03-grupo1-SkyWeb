@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import {
     ApiAcceptedResponse,
     ApiOperation,
@@ -7,9 +7,11 @@ import {
 } from '@nestjs/swagger';
 import { ServiceAcceptApplyUser } from './app.service';
 import { DTOBodyAcceptUser } from './DTO/DTOBodyAcceptUser';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 @ApiTags('UserLeader')
+@UseGuards(AuthGuard('jwt'))
 export class ControllerAcceptApply {
     constructor(private serviceAcceptApplyUser: ServiceAcceptApplyUser) {}
 
