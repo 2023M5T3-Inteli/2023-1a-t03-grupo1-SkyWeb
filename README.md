@@ -19,6 +19,18 @@
 
 ## 📁 Estrutura de pastas
 
+|-->.githubs<br>
+  &emsp;|--> workflows<br>
+        &emsp;|--> action.txt<br>
+        &emsp;|--> aws.yml<br>
+|-->src<br>
+  &emsp;|-->backend<br>
+  &emsp;|-->frontend<br>
+
+|-->src<br>
+  &emsp;|-->backend<br>
+  &emsp;|-->frontend<br>
+
 
 ## 💻 Execução do projeto
 
