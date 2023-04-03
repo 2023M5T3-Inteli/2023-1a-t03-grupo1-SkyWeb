@@ -46,7 +46,7 @@ export function Allprojects() {
             </Box>
 
             <Grid container sx={{ display: "flex", justifyContent: "center" }} direction="row" spacing={4} columnSpacing={0}>
-
+                {/* 
                 <ModalProjectAplly
                     nameProject="hello"
                     tags={["Python", "Java", "SCRUM"]}
@@ -57,32 +57,34 @@ export function Allprojects() {
                     duration="3 Months"
                     startDate="29/03/2023" 
                 
-                />
-                
-            
+                /> */}
 
-                {dataProject.map((item) => {
-                    return (
-                        <Grid item lg={3.5} key={item.id}>
-                            < ProjectCardInfos
-                                status={item.status}
-                                name={item.name}
-                                idProject={item.id}
-                                area={"Tech"}
-                                deadLine={item.aplicationDeadLine}
-                                duration={item.duration}
-                                tags={item.projectTag}
-                                description={item.description}
-                                leader={item.leader}
-                                dateStart={item.dateStart}
-                                idUser={item.idUser}
-                                roles={item.projectRole}
-                                userApplyProject={item.userApplyProject}
 
-                            />
-                        </Grid>
-                    );
-                })}
+                <Box sx={{ display: "flex", justifyContent: "space-around", marginTop: 10 }}>
+
+                    {dataProject.map((item) => {
+                        return (
+                            <Grid item xs={12} sm={6} lg={4} key={item.id}>
+                                < ProjectCardInfos
+                                    status={item.status}
+                                    name={item.name}
+                                    idProject={item.id}
+                                    area={"Tech"}
+                                    deadLine={item.aplicationDeadLine}
+                                    duration={item.duration}
+                                    tags={item.projectTag}
+                                    description={item.description}
+                                    leader={item.leader}
+                                    dateStart={item.dateStart}
+                                    idUser={item.idUser}
+                                    roles={item.projectRole}
+                                    userApplyProject={item.userApplyProject}
+
+                                />
+                            </Grid>
+                        );
+                    })}
+                </Box>
 
             </Grid>
 

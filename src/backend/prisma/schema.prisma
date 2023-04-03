@@ -39,7 +39,7 @@ model project {
   idUser    Int?
   idManager Int?
 
-  User    user?    @relation(fields: [idUser], references: [id])
+  User    user?    @relation(fields: [idUser], references: [id],onDelete: Cascade)
 
 
   userApplyProject   userApplyProject[]
@@ -53,9 +53,9 @@ model userApplyProject {
   idUser    Int
   idRole    Int
 
-  User    user    @relation(fields: [idUser], references: [id])
-  Project project @relation(fields: [idProject], references: [id])
-  Role    role    @relation(fields: [idRole], references: [id])
+  User    user    @relation(fields: [idUser], references: [id],onDelete: Cascade)
+  Project project @relation(fields: [idProject], references: [id],onDelete: Cascade)
+  Role    role    @relation(fields: [idRole], references: [id],onDelete: Cascade)
 
   @@id([idUser, idProject, idRole])
 }
@@ -73,8 +73,8 @@ model projectRole {
   idRole    Int
   idProject Int
 
-  Role    role    @relation(fields: [idRole], references: [id])
-  Project project @relation(fields: [idProject], references: [id])
+  Role    role    @relation(fields: [idRole], references: [id],onDelete: Cascade)
+  Project project @relation(fields: [idProject], references: [id],onDelete: Cascade)
 
   @@id([idRole, idProject])
 }
@@ -83,8 +83,8 @@ model saveProject {
   idProject Int
   idUser    Int
 
-  Project project @relation(fields: [idProject], references: [id])
-  User    user    @relation(fields: [idUser], references: [id])
+  Project project @relation(fields: [idProject], references: [id],onDelete: Cascade)
+  User    user    @relation(fields: [idUser], references: [id],onDelete: Cascade)
 
   @@id([idUser, idProject])
 }
@@ -99,8 +99,8 @@ model projectTag {
   idProject Int
   idTag     Int
 
-  Project project @relation(fields: [idProject], references: [id])
-  Tag     tag     @relation(fields: [idTag], references: [id])
+  Project project @relation(fields: [idProject], references: [id],onDelete: Cascade)
+  Tag     tag     @relation(fields: [idTag], references: [id],onDelete: Cascade)
 
   @@id([idProject, idTag])
 }

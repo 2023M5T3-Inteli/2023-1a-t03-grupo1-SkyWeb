@@ -4,16 +4,17 @@ import { PrismaService } from '../prismaServices/prisma.service';
 
 @Injectable()
 export class ModelDelete {
-    constructor(private prisma: PrismaService) { }
+    constructor(private prisma: PrismaService) {}
 
     async deleteProject(projectId: number) {
-        console.log(projectId)
         try {
-            await this.prisma.project.delete({
+            const result = await this.prisma.project.delete({
                 where: {
                     id: projectId,
                 },
             });
+
+            return result;
         } catch (error) {
             throw new HttpException(
                 {

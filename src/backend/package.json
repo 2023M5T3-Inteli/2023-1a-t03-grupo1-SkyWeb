@@ -21,7 +21,7 @@
     "deleteDB": "ts-node prisma/delete.ts"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed2.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

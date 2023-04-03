@@ -7,6 +7,7 @@ import ConfirmApplyProjectModal from "../modalConfirmApplyProject/confirmApply"
 export function ModalProjectInfo({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose, idUser, roles, idProject, userApplyProject }) {
 
     const [isApply, setIsApply] = useState(true)
+    const [_leader, setLeader] = useState(false)
     const [modalVisibleApply, setModalVisibleApply] = useState(false);
     const [errorSameApply, setErrorSameApply] = useState(false)
     const refSelect = useRef(null)
@@ -16,9 +17,9 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
 
 
     useEffect(() => {
-
         if (idUser === id) {
             setIsApply(false)
+            setLeader(true)
         }
     }, [])
 
@@ -42,6 +43,14 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
             }
         })
 
+    }
+
+    async function deleteProject() {
+        await api.delete(`/project/${idProject}`).then(() => {
+            handleClose()
+        }).catch((e) => {
+            alert(e)
+        })
     }
 
 
@@ -138,6 +147,11 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                                         </Box>
                                     </Box>
                                 </Box>
+
+                                {_leader && <Box sx={{ width: 580, display: "flex", justifyContent: "center" }}>
+                                    <Button onClick={deleteProject} sx={{ backgroundColor: "error.main", color: "white.main", width: 100, height: 40, }}>Delete project</Button>
+                                </Box>}
+
 
                                 {status === "Done" &&
                                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 592, height: 200 }}>
