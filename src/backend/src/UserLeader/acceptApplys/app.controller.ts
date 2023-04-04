@@ -45,9 +45,4 @@ export class ControllerAcceptApply {
         );
         return result;
     }
-
-    @Get('/')
-    async hello() {
-        return 'Hello skyWeb APi';
-    }
 }
