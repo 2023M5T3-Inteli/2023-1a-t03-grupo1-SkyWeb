@@ -162,3 +162,44 @@ input[type=button] {
     background-color: #FFFFFF;
 }
 
+
+
+/* BOTÕES HOME */
+.home-start-applying:hover{
+    transition: 0.3s;
+    background-color: white !important;
+    color: #0672CB !important;
+}
+
+
+.home-nav-item:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+
+.home-join:hover{
+    transition: 0.3s;
+    color:#0672CB;
+    border: 1px solid #0672CB;
+}
+
+
+.login:hover{
+    transition: 0.3s;
+    color:#0672CB;
+    border: 1px solid #0672CB;
+}
+
+
+.manager-approve:hover{
+    transition: 0.3s;
+    color:#3a634b;
+    border: 1px solid #3a634b; 
+}
+
+.manager-decline:hover{
+    transition: 0.3s;
+    color:#AE2525;
+    border: 1px solid #AE2525;
+}

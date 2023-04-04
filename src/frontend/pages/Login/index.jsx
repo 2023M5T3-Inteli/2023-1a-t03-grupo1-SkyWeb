@@ -50,6 +50,9 @@ export function Login() {
 
 
                 <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 4, border: 2, padding: 4, borderRadius: 5, borderColor: "dellBlue.main" }}>
+                    <Typography component="p" sx={{ fontFamily: "Poppins", fontWeight: 500, fontSize: 16, marginTop: 1, marginBottom: 1 }}>
+                        Please, insert you Dell email.
+                    </Typography>
                     {stateError && <Typography variant="text2" sx={{ color: "red" }}>Email invalido</Typography>}
                     <TextField sx={{}}
                         label="Email"
@@ -61,7 +64,7 @@ export function Login() {
 
                     />
 
-                    <Button onClick={loginOk} color="cardBackground" sx={{ backgroundColor: "dellBlue.main", height: 55, width: 170, padding: 3, fontFamily: "Poppins", fontWeight: 600, fontSize: 12, borderRadius: 1.5 }}>Login</Button>
+                    <Button className="login" onClick={loginOk} color="cardBackground" sx={{ backgroundColor: "dellBlue.main", height: 55, width: 170, padding: 3, fontFamily: "Poppins", fontWeight: 600, fontSize: 14, borderRadius: 1.5, boxShadow:2}}>Login</Button>
                 </Box>
 
 

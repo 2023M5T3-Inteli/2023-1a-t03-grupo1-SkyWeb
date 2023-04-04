@@ -5,13 +5,6 @@ import { ContainerPending } from "../../components/containerPending";
 import { ContainerApproved } from "../../components/containerApproved";
 import { ContainerDennied } from "../../components/containerDennied";
 import { useState, useEffect } from "react";
-import { ModalCreateProject } from "../../components/createProjectModal/projectCreation"
-import RemovePersonModal from "../../components/modalConfirmRemoveUser/confirmRemoveUser";
-import ConfirmCreateProjectModal from "../../components/modalConfirmCreation/createProject";
-import ConfirmDeleteProjectModal from "../../components/modalConfirmDeleteProject/confirmDeleteProject";
-import ConfirmApplyProjectModal from "../../components/modalConfirmApplyProject/confirmApply";
-import CancelApplyProject from "../../components/modalConfirmCancelApply/confirmCancelApply";
-import { AlertDialogSlide } from "../../components/confirmModal";
 import api from "../../api";
 
 
@@ -26,56 +19,19 @@ export function Manager() {
     if (isManager != true) {
       setState(true)
     }
+
+    const token = JSON.stringify(sessionStorage.getItem("token"))
+
+    if (token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+    }
+    else  {
+      alert("Token inválido")
+    }
   })
 
 
-
-  //Remove person confirmation modal
-  const [modalVisible, setModalVisible] = useState(false);
-
-  function handleModalVisible() {
-    setModalVisible(!modalVisible);
-    console.log(modalVisible)
-  }
-
-
-  //Create project confirmation modal
-  const [modalVisibleProject, setModalVisibleProject] = useState(false);
-
-  function handleModalVisibleProject() {
-    setModalVisibleProject(!modalVisibleProject);
-    console.log(modalVisibleProject)
-  }
-
-
-  //Delete project confirmation modal
-  const [modalVisibleDelete, setModalVisibleDelete] = useState(false);
-
-  function handleModalVisibleDelete() {
-    setModalVisibleDelete(!modalVisibleDelete);
-    console.log(modalVisibleDelete)
-  }
-
-
-  //Apply project confirmation modal
-  const [modalVisibleApply, setModalVisibleApply] = useState(false);
-
-  function handleModalVisibleApply() {
-    setModalVisibleApply(!modalVisibleApply);
-    console.log(modalVisibleApply)
-  }
-
-
-  //Cancel application confirmation modal
-  const [modalVisibleCancel, setModalVisibleCancel] = useState(false);
-
-  function handleModalVisibleCancelApply() {
-    setModalVisibleCancel(!modalVisibleCancel);
-    console.log(modalVisibleCancel)
-  }
-
-
-  if (state) return <Typography variant="title1">You don't have permission for acess this page</Typography>
+  if (state) return <Typography variant="title1">You don't have permission to access this page.</Typography>
 
   return (
     <Container >
@@ -104,12 +60,6 @@ export function Manager() {
             <ContainerPending />
           </Container>
         </Grid>
-
-
-
-
-
-
 
 
         <Box sx={{ display: "flex", marginLeft: 8, marginTop: 8, justifyContent: "center", gap: 7 }}>

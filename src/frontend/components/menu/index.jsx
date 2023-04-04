@@ -17,6 +17,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 min-width: max-content;
+
 `
 
 //Botão do perfil
@@ -41,6 +42,7 @@ font-size: 1.6rem;
 
 //Cargo do usuário
 const UserRole = styled.p`
+padding-left: 10px;
 `
 
 //Div para deixar o nome e o cargo um acima do outro
@@ -60,7 +62,7 @@ padding: 1rem;
 //Botões de navegação
 const SidebarItem = styled(Link)`
 color: #fff;
-text-decoration: none;
+text-decoration: none !important;
 font-weight: 600;
 font-size: 1.3rem;
 padding-left: 4.6rem;
@@ -104,6 +106,14 @@ width: 70%;
 display: flex;
 justify-content: center;
 height: auto;
+border: none;
+box-shadow: 0.5;
+&:hover{
+    transition: 0.4s;
+    background-color: #0672CB;
+    color: white;
+    border: 1px solid white;
+}
 `
 
 //Botão sair
@@ -137,7 +147,7 @@ export function Menu(props) {
 
     return (
         <Sidebar>
-            <Link to="/Dell/Profile">
+            <Link to="/Dell/Profile" style={{textDecoration:"none"}}>
                 <div style={{ width: 210, marginRight: 70 }}>
                     <ProfileContainer>
                         <UserImage>
