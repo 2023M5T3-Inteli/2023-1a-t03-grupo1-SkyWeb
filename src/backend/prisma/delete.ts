@@ -9,6 +9,8 @@ async function main() {
     await prisma.userApplyProject.deleteMany({});
     await prisma.user.deleteMany({});
     await prisma.project.deleteMany({});
+    await prisma.tag.deleteMany({});
+    await prisma.role.deleteMany({});
 }
 
 main()
