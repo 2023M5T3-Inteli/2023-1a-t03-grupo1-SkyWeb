@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { ModalProjectInfo } from '../modalProjectInfo';
 import { Box, Container } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject }) {
@@ -26,15 +26,16 @@ export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, sta
     dateStart_ = dateStart_.getDate() + " / 0" + dateStart_.getMonth() + " / " + dateStart_.getFullYear()
 
 
+
+
     return (
         <Card sx={{ minWidth: 340, maxWidth: 340, marginLeft: 5, marginBottom: 5 }}>
 
             <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                {/* <ModalProjectInfo
+                <ModalProjectInfo
                     nameProject={name}
                     tags={tags}
                     description={description}
-
                     status={status}
                     leader={leader}
                     duration={duration}
@@ -43,9 +44,9 @@ export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, sta
                     handleClose={handleClose}
                     idUser={idUser}
                     idProject={idProject}
-                    roles={roles}
+                    roles={[{}]}
                     userApplyProject={userApplyProject}
-                /> */}
+                />
             </Container>
 
             <CardActionArea onClick={handleOpen}>

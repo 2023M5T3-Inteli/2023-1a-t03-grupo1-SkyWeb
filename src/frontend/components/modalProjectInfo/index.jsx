@@ -21,6 +21,7 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
             setIsApply(false)
             setLeader(true)
         }
+
     }, [])
 
     function handleModalVisibleApply() {
@@ -52,6 +53,8 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
             alert(e)
         })
     }
+
+    console.log(roles)
 
 
 
