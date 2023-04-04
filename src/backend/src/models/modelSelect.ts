@@ -590,4 +590,84 @@ export class ModelSelect {
             );
         }
     }
+
+    async getProjectsAppliedById(id: number) {
+        try {
+            const result = await this.prisma.userApplyProject.findMany({
+                where: {
+                    idUser: id,
+                },
+                select: {
+                    Project: {
+                        select: {
+                            id: true,
+                            idUser: true,
+                            name: true,
+                            isApproved: true,
+                            description: true,
+                            duration: true,
+                            status: true,
+                            aplicationDeadLine: true,
+                            dateStart: true,
+
+                            projectTag: {
+                                select: {
+                                    Tag: {
+                                        select: {
+                                            name: true,
+                                        },
+                                    },
+                                },
+                            },
+
+                            projectRole: {
+                                select: {
+                                    Role: {
+                                        select: {
+                                            id: true,
+                                            name: true,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                    idUser: true,
+                },
+            });
+
+            const jsonResult = result.map((item) => {
+                return {
+                    id: item.Project.id,
+                    idUser: item.Project.idUser,
+                    name: item.Project.name,
+                    isApproved: item.Project.isApproved,
+                    description: item.Project.description,
+                    duration: item.Project.duration,
+                    status: item.Project.status,
+                    aplicationDeadLine: item.Project.aplicationDeadLine,
+                    dateStart: item.Project.dateStart,
+
+                    projectTag: item.Project.projectTag.map((item) => {
+                        return item.Tag.name;
+                    }),
+
+                    projectRole: item.Project.projectRole.map((item) => {
+                        return { id: item.Role.id, name: item.Role.name };
+                    }),
+                };
+            })
+            
+            
+            return jsonResult;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.BAD_REQUEST,
+                    error: error,
+                },
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
 }

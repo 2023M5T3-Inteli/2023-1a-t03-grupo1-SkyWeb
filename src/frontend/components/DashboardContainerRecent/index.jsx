@@ -1,84 +1,23 @@
-import * as React from "react";
+import {useEffect} from "react";
 import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
 import { ProjectCardInfosTest } from "../projectCardTest";
 import { flexbox, typography } from "@mui/system";
+import api from "../../api";
 
 export function ContainerRecent({ }) {
-  const array = [
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java"],
-      id: 1,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 2,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 3,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 4,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 5,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 6,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 7,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 8,
-    },
-  ];
+
+  async function getCard() {
+    const result = await api.get("/projectsapplied/1")
+    console.log(result)
+  }
+
+  useEffect(() => {
+    getCard()
+  },[])
+
+
+ 
   return (
     <Container sx={{ background: "rgba(215, 215, 215, 0.45)", width: 500, height: 255 }}>
       <Grid item sx={{ overflowY: "auto", height: "100%" }}>
