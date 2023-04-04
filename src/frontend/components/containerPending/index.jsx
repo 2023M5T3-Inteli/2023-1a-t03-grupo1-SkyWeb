@@ -4,6 +4,8 @@ import { Box, Grid } from "@mui/material";
 import { flexbox, typography } from "@mui/system";
 import { ProjectCardInfosManager } from "../projectCardManager";
 import api from "../../api";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
+
 
 
 export function ContainerPending({ }) {
@@ -14,13 +16,15 @@ export function ContainerPending({ }) {
 
   const { idManager } = JSON.parse(sessionStorage.getItem("user"))
 
+  const navigate = useNavigate()
+
   async function reqProjectbyManager() {
 
     await api.get(`/projectsowner/${idManager}`).then((item) => {
       const filter = item.data.filter(item => item.isApproved === null)
       setDataProject(filter)
     }).catch((e) => {
-      alert(e)
+      return navigate("/login")
     })
 
   }

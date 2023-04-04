@@ -3,6 +3,8 @@ import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
 import { ProjectCardInfosManager } from "../projectCardManager";
 import api from "../../api";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
+
 
 export function ContainerDennied({ }) {
 
@@ -10,13 +12,15 @@ export function ContainerDennied({ }) {
 
   const { idManager } = JSON.parse(sessionStorage.getItem("user"))
 
+  const navigate = useNavigate()
+
   async function reqProjectbyManager() {
 
     await api.get(`/projectsowner/${idManager}`).then((item) => {
       const filter = item.data.filter(item => item.isApproved === false)
       setDataProject(filter)
     }).catch((e) => {
-      alert(e)
+      return navigate("/login")
     })
 
   }

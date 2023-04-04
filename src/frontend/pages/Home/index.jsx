@@ -1,9 +1,7 @@
-import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import { Landing } from "../../components/landing";
 import { NavbarHome } from "../../components/navbarHome";
 import Image from "mui-image"
-import { useContext } from "react"
 
 export function Home() {
 

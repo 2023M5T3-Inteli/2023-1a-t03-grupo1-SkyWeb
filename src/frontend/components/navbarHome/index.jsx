@@ -1,4 +1,3 @@
-import { Box, Container } from "@mui/system"
 import { AppBar, Button, Grid, Toolbar, Typography } from "@mui/material"
 
 export function NavbarHome() {
@@ -15,24 +14,24 @@ export function NavbarHome() {
 
                 <Grid item xs={12} sm={8} lg={6} >
                     <Toolbar sx={{ display: "flex", justifyContent: "space-between", marginRight: 10 }}>
-                        <Typography component="a" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
+                        <Typography component="a" className="home-nav-item" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
                             Home
                         </Typography>
-                        <Typography component="a" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
+                        <Typography component="a" className="home-nav-item" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
                             About
                         </Typography>
-                        <Typography component="a" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
+                        <Typography component="a" className="home-nav-item" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
                             Projects
                         </Typography>
-                        <Typography component="a" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
+                        <Typography component="a" className="home-nav-item" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
                             Recognition
                         </Typography>
-                        <Typography component="a" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
+                        <Typography component="a" className="home-nav-item" sx={{ fontFamily: "Poppins", fontWeight: 400, fontSize: 18, cursor: "pointer" }}>
                             FAQ
                         </Typography>
 
-                        <Button variant="" sx={{ color: "white", border: 1, borderColor: "white", padding: 1.3, borderRadius: 1.5 }}>
-                            <Typography sx={{ fontFamily: "Poppins", fontWeight: 500, fontSize: 13 }}>
+                        <Button variant="" className="home-start-applying" sx={{ color: "white", border: 1, borderColor: "white", padding: 1.3, borderRadius: 1.5, boxShadow:2 }}>
+                            <Typography  sx={{ fontFamily: "Poppins", fontWeight: 500, fontSize: 13 }}>
                                 Start Applying
                             </Typography>
                         </Button>

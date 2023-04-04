@@ -3,7 +3,8 @@ import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
 import { ProjectCardInfosManager } from "../projectCardManager/";
 import api from "../../api"
-import { flexbox, typography } from "@mui/system";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
+
 
 export function ContainerApproved({ }) {
 
@@ -11,13 +12,16 @@ export function ContainerApproved({ }) {
 
   const { idManager } = JSON.parse(sessionStorage.getItem("user"))
 
+  const navigate = useNavigate()
+
+  
   async function reqProjectbyManager() {
 
     await api.get(`/projectsowner/${idManager}`).then((item) => {
       const filter = item.data.filter(item => item.isApproved === true)
       setDataProject(filter)
     }).catch((e) => {
-      alert(e)
+      return navigate("/login")
     })
 
   }

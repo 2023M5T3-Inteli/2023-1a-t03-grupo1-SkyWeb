@@ -118,8 +118,8 @@ export function ModalProjectInfoPeding({ nameProject, tags, description, status,
                                 {isApproved === null &&
 
                                     <Box sx={{ display: "flex", justifyContent: "space-around", width: 600, marginTop: "25%" }}>
-                                        <Button onClick={() => { approvalProject(true) }} sx={{ backgroundColor: "sucess.main", color: "white.main", width: 100, height: 40 }}>accept</Button>
-                                        <Button onClick={() => { approvalProject(false) }} sx={{ backgroundColor: "error.main", color: "white.main", width: 100, height: 40 }} >Denied</Button>
+                                        <Button className="manager-approve" onClick={() => { approvalProject(true) }} sx={{ backgroundColor: "#3a634b", color: "white.main", width: 100, height: 40, fontWeight:600 }}>Approve Project</Button>
+                                        <Button className="manager-decline" onClick={() => { approvalProject(false) }} sx={{ backgroundColor: "tagClosed.main", color: "white.main", width: 100, height: 40, fontWeight:600 }} >Decline Project</Button>
                                     </Box>
                                 }
 
