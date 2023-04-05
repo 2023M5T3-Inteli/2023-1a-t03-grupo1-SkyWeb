@@ -181,9 +181,41 @@ export class ModelSelect {
         try {
             const result = await this.prisma.project.findMany({
                 where: { idUser: idUser },
+                select: {
+                    id: true,
+                    idUser: true,
+                    name: true,
+                    isApproved: true,
+                    description: true,
+                    duration: true,
+                    status: true,
+                    aplicationDeadLine: true,
+                    dateStart: true,
+                    userApplyProject: { select: { User: { select: { fullName: true, userApplyProject: { select: { idRole: true ,Role:true} }, } } } } },
+                
+            });
+            const jsonResult = result.map((item) => {
+                return {
+                    id: item.id,
+                    idUser: item.idUser,
+                    name: item.name,
+                    isApproved: item.isApproved,
+                    description: item.description,
+                    duration: item.duration,
+                    status: item.status,
+                    aplicationDeadLine: item.aplicationDeadLine,
+                    dateStart: item.dateStart,
+                    nameApplier: item.userApplyProject.map((item) => {
+                        return { id: item.User.fullName };
+                    }),
+                    role: item.userApplyProject.map((item) => {
+                        return { id: item.User.userApplyProject[0].Role };
+                    }),
+                };
             });
 
-            return result;
+            return jsonResult;
+
         } catch (error) {
             throw new HttpException(
                 {
