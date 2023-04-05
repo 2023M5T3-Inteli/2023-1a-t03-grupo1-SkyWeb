@@ -19,6 +19,7 @@
 
 ## 📁 Estrutura de pastas
 
+|-->.Documentos<br>
 |-->Githubs<br>
   &emsp;|--> Workflows<br>
         &emsp;|--> Action.txt<br>
@@ -26,10 +27,17 @@
 |-->Src<br>
   &emsp;|-->Backend<br>
   &emsp;|-->Frontend<br>
+  
+  
+<b>Dentre os arquivos presentes na raiz do projeto, definem-se:</b>
 
+<b>readme:</b> arquivo de introdução, contendo informações gerais sobre o projeto - arquivo atual.
+
+<b>documentos:</b> contém as versões de Manual de Instrução para a aplicação em cloud, além do documento oficial da solução,  Doc.
+
+<b>Src:</b> Possui o código fonte do projeto, tanto as conexão feitas com a AWS, quanto para a aplicação web desenvolvida.
 
 ## 💻 Execução do projeto
-
 
 
 Se preferir, também é possível acessá-lo a partir do seguinte link:
