@@ -2,12 +2,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { ModalProjectInfo } from '../modalProjectInfo';
+import { ModalProjectLeading } from '../modalLeading';
 import { Box, Container } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 
-export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject }) {
+export function ProjectCardLeading({ name, deadLine, area, duration, tags, status, description, leader, dateStart, idUser, roles, idProject, userApplyProject, users }) {
 
     const [open, setOpen] = useState(false)
 
@@ -30,7 +30,7 @@ export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, sta
         <Card sx={{ minWidth: 340, maxWidth: 340, marginLeft: 5, marginBottom: 5 }}>
 
             <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                {/* <ModalProjectInfo
+                <ModalProjectLeading
                     nameProject={name}
                     tags={tags}
                     description={description}
@@ -44,7 +44,8 @@ export function ProjectCardInfosTest({ name, deadLine, area, duration, tags, sta
                     idProject={idProject}
                     roles={[{}]}
                     userApplyProject={userApplyProject}
-                /> */}
+                    _users={users}
+                />
             </Container>
 
             <CardActionArea onClick={handleOpen}>

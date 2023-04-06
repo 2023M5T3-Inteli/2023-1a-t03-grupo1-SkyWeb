@@ -1,15 +1,16 @@
-import { Box, Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Typography } from "@mui/material";
+import { Avatar, Box, Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
 import api from "../../api";
 import ConfirmApplyProjectModal from "../modalConfirmApplyProject/confirmApply"
 
-export function ModalProjectInfo({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose, idUser, roles, idProject, userApplyProject }) {
+export function ModalProjectLeading({ nameProject, tags, description, status, leader, startDate, duration, isOpen, handleClose, idUser, roles, idProject, userApplyProject, _users }) {
 
     const [isApply, setIsApply] = useState(true)
     const [_leader, setLeader] = useState(false)
     const [modalVisibleApply, setModalVisibleApply] = useState(false);
     const [errorSameApply, setErrorSameApply] = useState(false)
+    const [users, setUsers] = useState([])
     const refSelect = useRef(null)
 
     const { id } = JSON.parse(sessionStorage.getItem("user"))
@@ -54,22 +55,53 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
         })
     }
 
-    console.log(roles)
+
+    function filtratArray(array, filtro) {
+        const arrayFiltrado = array.filter(item => !filtro.some(itemObjetc => itemObjetc.idUser === item.idUser))
+        return arrayFiltrado
+    }
+
+    async function acceptAplyes(idUser, idRole) {
+
+        if (!users.filter(e => e.idUser === idUser).length > 0) {
+            setUsers(item => [...item, { idUser, idRole }])
+        } else {
+            const newArray = filtratArray(users, [{ idUser, idRole }])
+            setUsers(newArray)
+        }
+    }
+
+    async function acceptUserForWorkingProject() {
+        const token = JSON.stringify(sessionStorage.getItem("token"))
 
 
+        if (token) {
+            api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+
+            const arrayUsers = users.map((item) => { return item.idUser })
+
+
+            await api.post("/acceptUserForWorkinProject", { idOwnerProject: id, idProject: idProject, idUsers: arrayUsers })
+                .then((item) => {
+                    handleClose()
+                })
+        }
+
+    }
+
+
+    console.log(_users)
 
     return (
         <div>
             <Modal
                 open={isOpen}
                 onClose={handleClose}
-                aria-labelledby="child-modal-title"
-                aria-describedby="child-modal-description"
             >
 
                 <Grid container sx={{ display: "flex", justifyContent: "center", marginTop: "10%", position: "relative" }}>
-                    <Box sx={{ display: "flex", width: 670, height: 460, backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
-                        <Grid item lg={7}>
+                    <Box sx={{ display: "flex", backgroundColor: "#EDEDED", padding: 2, borderRadius: 3 }}>
+                        <Grid item lg={12}>
                             <Container sx={{ padding: 2 }}>
                                 <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center", gap: 1.5 }}>
 
@@ -115,45 +147,53 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
 
                                 </Box>
 
-                                <Box sx={{ width: 250, display: "flex", flexDirection: "column", gap: 1.2 }}>
+                                <Box sx={{ display: "flex", flexDirection: "column", padding: 2, boxShadow: 4, alignItems: "center", justifyContent: "center", width: 600, height: 255 }}>
+                                    <Grid container sx={{ overflowY: "auto", height: "100%" }}>
+                                        <Box sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
+                                            <Typography variant="text1">Profile</Typography>
+                                            <Typography variant="text1">Application</Typography>
+                                        </Box>
 
-                                    <Grid container>
+                                        {_users.map((item) => {
+                                            return (
+                                                <Grid item lg={12} sx={{ marginBottom: 1 }}>
+                                                    <Box sx={{ backgroundColor: "inactiveCard.main", height: 60, display: "flex", alignItems: "center", justifyContent: "space-around", borderRadius: 3 }}>
+                                                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                                                            <Avatar alt="lalal" src="../public/profile.png" sx={{ width: 42, height: 42, marginRight: 1.2 }} />
+                                                            <Box sx={{ display: "flex", flexDirection: "column" }}>
+                                                                <Typography variant="text1">{item.name}</Typography>
+                                                                <Typography variant="text6">Develop</Typography>
+                                                            </Box>
+                                                        </Box>
+
+                                                        <Box>
+                                                            <Typography variant="text4">
+                                                                {item.role}
+                                                            </Typography>
+                                                        </Box>
+
+                                                        <Box>
+                                                            <Checkbox onChange={() => { acceptAplyes(item.id, 2) }}></Checkbox>
+                                                        </Box>
+                                                    </Box>
+                                                </Grid>
+                                            )
+                                        })}
 
 
-                                        <Typography variant="title4">
-                                            Project Description:
-                                        </Typography>
-
-                                        <Typography variant="text4">
-                                            {description}
-                                        </Typography>
                                     </Grid>
 
-                                    <Box sx={{ display: "flex", flexDirection: "column" }}>
-                                        <Typography variant="title4">
-                                            Project Status: <Typography variant="text4">{status}</Typography>
-                                        </Typography>
 
-                                        <Typography variant="title4">
-                                            Project Leader: <Typography variant="text4">{leader}</Typography>
-                                        </Typography>
-                                    </Box>
-
-                                    <Box sx={{ display: "flex", gap: 5 }}>
-                                        <Box sx={{ display: "flex", flexDirection: "column" }}>
-                                            <Typography variant="title4">Start date</Typography>
-                                            <Typography variant="text4">{startDate}</Typography>
-                                        </Box>
-                                        <Box sx={{ display: "flex", flexDirection: "column" }}>
-                                            <Typography variant="title4">Duration:</Typography>
-                                            <Typography variant="text4">{duration}</Typography>
-                                        </Box>
-                                    </Box>
                                 </Box>
 
-                                {_leader && <Box sx={{ width: 580, display: "flex", justifyContent: "center" }}>
-                                    <Button onClick={deleteProject} sx={{ backgroundColor: "error.main", color: "white.main", width: 100, height: 40, }}>Delete project</Button>
-                                </Box>}
+                                <Box sx={{ width: 580, display: "flex", justifyContent: "center", gap: 3, marginTop: 2 }}>
+                                    <Button onClick={acceptUserForWorkingProject} sx={{ backgroundColor: "sucess.main", color: "white.main", width: 100, height: 40, }}>Accept Applyes</Button>
+
+                                    {_leader &&
+                                        <Button onClick={deleteProject} sx={{ backgroundColor: "error.main", color: "white.main", width: 100, height: 40, }}>Delete project</Button>
+                                    }
+                                </Box>
+
 
 
                                 {status === "Done" &&
@@ -201,18 +241,7 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                             </Box>
 
                             <Container>
-                                <Box sx={{ marginLeft: "10%" }}>
-                                    <Typography variant="title4" >Team:</Typography>
 
-                                    <Box sx={{ display: "flex", flexDirection: "column", marginTop: "3%" }}>
-                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                        <Typography variant="text4"><Typography variant="text4" color="dellBlue.main">Chloe Price</Typography> - Product Owner</Typography>
-                                    </Box>
-                                </Box>
                             </Container>
                         </Grid>
 
@@ -220,7 +249,7 @@ export function ModalProjectInfo({ nameProject, tags, description, status, leade
                     </Box>
 
 
-                </Grid>
+                </Grid >
 
             </Modal >
 

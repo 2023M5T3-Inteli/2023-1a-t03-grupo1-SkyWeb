@@ -8,7 +8,7 @@ export function ContainerSaved({ }) {
   const array = [
     {
       status: "Open",
-      nome: "teste card",
+      nome: "Project Mario 🍄",
       deadline: "02/08/23",
       area: "Finance",
       duration: "3 Months",

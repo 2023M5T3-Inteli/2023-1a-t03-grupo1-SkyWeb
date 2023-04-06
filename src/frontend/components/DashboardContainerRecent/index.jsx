@@ -1,98 +1,55 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
 import { ProjectCardInfosTest } from "../projectCardTest";
 import { flexbox, typography } from "@mui/system";
+import api from "../../api";
 
 export function ContainerRecent({ }) {
-  const array = [
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java"],
-      id: 1,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 2,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 3,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 4,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 5,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 6,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 7,
-    },
-    {
-      status: "Open",
-      nome: "teste card",
-      deadline: "02/08/23",
-      area: "Finance",
-      duration: "3 Months",
-      tags: ["Java", "Python", "Ruby"],
-      id: 8,
-    },
-  ];
+
+  const [data, setData] = useState([])
+
+  const user = JSON.parse(sessionStorage.getItem("user"))
+
+  async function getCard() {
+    const result = await api.get(`/projectsapplied/${user.id}`)
+    setData(result.data)
+  }
+
+  useEffect(() => {
+    const token = JSON.stringify(sessionStorage.getItem("token"))
+
+
+    if (token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+    }
+
+    getCard()
+  }, [])
+
+
+
   return (
     <Container sx={{ background: "rgba(215, 215, 215, 0.45)", width: 500, height: 255 }}>
       <Grid item sx={{ overflowY: "auto", height: "100%" }}>
         <Box sx={{ display: "grid", marginTop: 3 }}>
-          {array.map((item) => {
+          {data.map((item) => {
             return (
               <div key={item.id}>
                 < ProjectCardInfosTest
                   status={item.status}
-                  name={item.nome}
-                  area={item.area}
-                  deadLine={item.deadline}
+                  name={item.name}
+                  idProject={item.id}
+                  area={"Tech"}
+                  deadLine={item.aplicationDeadLine}
                   duration={item.duration}
-                  tags={item.tags}
+                  tags={item.projectTag}
+                  description={item.description}
+                  leader={item.leader}
+                  dateStart={item.dateStart}
+                  idUser={item.idUser}
+                  roles={item.projectRole}
+                  userApplyProject={item.userApplyProject}
                 />
               </div>
             );
