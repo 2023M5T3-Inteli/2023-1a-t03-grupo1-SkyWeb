@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import { Box, Grid } from "@mui/material";
-import { ProjectCardInfosTest } from "../projectCardTest";
-import { flexbox, typography } from "@mui/system";
+import { ProjectCardLeading } from "../projectCardLeading";
 import api from "../../api";
 
 export function ContainerLeading({ }) {
@@ -23,11 +22,9 @@ export function ContainerLeading({ }) {
   const user = JSON.parse(sessionStorage.getItem("user"))
 
   async function getProject() {
-    const result = await api.get("/getProjectByUserId/1")
+    const result = await api.get(`/getProjectByUserId/${user.id}`)
     setData(result.data)
   }
-
-
 
   console.log(data)
 
@@ -39,7 +36,7 @@ export function ContainerLeading({ }) {
           {data.map((item) => {
             return (
               <div key={item.id}>
-                < ProjectCardInfosTest
+                < ProjectCardLeading
                   status={item.status}
                   name={item.name}
                   idProject={item.id}
@@ -53,6 +50,7 @@ export function ContainerLeading({ }) {
                   idUser={item.idUser}
                   roles={item.projectRole}
                   userApplyProject={item.userApplyProject}
+                  users={item.users}
                 />
               </div>
             );

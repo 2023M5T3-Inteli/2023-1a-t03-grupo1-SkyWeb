@@ -191,8 +191,41 @@ export class ModelSelect {
                     status: true,
                     aplicationDeadLine: true,
                     dateStart: true,
-                    userApplyProject: { select: { User: { select: { fullName: true, userApplyProject: { select: { idRole: true ,Role:true} }, } } } } },
-                
+
+                    projectTag: {
+                        select: {
+                            Tag: {
+                                select: {
+                                    name: true,
+                                },
+                            },
+                        },
+                    },
+
+                    projectRole: {
+                        select: {
+                            Role: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                },
+                            },
+                        },
+                    },
+                    userApplyProject: {
+                        select: {
+                            User: {
+                                select: {
+                                    fullName: true,
+                                    id: true,
+                                    userApplyProject: {
+                                        select: { idRole: true, Role: true },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
             });
             const jsonResult = result.map((item) => {
                 return {
@@ -205,17 +238,23 @@ export class ModelSelect {
                     status: item.status,
                     aplicationDeadLine: item.aplicationDeadLine,
                     dateStart: item.dateStart,
-                    nameApplier: item.userApplyProject.map((item) => {
-                        return { id: item.User.fullName };
+                    projectTag: item.projectTag.map((item) => {
+                        return item.Tag.name;
                     }),
-                    role: item.userApplyProject.map((item) => {
-                        return { id: item.User.userApplyProject[0].Role };
+                    projectRole: item.projectRole.map((item) => {
+                        return { id: item.Role.id, name: item.Role.name };
+                    }),
+                    users: item.userApplyProject.map((item) => {
+                        return {
+                            id: item.User.id,
+                            name: item.User.fullName,
+                            role: item.User.userApplyProject[0].Role.name,
+                        };
                     }),
                 };
             });
 
             return jsonResult;
-
         } catch (error) {
             throw new HttpException(
                 {
@@ -688,9 +727,8 @@ export class ModelSelect {
                         return { id: item.Role.id, name: item.Role.name };
                     }),
                 };
-            })
-            
-            
+            });
+
             return jsonResult;
         } catch (error) {
             throw new HttpException(

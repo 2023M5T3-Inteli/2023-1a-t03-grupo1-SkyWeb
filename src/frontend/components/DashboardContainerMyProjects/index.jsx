@@ -8,7 +8,7 @@ export function ContainerMyProjects({ }) {
   const array = [
     {
       status: "Open",
-      nome: "teste card",
+      nome: "Project Sonic 🧿",
       deadline: "02/08/23",
       area: "Finance",
       duration: "3 Months",
